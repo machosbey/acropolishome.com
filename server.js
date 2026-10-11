@@ -13,6 +13,8 @@ app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
 // Serve Static Frontend Files
+app.use(express.static(path.join(__dirname, 'public', 'frontend')));
+app.use('/frontend', express.static(path.join(__dirname, 'public', 'frontend')));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Connect to SQLite via Sequelize
