@@ -1,0 +1,546 @@
+<!DOCTYPE html><html dir="rtl" lang="ar" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=no" name="viewport">
+<title>اكروبوليس هوم | Acropolis Home</title>
+<!-- Tailwind CSS v3 CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Cairo -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+<!-- FontAwesome Icons for crisp UI representation -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<!-- Tailwind Configuration -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            cairo: ['Cairo', 'sans-serif'],
+          },
+          colors: {
+            nestGold: {
+              300: '#FDE08B',
+              400: '#F5C973',
+              500: '#E5B158',
+              600: '#C99742',
+              700: '#9B742D',
+            },
+            nestDark: {
+              950: '#070A0F',
+              900: '#0C111C',
+              850: '#111827',
+              800: '#162032',
+              700: '#233047',
+            }
+          },
+          boxShadow: {
+            'gold-glow': '0 0 25px -4px rgba(229, 177, 88, 0.35)',
+            'gold-inner': 'inset 0 1px 1px 0 rgba(253, 224, 139, 0.4)',
+          }
+        }
+      }
+    }
+  </script>
+<!-- Custom Styles for Mobile Device Look & Dark Glassmorphism -->
+<style data-purpose="custom-theme-styles">
+    body {
+      font-family: 'Cairo', sans-serif;
+      background-color: #070A0F;
+      color: #E2E8F0;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+    
+    /* Subtle custom scrollbar */
+    ::-webkit-scrollbar {
+      display: none;
+    }
+
+    .glass-card {
+      background: linear-gradient(135deg, rgba(22, 32, 50, 0.72) 0%, rgba(12, 17, 28, 0.88) 100%);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(229, 177, 88, 0.18);
+    }
+
+    .glass-card-glow {
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.6) 0%, rgba(15, 23, 42, 0.8) 100%);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(229, 177, 88, 0.3);
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 15px 0 rgba(229, 177, 88, 0.1);
+    }
+
+    .gold-gradient-text {
+      background: linear-gradient(135deg, #FFF0CA 0%, #F5C973 50%, #C99742 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .gold-gradient-btn {
+      background: linear-gradient(135deg, #F5C973 0%, #E5B158 50%, #C99742 100%);
+      color: #0B0E14;
+      font-weight: 700;
+    }
+
+    /* iOS Notch and Bottom bar safe areas */
+    .pt-safe {
+      padding-top: env(safe-area-inset-top, 44px);
+    }
+    .pb-safe {
+      padding-bottom: env(safe-area-inset-bottom, 34px);
+    }
+  </style>
+</head>
+<body class="bg-nestDark-950 text-slate-100 min-h-screen flex justify-center selection:bg-nestGold-500 selection:text-black">
+<!-- Mobile Viewport Container (iOS Format) -->
+<div id="mainContainer" class="w-full min-h-screen bg-nestDark-950 flex flex-col relative pb-28 lg:pb-0 overflow-x-hidden transition-all duration-300">
+
+<!-- BEGIN: AppHeader -->
+<div class="w-full px-5 py-3 flex items-center justify-between z-40 top-8 absolute pointer-events-auto max-w-7xl mx-auto left-0 right-0" data-purpose="app-top-navigation">
+<!-- HomeNest Logo & Geometric Icon -->
+<a href="index.html" class="flex items-center gap-3 hover:opacity-80 transition-opacity cursor-pointer">
+<div class="w-16 h-16 flex items-center justify-center">
+<img src="../UPLOADS/LOGO.png" alt="اكروبوليس هوم" class="w-full h-full object-contain filter drop-shadow-md">
+</div>
+<div class="leading-none">
+<span class="text-3xl font-black tracking-wide text-white block">اكروبوليس هوم</span>
+</div>
+</a>
+<!-- Action Buttons: Contact & Menu -->
+<div class="flex items-center gap-2">
+<button class="px-5 py-2.5 rounded-full text-sm font-bold text-nestGold-300 border border-nestGold-500/40 bg-nestGold-500/10 hover:bg-nestGold-500/20 transition-all flex items-center gap-2 shadow-sm">
+<i class="fa-solid fa-headset text-base"></i>
+<span class="">تواصل</span>
+</button>
+
+</div>
+</div>
+<!-- END: AppHeader -->
+<!-- BEGIN: MainContent -->
+<main class="flex-1 flex flex-col space-y-6">
+<!-- BEGIN: HeroSection -->
+<section class="relative w-full" data-purpose="hero-banner">
+<div class="relative w-full min-h-[100svh] shadow-2xl border-b border-[#C99742]/25 flex flex-col">
+  <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
+    <img alt="فيلا فاخرة عند الغروب" class="w-full h-full object-cover object-center transform scale-105" src="../UPLOADS/هيدر موبايل.jpg?v=2">
+    <div class="absolute inset-0 bg-gradient-to-b from-[#0B0E14]/90 via-transparent to-[#0B0E14]"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-[#0B0E14] via-[#0B0E14]/60 to-transparent"></div>
+  </div>
+  
+  <div class="relative p-6 flex flex-col justify-start pt-48 lg:pt-40 pb-28 lg:pb-24 max-w-7xl mx-auto w-full gap-8 z-20 flex-1">
+    
+    <!-- Hero Text -->
+    <div class="text-center lg:text-right space-y-6 max-w-2xl mx-auto lg:mx-0 animate-fade-in-up">
+      <h2 id="hero-title" class="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.8]">
+        اكتشف عقار أحلامك <br> <span class="text-[#E5B158] block mt-4">بين أرقى الخيارات</span>
+      </h2>
+      <p id="hero-subtitle" class="text-slate-300 text-sm md:text-base leading-[2]">
+        الوجهة الأولى للعقارات الفاخرة والاستثنائية. ابحث في قائمة متجددة من الفلل العصرية والشقق الفندقية الفارهة في قلب أثينا وبالقرب من الأكروبوليس.
+      </p>
+    </div>
+
+    <!-- Search Box Overlay -->
+    <div class="rounded-2xl p-5 md:p-6 pb-8 md:pb-10 space-y-5 border border-[#E5B158]/40 shadow-[0_8px_32px_rgba(229,177,88,0.25)] w-full max-w-3xl mx-auto lg:ml-auto lg:-mr-16 mt-8 lg:-mt-2 bg-[#0B0E14]/20 backdrop-blur-xl animate-fade-in-up relative overflow-hidden" style="animation-delay: 0.1s;">
+      <!-- Subtle internal glow -->
+      <div class="absolute inset-0 bg-gradient-to-tr from-[#E5B158]/5 via-transparent to-transparent pointer-events-none"></div>
+
+      <div class="flex items-center justify-between border-b border-white/10 pb-3">
+        <span class="text-sm font-bold text-white flex items-center gap-2">
+          <i class="fa-solid fa-sliders text-[#E5B158]"></i>
+          البحث الذكي
+        </span>
+        <span onclick="window.location.href='index.html'" class="text-[10px] text-[#E5B158] font-medium cursor-pointer hover:underline">إعادة تعيين</span>
+      </div>
+      
+      <!-- Filter Pills: Type -->
+      <div id="home-category-filters" class="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
+        <button class="px-5 py-2 rounded-full text-xs font-bold text-[#0B0E14] shadow-md whitespace-nowrap" style="background: linear-gradient(135deg, #F5C973 0%, #E5B158 50%, #C99742 100%);">
+          الكل
+        </button>
+      </div>
+
+      <!-- Location & Price inputs -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+        <!-- City Input -->
+        <div class="bg-black/40 border border-[#C99742]/20 focus-within:border-[#C99742]/60 transition-colors rounded-xl px-4 py-2 flex flex-col justify-center cursor-text group">
+          <label for="location-input" class="text-[10px] text-slate-400 mb-0.5 group-focus-within:text-slate-300 cursor-text">المدينة / الحي</label>
+          <input id="location-input" type="text" class="bg-transparent text-sm font-bold text-white outline-none focus:outline-none focus:ring-0 border-none p-0 m-0 w-full placeholder-slate-500" placeholder="أدخل المدينة أو الحي...">
+        </div>
+        <!-- Price Range Input -->
+        <div class="bg-black/40 border border-[#C99742]/20 focus-within:border-[#C99742]/60 transition-colors rounded-xl px-4 py-2 flex flex-col justify-center cursor-text group">
+          <label class="text-[10px] text-slate-400 mb-0.5 group-focus-within:text-slate-300 cursor-text">نطاق السعر</label>
+          <div class="flex items-center gap-2">
+            <input id="price-min" type="text" inputmode="numeric" class="bg-transparent text-sm font-bold text-white outline-none focus:outline-none focus:ring-0 border-none p-0 m-0 w-full placeholder-slate-500 text-center" placeholder="من">
+            <span class="text-slate-500 text-xs">-</span>
+            <input id="price-max" type="text" inputmode="numeric" class="bg-transparent text-sm font-bold text-white outline-none focus:outline-none focus:ring-0 border-none p-0 m-0 w-full placeholder-slate-500 text-center" placeholder="إلى">
+          </div>
+        </div>
+      </div>
+
+      <!-- Search Action Button -->
+      <div class="flex items-center gap-3 mt-2">
+        <button onclick="executeSmartSearch()" class="flex-1 py-4 rounded-xl text-sm font-bold flex items-center justify-center gap-2 shadow-[0_4px_15px_-3px_rgba(229,177,88,0.4)] hover:brightness-110 active:scale-95 transition-all text-[#0B0E14]" style="background: linear-gradient(135deg, #F5C973 0%, #E5B158 50%, #C99742 100%);">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <span id="search-btn-text">البحث الآن</span>
+        </button>
+        <button onclick="document.getElementById('advancedSearchMenu').classList.toggle('hidden')" class="px-5 py-4 rounded-xl border border-[#C99742]/40 bg-black/40 text-slate-200 text-xs font-bold flex items-center justify-center gap-2 hover:bg-[#C99742]/10 transition-colors shrink-0">
+          <i class="fa-solid fa-sliders"></i>
+          <span>بحث متقدم</span>
+        </button>
+      </div>
+
+      <!-- Advanced Search Hidden Menu -->
+      <div id="advancedSearchMenu" class="hidden border-t border-[#C99742]/20 pt-5 space-y-3">
+        <h4 class="text-[11px] font-bold text-[#E5B158] flex items-center gap-1.5"><i class="fa-solid fa-list-check"></i> مواصفات العقار الإضافية</h4>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-2.5">
+          <div class="bg-black/30 border border-white/5 hover:border-[#C99742]/30 rounded-lg px-3 py-2 flex items-center justify-between cursor-pointer transition-colors">
+            <div class="flex flex-col"><span class="text-[9px] text-slate-400">المساحة الإجمالية</span><span class="text-[11px] font-bold text-white">الكل</span></div>
+            <i class="fa-solid fa-chevron-down text-[9px] text-slate-500"></i>
+          </div>
+          <div class="bg-black/30 border border-white/5 hover:border-[#C99742]/30 rounded-lg px-3 py-2 flex items-center justify-between cursor-pointer transition-colors">
+            <div class="flex flex-col"><span class="text-[9px] text-slate-400">أجنحة النوم</span><span class="text-[11px] font-bold text-white">+4 غرف</span></div>
+            <i class="fa-solid fa-chevron-down text-[9px] text-slate-500"></i>
+          </div>
+          <div class="bg-black/30 border border-white/5 hover:border-[#C99742]/30 rounded-lg px-3 py-2 flex items-center justify-between cursor-pointer transition-colors">
+            <div class="flex flex-col"><span class="text-[9px] text-slate-400">دورات المياه</span><span class="text-[11px] font-bold text-white">الكل</span></div>
+            <i class="fa-solid fa-chevron-down text-[9px] text-slate-500"></i>
+          </div>
+          <div class="bg-black/30 border border-white/5 hover:border-[#C99742]/30 rounded-lg px-3 py-2 flex items-center justify-between cursor-pointer transition-colors">
+            <div class="flex flex-col"><span class="text-[9px] text-slate-400">مواقف سيارات</span><span class="text-[11px] font-bold text-white">مغطاة</span></div>
+            <i class="fa-solid fa-chevron-down text-[9px] text-slate-500"></i>
+          </div>
+          <div class="bg-black/30 border border-white/5 hover:border-[#C99742]/30 rounded-lg px-3 py-2 flex items-center justify-between cursor-pointer transition-colors">
+            <div class="flex flex-col"><span class="text-[9px] text-slate-400">المسبح واللاونج</span><span class="text-[11px] font-bold text-white">يشترط وجود مسبح</span></div>
+            <i class="fa-solid fa-chevron-down text-[9px] text-slate-500"></i>
+          </div>
+          <div class="bg-black/30 border border-white/5 hover:border-[#C99742]/30 rounded-lg px-3 py-2 flex items-center justify-between cursor-pointer transition-colors">
+            <div class="flex flex-col"><span class="text-[9px] text-slate-400">عمر العقار</span><span class="text-[11px] font-bold text-white">جديد</span></div>
+            <i class="fa-solid fa-chevron-down text-[9px] text-slate-500"></i>
+          </div>
+        </div>
+      </div>
+
+  </div>
+</div>
+</section>
+<!-- END: HeroSection -->
+<!-- BEGIN: FeaturedPropertiesSection -->
+<section class="px-4 space-y-3 max-w-7xl mx-auto w-full" data-purpose="featured-properties-list">
+<!-- Section Header -->
+<div class="flex items-center justify-between">
+<div>
+<h2 class="text-base font-bold text-white flex items-center gap-2">
+<span class="w-1.5 h-4 bg-nestGold-400 rounded-full inline-block"></span>
+              عقاراتنا
+            </h2>
+<p class="text-[11px] text-slate-400 mt-0.5">تصفح جميع عقاراتنا المتاحة</p>
+</div>
+<a class="text-xs text-nestGold-400 font-semibold hover:underline flex items-center gap-1" href="#">
+<span class="">عرض الكل</span>
+<i class="fa-solid fa-angle-left text-[10px]"></i>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4" id="featured-properties-grid">
+<!-- Featured properties will be loaded here dynamically -->
+</div>
+
+</section>
+<!-- END: FeaturedPropertiesSection -->
+<!-- BEGIN: ExclusiveServicesBrief -->
+<section class="px-4 pt-1 max-w-7xl mx-auto w-full" data-purpose="services-banner">
+<div class="relative rounded-2xl p-4 bg-gradient-to-br from-nestGold-900/30 via-nestDark-850 to-nestDark-900 border border-nestGold-500/20 flex items-center justify-between">
+<div class="space-y-1">
+<span class="text-[10px] font-bold text-nestGold-400 uppercase tracking-wider">استشارات عقارية راقية</span>
+<h4 class="text-xs font-bold text-white">هل ترغب في بيع عقارك بأعلى عائد؟</h4>
+<p class="text-[10px] text-slate-400">فريقنا الهندسي والتسويقي يضمن لك صفقة استثنائية.</p>
+</div>
+<button class="px-3.5 py-2 rounded-xl gold-gradient-btn text-[11px] font-bold whitespace-nowrap shadow-sm">
+            احجز استشارتك
+          </button>
+</div>
+</section>
+<!-- END: ExclusiveServicesBrief -->
+</main>
+<!-- END: MainContent -->
+<!-- BEGIN: Footer -->
+<footer class="bg-[#0B0E14] border-t border-[#C99742]/20 pt-12 pb-32 lg:pb-12 px-6 md:px-10 lg:px-20 mt-10 w-full relative z-10">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+    <div class="space-y-4">
+      <div class="flex items-center gap-2">
+        <div class="w-10 h-10">
+          <img src="../UPLOADS/LOGO.png" alt="اكروبوليس هوم" class="w-full h-full object-contain filter drop-shadow-md">
+        </div>
+        <span class="text-lg font-black tracking-wide text-white block">اكروبوليس هوم</span>
+      </div>
+      <p class="text-sm text-slate-400 leading-relaxed">
+        وجهتك الأولى للعقارات الفاخرة والاستثنائية. نقدم لك تجربة فريدة في البحث عن منزل أحلامك أو استثمارك القادم.
+      </p>
+    </div>
+    <div class="space-y-4">
+      <h3 class="text-[#F5C973] font-bold text-lg mb-2">روابط سريعة</h3>
+      <ul class="space-y-2 text-sm text-slate-300">
+        <li><a href="index.html" class="hover:text-white transition-colors">الرئيسية</a></li>
+        <li><a href="properties.html" class="hover:text-white transition-colors">تصفح العقارات</a></li>
+        <li><a href="#" class="hover:text-white transition-colors">من نحن</a></li>
+        <li><a href="#" class="hover:text-white transition-colors">الخدمات الاستشارية</a></li>
+      </ul>
+    </div>
+    <div class="space-y-4">
+      <h3 class="text-[#F5C973] font-bold text-lg mb-2">تواصل معنا</h3>
+      <ul class="space-y-3 text-sm text-slate-300">
+        <li id="footer-address" class="flex items-center gap-2"><i class="fa-solid fa-location-dot text-[#C99742] w-4 text-center"></i> <span>المملكة العربية السعودية، الرياض، حي النخيل</span></li>
+        <li id="footer-phone" class="flex items-center gap-2"><i class="fa-solid fa-phone text-[#C99742] w-4 text-center"></i> <span dir="ltr">+966 50 123 4567</span></li>
+        <li id="footer-email" class="flex items-center gap-2"><i class="fa-solid fa-envelope text-[#C99742] w-4 text-center"></i> <span dir="ltr">info@acropolis-home.com</span></li>
+      </ul>
+    </div>
+    <div class="space-y-4">
+      <h3 class="text-[#F5C973] font-bold text-lg mb-2">تابعنا</h3>
+      <div class="flex items-center gap-3">
+        <a href="#" id="footer-ig" class="w-10 h-10 rounded-full bg-[#151922] border border-[#C99742]/30 flex items-center justify-center text-slate-300 hover:text-white hover:border-[#F5C973] transition-all"><i class="fa-brands fa-instagram text-lg"></i></a>
+        <a href="#" id="footer-tw" class="w-10 h-10 rounded-full bg-[#151922] border border-[#C99742]/30 flex items-center justify-center text-slate-300 hover:text-white hover:border-[#F5C973] transition-all"><i class="fa-brands fa-twitter text-lg"></i></a>
+        <a href="#" id="footer-snap" class="w-10 h-10 rounded-full bg-[#151922] border border-[#C99742]/30 flex items-center justify-center text-slate-300 hover:text-white hover:border-[#F5C973] transition-all"><i class="fa-brands fa-snapchat text-lg"></i></a>
+        <a href="#" id="footer-tik" class="w-10 h-10 rounded-full bg-[#151922] border border-[#C99742]/30 flex items-center justify-center text-slate-300 hover:text-white hover:border-[#F5C973] transition-all"><i class="fa-brands fa-tiktok text-lg"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="max-w-7xl mx-auto mt-10 pt-6 border-t border-slate-800 flex flex-col md:flex-row items-center justify-between text-xs text-slate-500">
+    <p>جميع الحقوق محفوظة &copy; 2026 اكروبوليس هوم</p>
+    <div class="flex gap-4 mt-4 md:mt-0">
+      <a href="#" class="hover:text-slate-300">الشروط والأحكام</a>
+      <a href="#" class="hover:text-slate-300">سياسة الخصوصية</a>
+    </div>
+  </div>
+</footer>
+<!-- BEGIN: FixedBottomNavigationBar -->
+<nav id="desktopSidebar" class="fixed bottom-0 left-0 right-0 lg:left-auto lg:top-0 lg:bottom-0 lg:w-24 lg:h-screen w-full bg-[#0B0E14]/90 backdrop-blur-xl border-t lg:border-t-0 lg:border-l border-[#C99742]/20 pt-3 lg:pt-0 pb-safe z-50 transition-transform duration-300 transform lg:translate-x-full" data-purpose="responsive-navigation">
+<!-- Toggle Button (Desktop Only) -->
+<button onclick="toggleSidebar()" class="hidden lg:flex absolute top-1/2 -left-[34px] -translate-y-1/2 w-12 h-12 rounded-full items-center justify-center text-[#0B0E14] shadow-lg hover:scale-110 transition-transform z-50 cursor-pointer border-2 border-[#0B0E14]" style="background: linear-gradient(135deg, #F5C973 0%, #E5B158 50%, #C99742 100%); box-shadow: 0 4px 15px -3px rgba(229, 177, 88, 0.5);">
+  <i id="sidebarArrow" class="fa-solid fa-chevron-right text-lg rotate-180 transition-transform duration-300 mr-2.5"></i>
+</button>
+<div class="flex flex-row lg:flex-col justify-between lg:justify-center items-center px-6 lg:px-0 lg:py-12 max-w-7xl mx-auto w-full h-full lg:gap-10">
+<a class="flex flex-col items-center gap-1 text-[#E5B158] group" href="index.html">
+<div class="relative">
+<i class="fa-solid fa-house text-base transition-transform group-hover:scale-110"></i>
+<span class="w-1 h-1 rounded-full bg-[#E5B158] mx-auto mt-0.5 block"></span>
+</div>
+<span class="text-[10px] font-bold">الرئيسية</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-[#94a3b8] hover:text-[#F5C973] group" href="properties.html">
+<i class="fa-solid fa-building-user text-base transition-transform group-hover:scale-110"></i>
+<span class="text-[10px] font-medium">العقارات</span>
+</a>
+<div class="-mt-5 lg:mt-0 lg:-mr-4 relative z-10 lg:my-4">
+<button class="w-12 h-12 rounded-full flex items-center justify-center text-[#0B0E14] transform hover:scale-105 active:scale-95 transition-transform border-2 border-[#0B0E14]" style="background: linear-gradient(135deg, #F5C973 0%, #E5B158 50%, #C99742 100%); box-shadow: 0 4px 15px -3px rgba(229, 177, 88, 0.4);">
+<i class="fa-solid fa-compass text-lg"></i>
+</button>
+</div>
+<a class="flex flex-col items-center gap-1 text-[#94a3b8] hover:text-[#F5C973] group" href="#saved">
+<i class="fa-solid fa-heart text-base transition-transform group-hover:scale-110"></i>
+<span class="text-[10px] font-medium">المفضلة</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-[#94a3b8] hover:text-[#F5C973] group" href="#profile">
+<i class="fa-solid fa-user-tie text-base transition-transform group-hover:scale-110"></i>
+<span class="text-[10px] font-medium">حسابي</span>
+</a>
+</div>
+</nav>
+<!-- END: FixedBottomNavigationBar -->
+</div>
+
+
+
+
+
+
+
+
+
+
+<script>
+function toggleSidebar() {
+  const sidebar = document.getElementById('desktopSidebar');
+  const main = document.getElementById('mainContainer');
+  const arrow = document.getElementById('sidebarArrow');
+  
+  if (sidebar.classList.contains('lg:translate-x-full')) {
+    sidebar.classList.remove('lg:translate-x-full');
+    if(main) main.classList.add('lg:pr-24');
+    arrow.classList.remove('rotate-180');
+  } else {
+    sidebar.classList.add('lg:translate-x-full');
+    if(main) main.classList.remove('lg:pr-24');
+    arrow.classList.add('rotate-180');
+  }
+}
+
+document.addEventListener("DOMContentLoaded", async () => {
+    try {
+        const response = await fetch('/api/admin/config/contact');
+        if (!response.ok) return;
+        const settings = await response.json();
+
+        // Helper function to hide element if value is empty, otherwise update it
+        const updateElement = (id, value, isLink = false) => {
+            const el = document.getElementById(id);
+            if (!el) return;
+            
+            if (!value || value.trim() === '') {
+                el.style.display = 'none'; // Hide it!
+            } else {
+                el.style.display = 'flex'; // Show it!
+                if (isLink) {
+                    el.href = value;
+                } else {
+                    // Update text content while keeping the icon
+                    const textSpan = el.querySelector('span:not(.fa-solid):not(.fa-brands)');
+                    if (textSpan) textSpan.textContent = value;
+                }
+            }
+        };
+
+        updateElement('footer-address', settings.address);
+        updateElement('footer-phone', settings.phone);
+        updateElement('footer-email', settings.email);
+
+        updateElement('footer-ig', settings.instagram, true);
+        updateElement('footer-tw', settings.twitter, true);
+        updateElement('footer-snap', settings.snapchat, true);
+        updateElement('footer-tik', settings.tiktok, true);
+    } catch (err) {
+        console.error("Failed to load contact settings", err);
+    }
+
+    try {
+        const response = await fetch('/api/admin/config/settings');
+        if (response.ok) {
+            const settings = await response.json();
+            if(settings.site_name) document.title = settings.site_name;
+            if(settings.hero_title) document.getElementById('hero-title').innerHTML = settings.hero_title;
+            if(settings.hero_subtitle) document.getElementById('hero-subtitle').innerHTML = settings.hero_subtitle;
+            if(settings.currency) window.siteCurrency = settings.currency;
+        }
+    } catch (err) {
+        console.error("Failed to load site settings", err);
+    }
+});
+</script>
+<!-- Fetch all properties for homepage -->
+<script>
+  document.addEventListener('DOMContentLoaded', async () => {
+      const grid = document.getElementById('featured-properties-grid');
+      try {
+          // Fetch ALL properties instead of featured
+          const response = await fetch('/api/properties');
+          const data = await response.json();
+          // Support both historical 'متاح' and new 'متاح للبيع' statuses
+          const properties = data.filter(p => p.status === 'متاح للبيع' || p.status === 'متاح');
+          
+          if (properties && properties.length > 0) {
+              const searchBtnText = document.getElementById('search-btn-text');
+              if (searchBtnText) {
+                  searchBtnText.textContent = `البحث الآن (${properties.length} عقار)`;
+              }
+
+              // Populate category pills
+              const homeCatFilters = document.getElementById('home-category-filters');
+              window.selectedSearchCategory = 'الكل'; // Global
+
+              window.executeSmartSearch = function() {
+                  const loc = document.getElementById('location-input').value.trim();
+                  const priceMin = document.getElementById('price-min').value.trim();
+                  const priceMax = document.getElementById('price-max').value.trim();
+                  let priceStr = '';
+                  if(priceMin || priceMax) {
+                      priceStr = `${priceMin || '0'} - ${priceMax || '1000000000'}`;
+                  }
+                  
+                  let url = 'properties.html?search=1';
+                  if(window.selectedSearchCategory !== 'الكل') url += '&category=' + encodeURIComponent(window.selectedSearchCategory);
+                  if(loc) url += '&location=' + encodeURIComponent(loc);
+                  if(priceStr) url += '&price=' + encodeURIComponent(priceStr);
+                  window.location.href = url;
+              };
+
+              if (homeCatFilters) {
+                  const uniqueCategories = new Set();
+                  properties.forEach(p => {
+                      if (p.category) uniqueCategories.add(p.category);
+                  });
+                  
+                  const renderPills = () => {
+                      homeCatFilters.innerHTML = '';
+                      const cats = ['الكل', ...uniqueCategories];
+                      cats.forEach(cat => {
+                          const isActive = window.selectedSearchCategory === cat;
+                          const btnClass = isActive 
+                              ? 'px-5 py-2 rounded-full text-xs font-bold text-[#0B0E14] shadow-md whitespace-nowrap'
+                              : 'px-5 py-2 rounded-full text-xs font-medium bg-white/5 border border-white/10 text-slate-300 hover:text-white hover:border-[#E5B158]/50 whitespace-nowrap transition-colors shadow-sm';
+                          
+                          const styleStr = isActive ? 'style="background: linear-gradient(135deg, #F5C973 0%, #E5B158 50%, #C99742 100%);"' : '';
+                          
+                          const btn = document.createElement('button');
+                          btn.className = btnClass;
+                          if (isActive) btn.setAttribute('style', 'background: linear-gradient(135deg, #F5C973 0%, #E5B158 50%, #C99742 100%);');
+                          btn.textContent = cat;
+                          btn.onclick = () => {
+                              window.selectedSearchCategory = cat;
+                              renderPills();
+                          };
+                          homeCatFilters.appendChild(btn);
+                      });
+                  };
+                  renderPills();
+              }
+              
+              grid.innerHTML = '';
+              properties.forEach(prop => {
+                  grid.innerHTML += `
+                  <article onclick="window.location.href='property-details.html?id=${prop.property_code}'" class="flex flex-col rounded-xl bg-nestDark-850 border border-nestGold-500/10 hover:border-nestGold-500/30 overflow-hidden transition-all duration-300 cursor-pointer hover:-translate-y-1">
+                      <div class="relative w-full aspect-[4/3] bg-nestDark-900 overflow-hidden">
+                          <div class="bg-cover bg-center w-full h-full transform hover:scale-105 transition-transform duration-700 ease-out" style="background-image: url('${(prop.images && prop.images[0]) || 'https://via.placeholder.com/400'}')"></div>
+                          <div class="absolute inset-0 bg-gradient-to-t from-nestDark-900 via-nestDark-900/20 to-transparent"></div>
+                          <div class="absolute top-2 inset-x-2 flex items-center justify-between pointer-events-none">
+                              <span class="bg-nestGold-400 text-nestDark-900 font-bold text-[9px] px-2 py-0.5 rounded-sm shadow-md pointer-events-auto">${prop.status}</span>
+                          </div>
+                          <div class="absolute bottom-2 inset-x-2 flex items-end justify-between">
+                              <div class="flex flex-col">
+                                  <span class="font-price-display text-price-display text-nestGold-400 tracking-wide drop-shadow-md">
+                                      ${prop.price.toLocaleString()} <span class="font-title-md text-[10px] text-white">${window.siteCurrency || 'يورو'}</span>
+                                  </span>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="p-3 flex flex-col gap-2">
+                          <h3 class="text-sm font-bold text-white truncate">${prop.title}</h3>
+                          <div class="flex items-center gap-1 text-slate-400 mt-0.5">
+                              <i class="fa-solid fa-location-dot text-nestGold-400 text-[10px]"></i>
+                              <span class="text-[10px]">${prop.location}</span>
+                          </div>
+                          <div class="grid grid-cols-3 gap-1 bg-nestDark-900/50 p-2 rounded text-center mt-1 border border-white/5">
+                              <div class="flex flex-col items-center justify-center">
+                                  <span class="text-xs font-bold text-white">${prop.bedrooms}</span>
+                                  <span class="text-[9px] text-slate-500">غرف</span>
+                              </div>
+                              <div class="flex flex-col items-center justify-center">
+                                  <span class="text-xs font-bold text-white">${prop.bathrooms}</span>
+                                  <span class="text-[9px] text-slate-500">حمامات</span>
+                              </div>
+                              <div class="flex flex-col items-center justify-center">
+                                  <span class="text-xs font-bold text-white">${prop.area}</span>
+                                  <span class="text-[9px] text-slate-500">م²</span>
+                              </div>
+                          </div>
+                      </div>
+                  </article>
+                  `;
+              });
+          } else {
+              grid.innerHTML = '<p class="text-slate-400 text-xs text-center w-full col-span-full">لا يوجد عقارات حالياً.</p>';
+          }
+      } catch (err) {
+          console.error(err);
+      }
+  });
+</script>
+</body></html>
