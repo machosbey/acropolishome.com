@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>لوحة التحكم | اكروبوليس هوم</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            gold: "#C99742",
+                            goldLight: "#E5B158",
+                        }
+                    },
+                    fontFamily: {
+                        display: ["Bodoni Moda", "serif"],
+                        body: ["Plus Jakarta Sans", "sans-serif"],
+                    }
+                }
+            }
+        };
+    </script>
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #f8fafc; color: #0f172a; margin: 0; padding: 0; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Bodoni Moda', serif; }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        .white-panel { background: #ffffff; border: 1px solid #e2e8f0; box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1); }
+    </style>
+
+    <script>
+        const adminToken = localStorage.getItem('adminToken');
+        if (!adminToken) window.location.href = 'admin-login.html';
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            const role = localStorage.getItem('adminRole');
+            if (role !== 'super_admin') {
+                document.querySelectorAll('.super-admin-only').forEach(el => el.style.display = 'none');
+                
+                const restrictedPages = ['admin-settings.html', 'admin-contact.html', 'admin-users.html'];
+                if (restrictedPages.some(page => window.location.pathname.includes(page))) {
+                    window.location.href = 'admin-dashboard.html';
+                }
+            }
+            
+            // Set name if available
+            
+            // Set name if available
+            const nameEl = document.getElementById('admin-user-name');
+            const roleEl = document.getElementById('admin-user-role');
+            if (nameEl && localStorage.getItem('adminName')) {
+                nameEl.textContent = localStorage.getItem('adminName');
+            }
+            if (roleEl && localStorage.getItem('adminRole')) {
+                roleEl.textContent = localStorage.getItem('adminRole') === 'super_admin' ? 'مدير النظام' : 'مشرف عقارات';
+            }
+    
+        });
+        
+        function logout() {
+            localStorage.removeItem('adminToken');
+            localStorage.removeItem('adminRole');
+            localStorage.removeItem('adminName');
+            window.location.href = 'admin-login.html';
+        }
+    </script>
+</head>
+
+<body class="flex min-h-screen antialiased bg-slate-50 text-slate-800">
+
+    <!-- Sidebar -->
+    <aside id="adminSidebar" class="w-64 fixed top-0 bottom-0 right-0 z-50 white-panel flex flex-col transition-transform duration-300 transform translate-x-full lg:translate-x-0">
+        <div class="h-20 flex items-center justify-center border-b border-slate-200 relative gap-3">
+            <a href="admin-dashboard.html" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
+                <div class="w-10 h-10 flex items-center justify-center"><img src="../UPLOADS/LOGO.png" alt="Logo" class="w-full h-full object-contain"></div>
+                <span class="text-xl font-black tracking-wide text-slate-900 font-display">اكروبوليس هوم</span>
+            </a>
+            <!-- Close button for mobile -->
+            <button onclick="toggleAdminSidebar()" class="lg:hidden absolute left-4 text-slate-400 hover:text-slate-600">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+        </div>
+        <nav class="flex-1 p-4 space-y-2 overflow-y-auto">
+            <a href="admin-dashboard.html" class="flex items-center gap-3 px-4 py-3 rounded-xl bg-brand-gold/10 text-brand-gold font-bold text-sm transition-colors border border-brand-gold/20">
+                <i class="fa-solid fa-chart-pie w-5 text-center"></i> لوحة القيادة
+            </a>
+            <a href="admin-properties.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-100 hover:text-slate-900 font-medium text-sm transition-colors">
+                <i class="fa-solid fa-building w-5 text-center"></i> إدارة العقارات
+            </a>
+            <a href="admin-add-property.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-100 hover:text-slate-900 font-medium text-sm transition-colors">
+                <i class="fa-solid fa-plus w-5 text-center"></i> إضافة عقار جديد
+            </a>
+
+            <div class="pt-4 mt-4 border-t border-slate-200"></div>
+            <a href="admin-users.html" class="super-admin-only flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-100 hover:text-slate-900 font-medium text-sm transition-colors">
+                <i class="fa-solid fa-users-gear w-5 text-center"></i> إدارة المشرفين
+            </a>
+            <a href="admin-settings.html" class="super-admin-only flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-100 hover:text-slate-900 font-medium text-sm transition-colors">
+                <i class="fa-solid fa-gear w-5 text-center"></i> إعدادات الموقع
+            </a>
+            <a href="admin-contact.html" class="super-admin-only flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-100 hover:text-slate-900 font-medium text-sm transition-colors">
+                <i class="fa-solid fa-address-card w-5 text-center"></i> معلومات التواصل
+            </a>
+        </nav>
+        <div class="p-4 border-t border-slate-200">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-500">
+                    <i class="fa-solid fa-user-shield"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-sm font-bold text-slate-900" id="admin-user-name">المدير العام</span>
+                    <span class="text-[10px] text-brand-gold" id="admin-user-role">مدير النظام</span>
+                </div>
+            </div>
+            <button onclick="logout()" class="w-full mt-3 flex items-center justify-center gap-2 py-2 rounded-lg bg-rose-50 text-rose-600 hover:bg-rose-100 transition-colors text-xs font-bold">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i> تسجيل الخروج
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main id="mainContent" class="flex-1 lg:mr-64 flex flex-col min-h-screen transition-all duration-300">
+        <!-- Topbar -->
+        <header class="h-20 white-panel px-6 flex items-center justify-between sticky top-0 z-30">
+            <div class="flex items-center gap-4">
+                <button onclick="toggleAdminSidebar()" class="text-slate-500 hover:text-brand-gold transition-colors"><i class="fa-solid fa-bars text-xl"></i></button>
+                <h1 class="text-xl font-display font-bold text-slate-900">لوحة القيادة</h1>
+            </div>
+            <div class="flex items-center gap-4">
+                
+                <!-- Quick Search -->
+                <div class="relative hidden md:block" id="searchContainer">
+                    <div class="flex items-center bg-slate-100 rounded-full px-4 py-2 border border-slate-200 focus-within:border-brand-gold/50 focus-within:bg-white transition-colors relative z-10">
+                        <i class="fa-solid fa-search text-slate-400 text-sm ml-2"></i>
+                        <input type="text" id="searchInput" placeholder="بحث سريع عن عقار أو عميل..." class="bg-transparent border-none outline-none text-sm text-slate-700 placeholder-slate-400 w-64" onfocus="document.getElementById('searchDropdown').classList.remove('hidden')" onblur="setTimeout(() => document.getElementById('searchDropdown').classList.add('hidden'), 200)">
+                    </div>
+                    <!-- Search Results Dropdown -->
+                    <div id="searchDropdown" class="hidden absolute top-full mt-2 left-0 w-full bg-white border border-slate-200 rounded-xl shadow-lg overflow-hidden z-50">
+                        <div class="p-3 border-b border-slate-100">
+                            <span class="text-[10px] font-bold text-slate-400 uppercase">نتائج سريعة</span>
+                        </div>
+                        <a href="admin-properties.html" class="flex items-center gap-3 p-3 hover:bg-slate-50 transition-colors border-b border-slate-50">
+                            <div class="w-8 h-8 rounded bg-brand-gold/10 text-brand-gold flex items-center justify-center shrink-0"><i class="fa-solid fa-building text-xs"></i></div>
+                            <div class="flex flex-col">
+                                <span class="text-xs font-bold text-slate-900">فيلا الغروب المعمارية</span>
+                                <span class="text-[10px] text-slate-500">كود: HN-908</span>
+                            </div>
+                        </a>
+                        <a href="admin-clients.html" class="flex items-center gap-3 p-3 hover:bg-slate-50 transition-colors">
+                            <div class="w-8 h-8 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center shrink-0 font-bold text-xs">م</div>
+                            <div class="flex flex-col">
+                                <span class="text-xs font-bold text-slate-900">محمد السالم</span>
+                                <span class="text-[10px] text-slate-500">عميل (0501234567)</span>
+                            </div>
+                        </a>
+                        <div class="p-2 bg-slate-50 text-center border-t border-slate-100">
+                            <button class="text-[10px] font-bold text-brand-gold hover:underline">عرض جميع النتائج</button>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <a href="index.html" class="px-4 py-2 rounded-full bg-slate-900 text-sm font-bold text-white hover:bg-slate-800 transition-colors flex items-center gap-2">
+                    عرض الموقع <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                </a>
+            </div>
+        </header>
+
+        <!-- Dashboard Content -->
+        <div class="p-6 lg:p-8 space-y-8">
+            <!-- Stats Row -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <!-- Stat 1 -->
+                <div class="white-panel rounded-2xl p-5 flex items-start justify-between relative overflow-hidden group">
+                    <div class="flex flex-col gap-1 z-10">
+                        <span class="text-xs text-slate-500 font-medium">إجمالي العقارات</span>
+                        <span class="text-2xl font-display font-bold text-slate-900" id="stat-total-props">0</span>
+                    </div>
+                    <div class="w-12 h-12 rounded-xl bg-brand-gold/10 text-brand-gold flex items-center justify-center text-xl border border-brand-gold/20 z-10">
+                        <i class="fa-solid fa-building"></i>
+                    </div>
+                </div>
+                <!-- Stat 2 -->
+                <div class="white-panel rounded-2xl p-5 flex items-start justify-between relative overflow-hidden group">
+                    <div class="flex flex-col gap-1 z-10">
+                        <span class="text-xs text-slate-500 font-medium">عقارات مؤجرة</span>
+                        <span class="text-2xl font-display font-bold text-slate-900" id="stat-rented-props">0</span>
+                    </div>
+                    <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-600 flex items-center justify-center text-xl border border-emerald-500/20 z-10">
+                        <i class="fa-solid fa-lock"></i>
+                    </div>
+                </div>
+                <!-- Stat 3 -->
+                <div class="white-panel rounded-2xl p-5 flex items-start justify-between relative overflow-hidden group">
+                    <div class="flex flex-col gap-1 z-10">
+                        <span class="text-xs text-slate-500 font-medium">طلبات المعاينة</span>
+                        <span class="text-2xl font-display font-bold text-slate-900" id="stat-requests">0</span>
+                    </div>
+                    <div class="w-12 h-12 rounded-xl bg-rose-500/10 text-rose-500 flex items-center justify-center text-xl border border-rose-500/20 z-10">
+                        <i class="fa-solid fa-calendar-check"></i>
+                    </div>
+                </div>
+                <!-- Stat 4 -->
+                <div class="white-panel rounded-2xl p-5 flex items-start justify-between relative overflow-hidden group">
+                    <div class="flex flex-col gap-1 z-10">
+                        <span class="text-xs text-slate-500 font-medium">إجمالي الزيارات</span>
+                        <span class="text-2xl font-display font-bold text-slate-900" id="stat-visits">0</span>
+                    </div>
+                    <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-600 flex items-center justify-center text-xl border border-blue-500/20 z-10">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Properties Table -->
+            <div class="white-panel rounded-2xl overflow-hidden flex flex-col">
+                <div class="p-5 border-b border-slate-200 flex items-center justify-between bg-white">
+                    <h2 class="text-lg font-display font-bold text-slate-900">أحدث العقارات المضافة</h2>
+                    <button class="text-xs font-bold text-brand-gold hover:underline">عرض الكل</button>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-right text-sm">
+                        <thead class="bg-slate-50 text-slate-500 text-xs border-b border-slate-200">
+                            <tr>
+                                <th class="px-5 py-4 font-medium">العقار</th>
+                                <th class="px-5 py-4 font-medium">كود العقار</th>
+                                <th class="px-5 py-4 font-medium">السعر</th>
+                                <th class="px-5 py-4 font-medium">الحالة</th>
+                                <th class="px-5 py-4 font-medium">تاريخ الإضافة</th>
+                                <th class="px-5 py-4 font-medium text-center">الإجراءات</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100 bg-white" id="dashboard-recent-properties">
+                            <tr>
+                                <td colspan="6" class="px-5 py-8 text-center text-slate-500">لا يوجد عقارات مضافة حديثاً</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function toggleAdminSidebar() {
+            const sidebar = document.getElementById('adminSidebar');
+            const main = document.getElementById('mainContent');
+            
+            if (window.innerWidth >= 1024) {
+                // Desktop toggle
+                if (sidebar.classList.contains('lg:translate-x-0')) {
+                    sidebar.classList.remove('lg:translate-x-0');
+                    sidebar.classList.add('lg:translate-x-full');
+                    main.classList.remove('lg:mr-64');
+                } else {
+                    sidebar.classList.remove('lg:translate-x-full');
+                    sidebar.classList.add('lg:translate-x-0');
+                    main.classList.add('lg:mr-64');
+                }
+            } else {
+                // Mobile toggle
+                sidebar.classList.toggle('translate-x-full');
+            }
+        }
+        
+        // Close sidebar on mobile when clicking outside
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth < 1024) {
+                const sidebar = document.getElementById('adminSidebar');
+                const toggleBtn = e.target.closest('button[onclick="toggleAdminSidebar()"]');
+                
+                if (sidebar && !sidebar.contains(e.target) && !toggleBtn && !sidebar.classList.contains('translate-x-full')) {
+                    sidebar.classList.add('translate-x-full');
+                }
+            }
+        });
+    </script>
+<!-- Fetch Admin Properties for Dashboard -->
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const tbody = document.getElementById('dashboard-recent-properties');
+            const totalPropsEl = document.getElementById('stat-total-props');
+            const rentedPropsEl = document.getElementById('stat-rented-props');
+            
+            try {
+                const response = await fetch('/api/admin/properties');
+                const properties = await response.json();
+                
+                if (properties && properties.length > 0) {
+                    // Update stats
+                    totalPropsEl.textContent = properties.length;
+                    rentedPropsEl.textContent = properties.filter(p => p.status === 'مؤجر' || p.status === 'مؤجر الان').length;
+
+                    // Update table
+                    tbody.innerHTML = '';
+                    // Limit to 5 for dashboard
+                    properties.slice(0, 5).forEach(prop => {
+                        const tr = document.createElement('tr');
+                        tr.className = 'hover:bg-slate-50 transition-colors group';
+                        tr.innerHTML = `
+                            <td class="px-5 py-4">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-12 h-10 rounded bg-slate-200 overflow-hidden relative">
+                                        <img src="${(prop.images && prop.images[0]) || 'https://via.placeholder.com/150'}" class="w-full h-full object-cover">
+                                    </div>
+                                    <div class="flex flex-col">
+                                        <span class="font-bold text-slate-900 text-sm max-w-[200px] truncate">${prop.title}</span>
+                                        <span class="text-[10px] text-slate-500">${prop.location}</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-5 py-4 font-mono text-xs text-slate-600">${prop.property_code}</td>
+                            <td class="px-5 py-4 font-bold text-slate-900 text-sm">${prop.price.toLocaleString()} <span class="text-[9px] text-slate-500">ريال</span></td>
+                            <td class="px-5 py-4">
+                                <span class="px-2 py-1 rounded-full bg-emerald-100 text-emerald-700 text-[9px] font-bold">${prop.status}</span>
+                            </td>
+                            <td class="px-5 py-4 text-xs text-slate-500">${new Date(prop.createdAt).toLocaleDateString('ar-SA')}</td>
+                            <td class="px-5 py-4">
+                                <a href="admin-add-property.html?edit=${prop.property_code}" class="text-xs font-bold text-brand-gold hover:underline">تعديل</a>
+                            </td>
+                        `;
+                        tbody.appendChild(tr);
+                    });
+                }
+            } catch (err) {
+                console.error('Failed to load dashboard stats', err);
+            }
+        });
+    </script>
+
+    <script>
+        const originalFetch = window.fetch;
+        window.fetch = async function() {
+            let [resource, config] = arguments;
+            if(resource.includes('/api/admin/')) {
+                config = config || {};
+                config.headers = config.headers || {};
+                config.headers['Authorization'] = localStorage.getItem('adminToken');
+            }
+            const response = await originalFetch(resource, config);
+            if(response.status === 401 || response.status === 403) {
+                if(resource.includes('/api/auth/')) {
+                    localStorage.removeItem('adminToken');
+                    window.location.href = 'admin-login.html';
+                }
+            }
+            return response;
+        };
+    </script>
+    
+</body>
+</html>

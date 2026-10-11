@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>إدارة المشرفين | اكروبوليس هوم</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            gold: "#C99742",
+                            goldLight: "#E5B158",
+                        }
+                    },
+                    fontFamily: {
+                        display: ["Bodoni Moda", "serif"],
+                        body: ["Plus Jakarta Sans", "sans-serif"],
+                    }
+                }
+            }
+        };
+    </script>
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #f8fafc; color: #0f172a; margin: 0; padding: 0; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Bodoni Moda', serif; }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        .white-panel { background: #ffffff; border: 1px solid #e2e8f0; box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1); }
+        .form-group label { display: block; font-size: 0.875rem; font-weight: 600; color: #334155; margin-bottom: 0.5rem; }
+        .form-input { width: 100%; background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 0.5rem; padding: 0.75rem 1rem; font-size: 0.875rem; color: #334155; outline: none; transition: all 0.2s; }
+        .form-input:focus { border-color: #C99742; box-shadow: 0 0 0 2px rgba(201, 151, 66, 0.1); }
+        
+        /* Modal Styles */
+        #adminModal { display: none; }
+        #adminModal.active { display: flex; }
+    </style>
+
+    <script>
+        const adminToken = localStorage.getItem('adminToken');
+        if (!adminToken) window.location.href = 'admin-login.html';
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            const role = localStorage.getItem('adminRole');
+            if (role !== 'super_admin') {
+                document.querySelectorAll('.super-admin-only').forEach(el => el.style.display = 'none');
+                
+                const restrictedPages = ['admin-settings.html', 'admin-contact.html', 'admin-users.html'];
+                if (restrictedPages.some(page => window.location.pathname.includes(page))) {
+                    window.location.href = 'admin-dashboard.html';
+                }
+            }
+            
+            // Set name if available
+            
+            // Set name if available
+            const nameEl = document.getElementById('admin-user-name');
+            const roleEl = document.getElementById('admin-user-role');
+            if (nameEl && localStorage.getItem('adminName')) {
+                nameEl.textContent = localStorage.getItem('adminName');
+            }
+            if (roleEl && localStorage.getItem('adminRole')) {
+                roleEl.textContent = localStorage.getItem('adminRole') === 'super_admin' ? 'مدير النظام' : 'مشرف عقارات';
+            }
+    
+        });
+        
+        function logout() {
+            localStorage.removeItem('adminToken');
+            localStorage.removeItem('adminRole');
+            localStorage.removeItem('adminName');
+            window.location.href = 'admin-login.html';
+        }
+    </script>
+</head>
+
+<body class="flex min-h-screen antialiased bg-slate-50 text-slate-800">
+
+    <!-- Sidebar -->
+    <aside id="adminSidebar" class="w-64 fixed top-0 bottom-0 right-0 z-50 white-panel flex flex-col transition-transform duration-300 transform translate-x-full lg:translate-x-0">
+        <div class="h-20 flex items-center justify-center border-b border-slate-200 relative gap-3">
+            <a href="admin-dashboard.html" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
+                <div class="w-10 h-10 flex items-center justify-center"><img src="../UPLOADS/LOGO.png" alt="Logo" class="w-full h-full object-contain"></div>
+                <span class="text-xl font-black tracking-wide text-slate-900 font-display">اكروبوليس هوم</span>
+            </a>
+            <!-- Close button for mobile -->
+            <button onclick="toggleAdminSidebar()" class="lg:hidden absolute left-4 text-slate-400 hover:text-slate-600">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+        </div>
+        <nav class="flex-1 p-4 space-y-2 overflow-y-auto">
+            <a href="admin-dashboard.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-100 hover:text-slate-900 font-medium text-sm transition-colors">
+                <i class="fa-solid fa-chart-pie w-5 text-center"></i> لوحة القيادة
+            </a>
+            <a href="admin-properties.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-100 hover:text-slate-900 font-medium text-sm transition-colors">
+                <i class="fa-solid fa-building w-5 text-center"></i> إدارة العقارات
+            </a>
+            <a href="admin-add-property.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-100 hover:text-slate-900 font-medium text-sm transition-colors">
+                <i class="fa-solid fa-plus w-5 text-center"></i> إضافة عقار جديد
+            </a>
+
+            <div class="pt-4 mt-4 border-t border-slate-200"></div>
+            <a href="admin-users.html" class="super-admin-only flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-100 hover:text-slate-900 font-medium text-sm transition-colors">
+                <i class="fa-solid fa-users-gear w-5 text-center"></i> إدارة المشرفين
+            </a>
+            <a href="admin-settings.html" class="super-admin-only flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-100 hover:text-slate-900 font-medium text-sm transition-colors">
+                <i class="fa-solid fa-gear w-5 text-center"></i> إعدادات الموقع
+            </a>
+            <a href="admin-contact.html" class="super-admin-only flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-100 hover:text-slate-900 font-medium text-sm transition-colors">
+                <i class="fa-solid fa-address-card w-5 text-center"></i> معلومات التواصل
+            </a>
+        </nav>
+        <div class="p-4 border-t border-slate-200">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-500">
+                    <i class="fa-solid fa-user-shield"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-sm font-bold text-slate-900" id="admin-user-name">المدير العام</span>
+                    <span class="text-[10px] text-brand-gold" id="admin-user-role">مدير النظام</span>
+                </div>
+            </div>
+            <button onclick="logout()" class="w-full mt-3 flex items-center justify-center gap-2 py-2 rounded-lg bg-rose-50 text-rose-600 hover:bg-rose-100 transition-colors text-xs font-bold">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i> تسجيل الخروج
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main id="mainContent" class="flex-1 lg:mr-64 flex flex-col min-h-screen transition-all duration-300">
+        <!-- Topbar -->
+        <header class="h-20 white-panel px-6 flex items-center justify-between sticky top-0 z-30">
+            <div class="flex items-center gap-4">
+                <button onclick="toggleAdminSidebar()" class="text-slate-500 hover:text-brand-gold transition-colors"><i class="fa-solid fa-bars text-xl"></i></button>
+                <h1 class="text-xl font-display font-bold text-slate-900 mr-2">إدارة المشرفين والأدمن</h1>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="index.html" class="px-4 py-2 rounded-full bg-slate-900 text-sm font-bold text-white hover:bg-slate-800 transition-colors flex items-center gap-2">
+                    عرض الموقع <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                </a>
+            </div>
+        </header>
+
+        <!-- Page Content -->
+        <div class="p-6 lg:p-8">
+            <div class="max-w-5xl mx-auto space-y-6">
+                <!-- Header -->
+                <div class="flex items-center justify-between pb-4 border-b border-slate-200">
+                    <div>
+                        <h2 class="text-2xl font-display font-bold text-slate-900">حسابات المشرفين</h2>
+                        <p class="text-sm text-slate-500 mt-1">تحكم في من يمكنه الدخول إلى لوحة التحكم وصلاحياتهم.</p>
+                    </div>
+                    <button onclick="openModal()" class="px-6 py-2.5 rounded-xl bg-brand-gold text-white font-bold hover:bg-brand-goldLight transition-colors flex items-center justify-center gap-2 shadow-md shrink-0">
+                        <i class="fa-solid fa-user-plus"></i> إضافة مشرف جديد
+                    </button>
+                </div>
+
+                <!-- Users Table -->
+                <div class="white-panel rounded-xl overflow-hidden">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-right text-sm text-slate-600">
+                            <thead class="bg-slate-50 text-slate-500 text-xs uppercase font-bold">
+                                <tr>
+                                    <th class="px-6 py-4">اسم المشرف</th>
+                                    <th class="px-6 py-4">اسم المستخدم (للدخول)</th>
+                                    <th class="px-6 py-4">الدرجة / الصلاحية</th>
+                                    <th class="px-6 py-4 text-center">الإجراءات</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100" id="admins-table-body">
+                                <tr class="hover:bg-slate-50 transition-colors">
+                                    <td colspan="4" class="px-6 py-8 text-center text-slate-500">
+                                        <i class="fa-solid fa-circle-notch fa-spin text-2xl text-brand-gold mb-2"></i>
+                                        <p>جاري تحميل المشرفين...</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Add Admin Modal -->
+    <div id="adminModal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-[100] items-center justify-center p-4">
+        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden" onclick="event.stopPropagation()">
+            <div class="p-5 border-b border-slate-100 flex items-center justify-between bg-slate-50/50">
+                <h3 class="font-bold text-lg text-slate-900">إضافة مشرف جديد</h3>
+                <button onclick="closeModal()" class="w-8 h-8 rounded-full bg-slate-100 text-slate-500 hover:bg-rose-100 hover:text-rose-600 transition-colors flex items-center justify-center">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <form id="adminForm" class="p-6 space-y-4" onsubmit="saveAdmin(event)">
+                <div class="form-group">
+                    <label>الاسم الكامل</label>
+                    <input type="text" id="admin-name" required class="form-input" placeholder="مثال: أحمد عبدلله">
+                </div>
+                <div class="form-group">
+                    <label>اسم المستخدم (لتسجيل الدخول)</label>
+                    <input type="text" id="admin-username" required class="form-input" dir="ltr" placeholder="مثال: ahmed123">
+                </div>
+                <div class="form-group">
+                    <label>كلمة المرور</label>
+                    <input type="password" id="admin-password" required class="form-input" dir="ltr" placeholder="****">
+                </div>
+                <div class="form-group">
+                    <label>الدرجة والصلاحية</label>
+                    <select id="admin-role" class="form-input font-bold">
+                        <option value="editor" selected>مشرف (صلاحيات على العقارات فقط)</option>
+                    </select>
+                </div>
+                <div class="pt-4">
+                    <button type="submit" class="w-full py-3 rounded-xl bg-brand-gold text-white font-bold hover:bg-brand-goldLight transition-colors flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-check"></i> حفظ المشرف
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function toggleAdminSidebar() {
+            const sidebar = document.getElementById('adminSidebar');
+            const main = document.getElementById('mainContent');
+            if (window.innerWidth >= 1024) {
+                sidebar.classList.toggle('lg:translate-x-full');
+                main.classList.toggle('lg:mr-64');
+            } else {
+                sidebar.classList.toggle('translate-x-full');
+            }
+        }
+
+        const modal = document.getElementById('adminModal');
+        
+        function openModal() {
+            document.getElementById('adminForm').reset();
+            modal.classList.add('active');
+        }
+
+        function closeModal() {
+            modal.classList.remove('active');
+        }
+
+        // Close modal when clicking outside
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+
+        async function fetchAdmins() {
+            try {
+                const res = await fetch('/api/auth/users', { headers: { 'Authorization': localStorage.getItem('adminToken') } });
+                if (res.ok) {
+                    const admins = await res.json();
+                    renderAdmins(admins);
+                }
+            } catch (err) {}
+        }
+
+        function renderAdmins(admins) {
+            const tbody = document.getElementById('admins-table-body');
+            tbody.innerHTML = '';
+            
+            admins.forEach(admin => {
+                const tr = document.createElement('tr');
+                tr.className = 'hover:bg-slate-50 transition-colors group';
+                
+                const roleText = admin.role === 'super_admin' ? 
+                    '<span class="px-2 py-1 rounded bg-rose-100 text-rose-700 text-xs font-bold">مدير عام</span>' : 
+                    '<span class="px-2 py-1 rounded bg-blue-100 text-blue-700 text-xs font-bold">مشرف</span>';
+
+                tr.innerHTML = `
+                    <td class="px-6 py-4 font-bold text-slate-900 flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-full bg-brand-gold/20 text-brand-gold flex items-center justify-center text-sm">
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+                        ${admin.name}
+                    </td>
+                    <td class="px-6 py-4 font-mono text-slate-500 text-sm" dir="ltr">${admin.username}</td>
+                    <td class="px-6 py-4">${roleText}</td>
+                    <td class="px-6 py-4 text-center">
+                        ${admin.role !== 'super_admin' ? `<button onclick="deleteAdmin(${admin.id})" class="w-8 h-8 rounded bg-rose-50 text-rose-500 hover:bg-rose-500 hover:text-white transition-colors flex items-center justify-center mx-auto opacity-0 group-hover:opacity-100" title="حذف"><i class="fa-solid fa-trash text-xs"></i></button>` : '<span class="text-xs text-slate-400">لا يمكن حذفه</span>'}
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        async function saveAdmin(e) {
+            e.preventDefault();
+            const newAdmin = {
+                name: document.getElementById('admin-name').value,
+                username: document.getElementById('admin-username').value,
+                password: document.getElementById('admin-password').value,
+                role: document.getElementById('admin-role').value
+            };
+
+            try {
+                const res = await fetch('/api/auth/users', {
+                    method: 'POST',
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'Authorization': localStorage.getItem('adminToken')
+                    },
+                    body: JSON.stringify(newAdmin)
+                });
+                if (res.ok) {
+                    closeModal();
+                    fetchAdmins();
+                } else {
+                    const data = await res.json();
+                    alert(data.error || 'خطأ أثناء الإضافة');
+                }
+            } catch (err) {
+                alert('فشل الاتصال');
+            }
+        }
+
+        async function deleteAdmin(id) {
+            if(confirm('هل أنت متأكد من حذف هذا المشرف؟')) {
+                try {
+                    const res = await fetch('/api/auth/users/' + id, { 
+                        method: 'DELETE',
+                        headers: { 'Authorization': localStorage.getItem('adminToken') }
+                    });
+                    if (res.ok) {
+                        fetchAdmins();
+                    }
+                } catch(err) {}
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            fetchAdmins();
+        });
+    </script>
+
+    <script>
+        const originalFetch = window.fetch;
+        window.fetch = async function() {
+            let [resource, config] = arguments;
+            if(resource.includes('/api/admin/')) {
+                config = config || {};
+                config.headers = config.headers || {};
+                config.headers['Authorization'] = localStorage.getItem('adminToken');
+            }
+            const response = await originalFetch(resource, config);
+            if(response.status === 401 || response.status === 403) {
+                if(resource.includes('/api/auth/')) {
+                    localStorage.removeItem('adminToken');
+                    window.location.href = 'admin-login.html';
+                }
+            }
+            return response;
+        };
+    </script>
+    
+</body>
+</html>
