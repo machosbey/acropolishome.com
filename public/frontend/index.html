@@ -109,7 +109,7 @@
 </a>
 <!-- Action Buttons: Contact & Menu -->
 <div class="flex items-center gap-2">
-<button class="px-5 py-2.5 rounded-full text-sm font-bold text-nestGold-300 border border-nestGold-500/40 bg-nestGold-500/10 hover:bg-nestGold-500/20 transition-all flex items-center gap-2 shadow-sm">
+<button id="header-contact-btn" class="px-5 py-2.5 rounded-full text-sm font-bold text-nestGold-300 border border-nestGold-500/40 bg-nestGold-500/10 hover:bg-nestGold-500/20 transition-all flex items-center gap-2 shadow-sm">
 <i class="fa-solid fa-headset text-base"></i>
 <span class="">تواصل</span>
 </button>
@@ -297,6 +297,7 @@
     <div class="space-y-4">
       <h3 class="text-[#F5C973] font-bold text-lg mb-2">تابعنا</h3>
       <div class="flex items-center gap-3">
+        <a href="#" id="footer-wa" class="w-10 h-10 rounded-full bg-[#151922] border border-[#C99742]/30 flex items-center justify-center text-slate-300 hover:text-emerald-400 hover:border-emerald-400 transition-all" title="واتساب"><i class="fa-brands fa-whatsapp text-lg"></i></a>
         <a href="#" id="footer-ig" class="w-10 h-10 rounded-full bg-[#151922] border border-[#C99742]/30 flex items-center justify-center text-slate-300 hover:text-white hover:border-[#F5C973] transition-all"><i class="fa-brands fa-instagram text-lg"></i></a>
         <a href="#" id="footer-tw" class="w-10 h-10 rounded-full bg-[#151922] border border-[#C99742]/30 flex items-center justify-center text-slate-300 hover:text-white hover:border-[#F5C973] transition-all"><i class="fa-brands fa-twitter text-lg"></i></a>
         <a href="#" id="footer-snap" class="w-10 h-10 rounded-full bg-[#151922] border border-[#C99742]/30 flex items-center justify-center text-slate-300 hover:text-white hover:border-[#F5C973] transition-all"><i class="fa-brands fa-snapchat text-lg"></i></a>
@@ -402,6 +403,26 @@ document.addEventListener("DOMContentLoaded", async () => {
         updateElement('footer-address', settings.address);
         updateElement('footer-phone', settings.phone);
         updateElement('footer-email', settings.email);
+
+        // WhatsApp
+        if (settings.whatsapp && settings.whatsapp.trim() !== '') {
+            const cleanWa = settings.whatsapp.replace(/[^0-9]/g, '');
+            const waUrl = `https://wa.me/${cleanWa}`;
+            updateElement('footer-wa', waUrl, true);
+
+            const headerBtn = document.getElementById('header-contact-btn');
+            if (headerBtn) {
+                headerBtn.onclick = () => window.open(waUrl, '_blank');
+            }
+        } else {
+            updateElement('footer-wa', '');
+            if (settings.phone && settings.phone.trim() !== '') {
+                const headerBtn = document.getElementById('header-contact-btn');
+                if (headerBtn) {
+                    headerBtn.onclick = () => window.location.href = `tel:${settings.phone}`;
+                }
+            }
+        }
 
         updateElement('footer-ig', settings.instagram, true);
         updateElement('footer-tw', settings.twitter, true);

@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { Category } = require('../models/Category');
 const { PropertyStatus } = require('../models/PropertyStatus');
+const { authenticateAdmin, requireSuperAdmin } = require('./auth');
 
 // --- CATEGORIES ---
 router.get('/categories', async (req, res) => {
@@ -13,7 +14,7 @@ router.get('/categories', async (req, res) => {
     }
 });
 
-router.post('/categories', async (req, res) => {
+router.post('/categories', authenticateAdmin, async (req, res) => {
     try {
         const { name } = req.body;
         if (!name) return res.status(400).json({ error: 'Name is required' });
@@ -34,7 +35,7 @@ router.get('/statuses', async (req, res) => {
     }
 });
 
-router.post('/statuses', async (req, res) => {
+router.post('/statuses', authenticateAdmin, async (req, res) => {
     try {
         const { name } = req.body;
         if (!name) return res.status(400).json({ error: 'Name is required' });
@@ -71,9 +72,7 @@ router.get('/contact', async (req, res) => {
     }
 });
 
-const { requireSuperAdmin } = require('./auth');
-
-router.put('/contact', requireSuperAdmin, async (req, res) => {
+router.put('/contact', [authenticateAdmin, requireSuperAdmin], async (req, res) => {
     try {
         let contact = await ContactInfo.findByPk(1);
         if (!contact) {
@@ -102,7 +101,7 @@ router.get('/settings', async (req, res) => {
     }
 });
 
-router.put('/settings', requireSuperAdmin, async (req, res) => {
+router.put('/settings', [authenticateAdmin, requireSuperAdmin], async (req, res) => {
     try {
         let settings = await SiteSettings.findByPk(1);
         if (!settings) {
@@ -119,7 +118,7 @@ router.put('/settings', requireSuperAdmin, async (req, res) => {
 const fs = require('fs');
 const path = require('path');
 
-router.put('/settings/logo', requireSuperAdmin, async (req, res) => {
+router.put('/settings/logo', [authenticateAdmin, requireSuperAdmin], async (req, res) => {
     try {
         const { logoBase64 } = req.body;
         if (!logoBase64) {

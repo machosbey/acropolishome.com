@@ -40,6 +40,7 @@
         .form-input:focus { border-color: #C99742; box-shadow: 0 0 0 2px rgba(201, 151, 66, 0.1); }
         .file-upload-zone { border: 2px dashed #cbd5e1; border-radius: 0.75rem; padding: 2rem; text-align: center; cursor: pointer; transition: all 0.2s; background: #f8fafc; }
         .file-upload-zone:hover { border-color: #C99742; background: rgba(201, 151, 66, 0.02); }
+        .file-upload-zone.dragover { border-color: #C99742 !important; background: rgba(201, 151, 66, 0.08) !important; }
     </style>
 
     <script>
@@ -399,26 +400,25 @@
 
                         <!-- Media / Photos -->
                         <div class="white-panel rounded-xl p-6 space-y-5">
-                            <h3 class="text-lg font-bold text-slate-900 border-b border-slate-100 pb-3">صور العقار</h3>
+                            <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                                <h3 class="text-lg font-bold text-slate-900">صور العقار</h3>
+                                <span id="images-count" class="text-xs text-slate-500 font-medium">0 صور</span>
+                            </div>
                             
-                            <div class="file-upload-zone group">
+                            <!-- Hidden File Input -->
+                            <input type="file" id="prop-images-input" multiple accept="image/*" class="hidden">
+                            
+                            <!-- Interactive Upload Zone -->
+                            <div id="file-drop-zone" class="file-upload-zone group select-none">
                                 <i class="fa-solid fa-cloud-arrow-up text-3xl text-slate-400 group-hover:text-brand-gold mb-3 transition-colors"></i>
                                 <h4 class="text-sm font-bold text-slate-700">اسحب وأفلت الصور هنا</h4>
-                                <p class="text-xs text-slate-500 mt-1">أو اضغط لتصفح الملفات</p>
-                                <div class="mt-4 text-[10px] text-slate-400">تدعم JPG, PNG (بحد أقصى 5MB للصورة)</div>
+                                <p id="drop-zone-text" class="text-xs text-slate-500 mt-1">أو <span class="text-brand-gold font-bold underline cursor-pointer">اضغط لتصفح الملفات</span></p>
+                                <div class="mt-4 text-[10px] text-slate-400">تدعم JPG, PNG (يمكنك اختيار عدة صور معاً)</div>
                             </div>
 
-                            <div class="grid grid-cols-3 gap-2">
-                                <div class="aspect-square bg-slate-100 rounded border border-brand-gold relative overflow-hidden">
-                                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxjPIRZYgNya12sdETakQjzjP6QhdXL1FFi1Clu-bJOtEI-oVddIqNAxNuT1MvgmNB1E3QYBcDmvaQLJAwMAC38qp81CjzshNg7gxwUq0KdL1ifMctruJN6NYnyo5kERxHVZxqUpW8JE9zyH_K8XIW3QQWD7YATqI46_IBNcoSEYeiC8E26QiGfJXWDSsrsRF4bMvCgjgfmCDTY1vLU1m5wnHelF1SIP5oTv_NQjM-_iowLsu1zvcJyQ" class="w-full h-full object-cover">
-                                    <span class="absolute top-1 right-1 bg-brand-gold text-white text-[8px] font-bold px-1.5 py-0.5 rounded">الرئيسية</span>
-                                </div>
-                                <div class="aspect-square bg-slate-100 rounded border border-slate-200 relative overflow-hidden flex items-center justify-center text-slate-300">
-                                    <i class="fa-regular fa-image text-xl"></i>
-                                </div>
-                                <div class="aspect-square bg-slate-100 rounded border border-slate-200 relative overflow-hidden flex items-center justify-center text-slate-300">
-                                    <i class="fa-regular fa-image text-xl"></i>
-                                </div>
+                            <!-- Dynamic Previews Container -->
+                            <div id="images-preview-grid" class="grid grid-cols-3 gap-2">
+                                <!-- Dynamic thumbnails will be injected here -->
                             </div>
                         </div>
 
@@ -466,10 +466,122 @@
     <script>
         let editMode = false;
         let editDbId = null;
+        let uploadedImages = [];
 
         function generatePropertyCode() {
             // توليد رقم عشوائي من 6 خانات لا يبدأ بصفر (من 100000 إلى 999999)
             return Math.floor(100000 + Math.random() * 900000).toString();
+        }
+
+        function processImageFile(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    const img = new Image();
+                    img.onload = () => {
+                        const canvas = document.createElement('canvas');
+                        let width = img.width;
+                        let height = img.height;
+                        const maxDim = 1600;
+                        if (width > maxDim || height > maxDim) {
+                            if (width > height) {
+                                height = Math.round((height * maxDim) / width);
+                                width = maxDim;
+                            } else {
+                                width = Math.round((width * maxDim) / height);
+                                height = maxDim;
+                            }
+                        }
+                        canvas.width = width;
+                        canvas.height = height;
+                        const ctx = canvas.getContext('2d');
+                        ctx.drawImage(img, 0, 0, width, height);
+                        resolve(canvas.toDataURL('image/jpeg', 0.85));
+                    };
+                    img.onerror = reject;
+                    img.src = e.target.result;
+                };
+                reader.onerror = reject;
+                reader.readAsDataURL(file);
+            });
+        }
+
+        function renderImagesPreview() {
+            const grid = document.getElementById('images-preview-grid');
+            const countEl = document.getElementById('images-count');
+            if (!grid) return;
+            
+            if (countEl) {
+                countEl.textContent = `${uploadedImages.length} صور`;
+            }
+            grid.innerHTML = '';
+
+            if (uploadedImages.length === 0) {
+                for (let i = 0; i < 3; i++) {
+                    const slot = document.createElement('div');
+                    slot.className = 'aspect-square bg-slate-50 rounded border border-dashed border-slate-200 relative flex items-center justify-center text-slate-300';
+                    slot.innerHTML = '<i class="fa-regular fa-image text-xl"></i>';
+                    grid.appendChild(slot);
+                }
+                return;
+            }
+
+            uploadedImages.forEach((src, idx) => {
+                const item = document.createElement('div');
+                item.className = 'aspect-square bg-slate-100 rounded border ' + (idx === 0 ? 'border-brand-gold ring-2 ring-brand-gold/30' : 'border-slate-200') + ' relative overflow-hidden group shadow-sm';
+                
+                item.innerHTML = `
+                    <img src="${src}" class="w-full h-full object-cover">
+                    ${idx === 0 ? '<span class="absolute top-1 right-1 bg-brand-gold text-white text-[9px] font-bold px-1.5 py-0.5 rounded shadow">الرئيسية</span>' : `<button type="button" onclick="setMainImage(${idx})" class="absolute top-1 right-1 bg-slate-900/80 hover:bg-brand-gold text-white text-[9px] font-bold px-1.5 py-0.5 rounded transition-colors opacity-0 group-hover:opacity-100 shadow">تعيين كرئيسية</button>`}
+                    <button type="button" onclick="removeImage(${idx})" class="absolute top-1 left-1 w-6 h-6 rounded-full bg-rose-500 hover:bg-rose-600 text-white flex items-center justify-center text-xs transition-transform transform hover:scale-110 shadow" title="حذف الصورة">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                `;
+                grid.appendChild(item);
+            });
+        }
+
+        window.setMainImage = function(index) {
+            if (index > 0 && index < uploadedImages.length) {
+                const [mainImg] = uploadedImages.splice(index, 1);
+                uploadedImages.unshift(mainImg);
+                renderImagesPreview();
+            }
+        };
+
+        window.removeImage = function(index) {
+            if (index >= 0 && index < uploadedImages.length) {
+                uploadedImages.splice(index, 1);
+                renderImagesPreview();
+            }
+        };
+
+        async function handleImageFiles(files) {
+            const validFiles = files.filter(f => f.type.startsWith('image/'));
+            if (validFiles.length === 0) {
+                alert('يرجى اختيار ملفات صور بصيغة (JPG أو PNG).');
+                return;
+            }
+
+            const dropText = document.getElementById('drop-zone-text');
+            const originalText = dropText ? dropText.innerHTML : '';
+            if (dropText) {
+                dropText.innerHTML = '<span class="text-brand-gold font-bold"><i class="fa-solid fa-circle-notch fa-spin"></i> جاري رفع ومعالجة الصور...</span>';
+            }
+
+            for (const file of validFiles) {
+                try {
+                    const dataUrl = await processImageFile(file);
+                    uploadedImages.push(dataUrl);
+                } catch (err) {
+                    console.error('Error processing file:', err);
+                }
+            }
+
+            if (dropText) {
+                dropText.innerHTML = originalText;
+            }
+            renderImagesPreview();
         }
 
         document.addEventListener('DOMContentLoaded', async () => {
@@ -616,10 +728,62 @@
                                 }
                             });
                         }
+
+                        // Set images in edit mode
+                        if (property.images && Array.isArray(property.images)) {
+                            uploadedImages = [...property.images];
+                            renderImagesPreview();
+                        }
                     }
                 } catch (err) {
                     console.error("Failed to fetch property for edit:", err);
                 }
+            }
+
+            // Setup Image Upload & Drag-and-Drop
+            const dropZone = document.getElementById('file-drop-zone');
+            const fileInput = document.getElementById('prop-images-input');
+
+            if (dropZone && fileInput) {
+                dropZone.addEventListener('click', () => {
+                    fileInput.click();
+                });
+
+                fileInput.addEventListener('change', async (e) => {
+                    const files = Array.from(e.target.files);
+                    if (files.length > 0) {
+                        await handleImageFiles(files);
+                    }
+                    fileInput.value = '';
+                });
+
+                ['dragenter', 'dragover'].forEach(name => {
+                    dropZone.addEventListener(name, (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        dropZone.classList.add('dragover');
+                    }, false);
+                });
+
+                ['dragleave', 'drop'].forEach(name => {
+                    dropZone.addEventListener(name, (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        dropZone.classList.remove('dragover');
+                    }, false);
+                });
+
+                dropZone.addEventListener('drop', async (e) => {
+                    const dt = e.dataTransfer;
+                    if (dt && dt.files && dt.files.length > 0) {
+                        await handleImageFiles(Array.from(dt.files));
+                    }
+                }, false);
+            }
+
+            // Initial render of empty preview slots if not in edit mode
+            if (!editCode) {
+                renderImagesPreview();
             }
         });
 
@@ -655,7 +819,7 @@
                 status: document.getElementById('in-status').value,
                 features: selectedFeatures,
                 additional_details: additionalDetails,
-                images: ["https://lh3.googleusercontent.com/aida-public/AB6AXuCxjPIRZYgNya12sdETakQjzjP6QhdXL1FFi1Clu-bJOtEI-oVddIqNAxNuT1MvgmNB1E3QYBcDmvaQLJAwMAC38qp81CjzshNg7gxwUq0KdL1ifMctruJN6NYnyo5kERxHVZxqUpW8JE9zyH_K8XIW3QQWD7YATqI46_IBNcoSEYeiC8E26QiGfJXWDSsrsRF4bMvCgjgfmCDTY1vLU1m5wnHelF1SIP5oTv_NQjM-_iowLsu1zvcJyQ"]
+                images: uploadedImages
             };
 
             const url = editMode ? `/api/admin/properties/${editDbId}` : '/api/admin/properties';

@@ -53,8 +53,8 @@ app.use('/api/auth', authRouter);
 
 // Admin APIs (Protected)
 app.use('/api/admin/properties', authenticateAdmin, require('./routes/adminProperties'));
-// Settings config protected individually inside adminConfig.js
-app.use('/api/admin/config', authenticateAdmin, require('./routes/adminConfig'));
+// Settings & Config APIs (GET is public for site visitors; modifications are protected inside adminConfig.js)
+app.use('/api/admin/config', require('./routes/adminConfig'));
 
 // Fallback Route for Frontend (SPA behavior)
 app.get('*', (req, res) => {
