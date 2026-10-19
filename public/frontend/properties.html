@@ -1,0 +1,1393 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@100..900&family=Plus+Jakarta+Sans:wght@100..900&display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;background-color:#0f131d;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "surface": "#0f131d", "surface-container-low": "#171b26", "on-secondary-fixed": "#281900", "secondary": "#fabc4d", "surface-variant": "#313540", "on-tertiary": "#003731", "on-primary-fixed-variant": "#574500", "secondary-fixed": "#ffdead", "tertiary-container": "#11c9b4", "on-surface": "#dfe2f1", "surface-container-highest": "#313540", "on-secondary": "#432c00", "on-secondary-container": "#3a2600", "on-primary-container": "#554300", "primary-fixed": "#ffe088", "on-background": "#dfe2f1", "secondary-container": "#bd8718", "on-tertiary-fixed-variant": "#005047", "surface-container-lowest": "#0a0e18", "surface-container-high": "#262a35", "primary-fixed-dim": "#e9c349", "surface-dim": "#0f131d", "surface-container": "#1c1f2a", "inverse-on-surface": "#2c303b", "on-error": "#690005", "on-primary": "#3c2f00", "primary": "#f2ca50", "on-secondary-fixed-variant": "#604100", "error": "#ffb4ab", "on-tertiary-container": "#004f46", "background": "#0f131d", "on-tertiary-fixed": "#00201c", "surface-bright": "#353944", "surface-tint": "#e9c349", "inverse-primary": "#735c00", "tertiary": "#48e5d0", "primary-container": "#d4af37", "tertiary-fixed": "#62fae3", "on-primary-fixed": "#241a00", "on-error-container": "#ffdad6", "outline": "#99907c", "tertiary-fixed-dim": "#3cddc7", "inverse-surface": "#dfe2f1", "secondary-fixed-dim": "#fabc4d", "outline-variant": "#4d4635", "error-container": "#93000a", "on-surface-variant": "#d0c5af" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "gutter-sm": "0.75rem", "space-sm": "0.5rem", "space-xs": "0.25rem", "space-xl": "2.25rem", "margin-lg": "1.75rem", "gutter": "1rem", "space-md": "1rem", "margin": "1.25rem", "space-lg": "1.5rem" }, fontFamily: { "display-hero": ["Bodoni Moda"], "title-md": ["Plus Jakarta Sans"], "label-lg": ["Plus Jakarta Sans"], "label-sm": ["Plus Jakarta Sans"], "price-display": ["Bodoni Moda"], "headline-sm": ["Bodoni Moda"], "headline-lg": ["Bodoni Moda"], "display-hero-mobile": ["Bodoni Moda"], "title-lg": ["Plus Jakarta Sans"], "headline-md": ["Bodoni Moda"], "body-lg": ["Plus Jakarta Sans"], "body-md": ["Plus Jakarta Sans"], "body-sm": ["Plus Jakarta Sans"] }, fontSize: { "display-hero": ["40px", { lineHeight: "48px", letterSpacing: "-0.02em", fontWeight: "600" }], "title-md": ["15px", { lineHeight: "20px", fontWeight: "600" }], "label-lg": ["13px", { lineHeight: "18px", letterSpacing: "0.04em", fontWeight: "600" }], "label-sm": ["11px", { lineHeight: "14px", letterSpacing: "0.06em", fontWeight: "600" }], "price-display": ["26px", { lineHeight: "32px", letterSpacing: "-0.01em", fontWeight: "700" }], "headline-sm": ["18px", { lineHeight: "24px", fontWeight: "500" }], "headline-lg": ["28px", { lineHeight: "36px", letterSpacing: "-0.01em", fontWeight: "600" }], "display-hero-mobile": ["32px", { lineHeight: "40px", letterSpacing: "-0.01em", fontWeight: "600" }], "title-lg": ["17px", { lineHeight: "24px", letterSpacing: "0.01em", fontWeight: "600" }], "headline-md": ["22px", { lineHeight: "30px", fontWeight: "500" }], "body-lg": ["16px", { lineHeight: "24px", fontWeight: "400" }], "body-md": ["14px", { lineHeight: "20px", fontWeight: "400" }], "body-sm": ["12px", { lineHeight: "16px", fontWeight: "400" }] } } } };</script></head><body class="bg-surface text-on-surface font-body-md text-body-md flex flex-col min-h-screen antialiased select-none"><header class="fixed top-0 w-full z-50 pt-safe bg-[#0B0E14]/90 backdrop-blur-xl border-b border-[#C99742]/20 shadow-[0_4px_24px_rgba(0,0,0,0.4)]">
+  <div class="h-24 px-6 md:px-10 max-w-7xl mx-auto flex items-center justify-between gap-6 relative">
+    
+    <!-- HomeNest Logo & Geometric Icon -->
+    <a href="index.html" class="flex items-center gap-3 hover:opacity-90 transition-opacity cursor-pointer">
+      <div class="w-14 h-14 md:w-16 md:h-16 flex items-center justify-center">
+        <img src="../UPLOADS/LOGO.png" alt="اكروبوليس هوم" class="w-full h-full object-contain filter drop-shadow-md">
+      </div>
+      <div class="leading-none">
+        <span class="text-2xl md:text-3xl font-black tracking-wide text-white block drop-shadow-md">اكروبوليس هوم</span>
+      </div>
+    </a>
+
+    <!-- Desktop Navigation Links directly in header (identical to index.html) -->
+    <nav class="hidden lg:flex items-center gap-12 ms-auto me-8 text-white/90 font-bold text-base drop-shadow-sm">
+      <a href="index.html" class="flex items-center gap-2 hover:text-[#F5C973] pb-1 border-b-2 border-transparent hover:border-[#E5B158]/50 transition-all">
+        <i class="fa-solid fa-house text-sm"></i>
+        <span>الرئيسية</span>
+      </a>
+      <a href="properties.html" class="flex items-center gap-2 text-[#E5B158] border-b-2 border-[#E5B158] pb-1 transition-all">
+        <i class="fa-solid fa-building-user text-sm"></i>
+        <span>العقارات</span>
+      </a>
+      <a href="#saved" class="flex items-center gap-2 hover:text-[#F5C973] pb-1 border-b-2 border-transparent hover:border-[#E5B158]/50 transition-all">
+        <i class="fa-solid fa-heart text-sm"></i>
+        <span>المفضلة</span>
+      </a>
+    </nav>
+
+    <!-- Action Buttons: Contact (تواصل) identical to index.html -->
+    <div class="flex items-center gap-3">
+      <button id="header-contact-btn" class="px-5 py-2.5 rounded-full text-sm font-bold text-[#F5C973] border border-[#E5B158]/50 bg-black/30 backdrop-blur-sm hover:bg-[#E5B158]/20 hover:border-[#F5C973] transition-all flex items-center gap-2 shadow-sm cursor-pointer">
+        <i class="fa-solid fa-headset text-base text-[#E5B158]"></i>
+        <span>تواصل</span>
+      </button>
+    </div>
+
+  </div>
+</header><main id="mainContainer" class="flex flex-col relative w-full pt-24 pb-20 lg:pb-0 bg-surface min-h-screen transition-all duration-300"><div class="flex flex-col w-full">
+<!-- Search & Advanced Filter Section -->
+<section class="px-margin pt-space-md pb-space-sm flex flex-col gap-3 bg-surface-container-lowest/80 backdrop-blur-md">
+  <div class="max-w-5xl mx-auto w-full flex flex-col gap-3">
+    <!-- Main Search Bar (Wider, Taller, with Filter Button) -->
+    <div class="flex items-center gap-2.5">
+      <div class="relative flex-1 flex items-center bg-surface-container-high/90 hover:bg-surface-container-high rounded-full px-5 py-3 border border-outline-variant/40 shadow-lg focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/20 transition-all">
+        <span class="material-symbols-outlined text-primary text-[22px] ml-2 shrink-0">search</span>
+        <input id="properties-search-input" class="w-full bg-transparent text-on-surface font-body-md text-sm md:text-base placeholder:text-outline focus:outline-none pr-1 text-right" placeholder="ابحث بالحي، اسم العقار أو الرمز..." type="text"/>
+        <button id="clear-search-btn" onclick="clearSearchInput()" class="hidden text-outline hover:text-on-surface p-1 mr-1 transition-colors cursor-pointer" title="مسح">
+          <i class="fa-solid fa-xmark text-sm"></i>
+        </button>
+      </div>
+
+      <!-- Filter Button -->
+      <button onclick="toggleAdvancedFilters()" id="advanced-filter-btn" class="flex items-center gap-2 px-5 py-3 rounded-full bg-surface-container-high text-primary border border-primary/30 hover:bg-primary hover:text-on-primary-container transition-all font-bold text-sm shrink-0 shadow-md cursor-pointer active:scale-95">
+        <i class="fa-solid fa-sliders text-sm"></i>
+        <span>فلترة</span>
+      </button>
+    </div>
+
+    <!-- Advanced Filter Drawer (Expandable) -->
+    <div id="advanced-filters-panel" class="hidden rounded-2xl bg-surface-container-low/95 border border-primary/25 p-4 md:p-6 shadow-2xl transition-all space-y-6">
+      
+      <!-- 1. المواصفات الرئيسية -->
+      <div class="space-y-3">
+        <div class="flex items-center gap-2 text-primary font-bold text-sm border-b border-outline-variant/30 pb-2">
+          <i class="fa-solid fa-sliders text-xs"></i>
+          <span>المواصفات الرئيسية</span>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+          <!-- Category -->
+          <div>
+            <label class="block text-xs font-bold text-on-surface mb-1">تصنيف العقار</label>
+            <select id="filter-category" class="w-full bg-surface-container-high border border-outline-variant/50 rounded-xl px-3.5 py-2 text-sm text-on-surface focus:border-primary outline-none cursor-pointer">
+              <option value="الكل">الكل</option>
+            </select>
+          </div>
+          <!-- Location / Keyword -->
+          <div>
+            <label class="block text-xs font-bold text-on-surface mb-1">الموقع أو الكلمة الدلالية</label>
+            <input type="text" id="filter-location" placeholder="مثال: أثينا، كوكاكي..." class="w-full bg-surface-container-high border border-outline-variant/50 rounded-xl px-3.5 py-2 text-sm text-on-surface focus:border-primary outline-none">
+          </div>
+          <!-- Min & Max Price -->
+          <div>
+            <label class="block text-xs font-bold text-on-surface mb-1">الحد الأدنى للسعر (€)</label>
+            <input type="number" id="filter-min-price" placeholder="مثال: 50000" class="w-full bg-surface-container-high border border-outline-variant/50 rounded-xl px-3.5 py-2 text-sm text-on-surface focus:border-primary outline-none">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-on-surface mb-1">الحد الأعلى للسعر (€)</label>
+            <input type="number" id="filter-max-price" placeholder="مثال: 800000" class="w-full bg-surface-container-high border border-outline-variant/50 rounded-xl px-3.5 py-2 text-sm text-on-surface focus:border-primary outline-none">
+          </div>
+          <!-- Min & Max Area -->
+          <div>
+            <label class="block text-xs font-bold text-on-surface mb-1">الحد الأدنى للمساحة (م²)</label>
+            <input type="number" id="filter-min-area" placeholder="مثال: 60" class="w-full bg-surface-container-high border border-outline-variant/50 rounded-xl px-3.5 py-2 text-sm text-on-surface focus:border-primary outline-none">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-on-surface mb-1">الحد الأعلى للمساحة (م²)</label>
+            <input type="number" id="filter-max-area" placeholder="مثال: 250" class="w-full bg-surface-container-high border border-outline-variant/50 rounded-xl px-3.5 py-2 text-sm text-on-surface focus:border-primary outline-none">
+          </div>
+          <!-- Bedrooms -->
+          <div>
+            <label class="block text-xs font-bold text-on-surface mb-1">غرف النوم</label>
+            <select id="filter-bedrooms" class="w-full bg-surface-container-high border border-outline-variant/50 rounded-xl px-3.5 py-2 text-sm text-on-surface focus:border-primary outline-none cursor-pointer">
+              <option value="">الكل</option>
+              <option value="1">1+ غرف</option>
+              <option value="2">2+ غرف</option>
+              <option value="3">3+ غرف</option>
+              <option value="4">4+ غرف</option>
+              <option value="5">5+ غرف</option>
+            </select>
+          </div>
+          <!-- Bathrooms -->
+          <div>
+            <label class="block text-xs font-bold text-on-surface mb-1">دورات المياه</label>
+            <select id="filter-bathrooms" class="w-full bg-surface-container-high border border-outline-variant/50 rounded-xl px-3.5 py-2 text-sm text-on-surface focus:border-primary outline-none cursor-pointer">
+              <option value="">الكل</option>
+              <option value="1">1+ حمامات</option>
+              <option value="2">2+ حمامات</option>
+              <option value="3">3+ حمامات</option>
+              <option value="4">4+ حمامات</option>
+            </select>
+          </div>
+          <!-- Flooring / Floor -->
+          <div>
+            <label class="block text-xs font-bold text-on-surface mb-1">الأرضية (الطابق)</label>
+            <select id="filter-floor" class="w-full bg-surface-container-high border border-outline-variant/50 rounded-xl px-3.5 py-2 text-sm text-on-surface focus:border-primary outline-none cursor-pointer">
+              <option value="">الكل</option>
+              <option value="قبو">قبو</option>
+              <option value="شبه قبو">شبه قبو</option>
+              <option value="طابق أرضي">طابق أرضي</option>
+              <option value="طابق أول">طابق أول</option>
+              <option value="طابق ثاني">طابق ثاني</option>
+              <option value="طابق ثالث">طابق ثالث</option>
+              <option value="طابق رابع">طابق رابع</option>
+              <option value="طابق خامس">طابق خامس</option>
+              <option value="طابق سادس">طابق سادس</option>
+              <option value="طابق سابع">طابق سابع</option>
+              <option value="طابق ثامن">طابق ثامن</option>
+              <option value="طابق تاسع">طابق تاسع</option>
+              <option value="طابق عاشر">طابق عاشر</option>
+            </select>
+          </div>
+          <!-- Build Year -->
+          <div>
+            <label class="block text-xs font-bold text-on-surface mb-1">سنة البناء</label>
+            <input type="text" id="filter-build-year" placeholder="مثال: 2020 أو أحدث" class="w-full bg-surface-container-high border border-outline-variant/50 rounded-xl px-3.5 py-2 text-sm text-on-surface focus:border-primary outline-none">
+          </div>
+          <!-- Energy Class -->
+          <div>
+            <label class="block text-xs font-bold text-on-surface mb-1">فئة الطاقة</label>
+            <select id="filter-energy" class="w-full bg-surface-container-high border border-outline-variant/50 rounded-xl px-3.5 py-2 text-sm text-on-surface focus:border-primary outline-none cursor-pointer">
+              <option value="">الكل</option>
+              <option value="A+">A+ (فائقة الكفاءة والعزل)</option>
+              <option value="A">A (عالية الكفاءة)</option>
+              <option value="B+">B+ (ممتازة)</option>
+              <option value="B">B (جيدة جداً)</option>
+              <option value="C">C (متوسطة)</option>
+              <option value="D">D (قياسية)</option>
+            </select>
+          </div>
+          <!-- Property Status -->
+          <div>
+            <label class="block text-xs font-bold text-on-surface mb-1">حالة العقار</label>
+            <select id="filter-status" class="w-full bg-surface-container-high border border-outline-variant/50 rounded-xl px-3.5 py-2 text-sm text-on-surface focus:border-primary outline-none cursor-pointer">
+              <option value="">الكل</option>
+              <option value="متاح">متاح</option>
+              <option value="متاح للبيع">متاح للبيع</option>
+              <option value="متاح للإيجار">متاح للإيجار</option>
+              <option value="قيد الحجز">قيد الحجز</option>
+              <option value="مؤجر">مؤجر</option>
+              <option value="مباع">مباع</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. ميزات العقار -->
+      <div class="space-y-3">
+        <div class="flex items-center gap-2 text-primary font-bold text-sm border-b border-outline-variant/30 pb-2">
+          <i class="fa-solid fa-wand-magic-sparkles text-xs"></i>
+          <span>ميزات العقار والتجهيزات</span>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-2.5">
+          <label class="flex items-center gap-2.5 p-2.5 rounded-xl bg-surface-container-high/80 border border-outline-variant/40 hover:border-primary/60 cursor-pointer transition select-none">
+            <input type="checkbox" name="filter-features" value="مستودع" class="w-4 h-4 rounded text-primary border-outline focus:ring-0">
+            <i class="fa-solid fa-boxes-stacked text-primary text-xs"></i>
+            <span class="text-xs font-semibold text-on-surface">مستودع</span>
+          </label>
+          <label class="flex items-center gap-2.5 p-2.5 rounded-xl bg-surface-container-high/80 border border-outline-variant/40 hover:border-primary/60 cursor-pointer transition select-none">
+            <input type="checkbox" name="filter-features" value="انذار" class="w-4 h-4 rounded text-primary border-outline focus:ring-0">
+            <i class="fa-solid fa-bell text-primary text-xs"></i>
+            <span class="text-xs font-semibold text-on-surface">انذار</span>
+          </label>
+          <label class="flex items-center gap-2.5 p-2.5 rounded-xl bg-surface-container-high/80 border border-outline-variant/40 hover:border-primary/60 cursor-pointer transition select-none">
+            <input type="checkbox" name="filter-features" value="علية" class="w-4 h-4 rounded text-primary border-outline focus:ring-0">
+            <i class="fa-solid fa-warehouse text-primary text-xs"></i>
+            <span class="text-xs font-semibold text-on-surface">علية</span>
+          </label>
+          <label class="flex items-center gap-2.5 p-2.5 rounded-xl bg-surface-container-high/80 border border-outline-variant/40 hover:border-primary/60 cursor-pointer transition select-none">
+            <input type="checkbox" name="filter-features" value="شحن سيارات كهرباء" class="w-4 h-4 rounded text-primary border-outline focus:ring-0">
+            <i class="fa-solid fa-charging-station text-primary text-xs"></i>
+            <span class="text-xs font-semibold text-on-surface">شحن سيارات كهرباء</span>
+          </label>
+          <label class="flex items-center gap-2.5 p-2.5 rounded-xl bg-surface-container-high/80 border border-outline-variant/40 hover:border-primary/60 cursor-pointer transition select-none">
+            <input type="checkbox" name="filter-features" value="منحدر تحميل" class="w-4 h-4 rounded text-primary border-outline focus:ring-0">
+            <i class="fa-solid fa-truck-ramp-box text-primary text-xs"></i>
+            <span class="text-xs font-semibold text-on-surface">منحدر تحميل</span>
+          </label>
+          <label class="flex items-center gap-2.5 p-2.5 rounded-xl bg-surface-container-high/80 border border-outline-variant/40 hover:border-primary/60 cursor-pointer transition select-none">
+            <input type="checkbox" name="filter-features" value="تكييف" class="w-4 h-4 rounded text-primary border-outline focus:ring-0">
+            <i class="fa-solid fa-snowflake text-primary text-xs"></i>
+            <span class="text-xs font-semibold text-on-surface">تكييف</span>
+          </label>
+          <label class="flex items-center gap-2.5 p-2.5 rounded-xl bg-surface-container-high/80 border border-outline-variant/40 hover:border-primary/60 cursor-pointer transition select-none">
+            <input type="checkbox" name="filter-features" value="موقف سيارات" class="w-4 h-4 rounded text-primary border-outline focus:ring-0">
+            <i class="fa-solid fa-square-parking text-primary text-xs"></i>
+            <span class="text-xs font-semibold text-on-surface">موقف سيارات</span>
+          </label>
+          <label class="flex items-center gap-2.5 p-2.5 rounded-xl bg-surface-container-high/80 border border-outline-variant/40 hover:border-primary/60 cursor-pointer transition select-none">
+            <input type="checkbox" name="filter-features" value="مصعد" class="w-4 h-4 rounded text-primary border-outline focus:ring-0">
+            <i class="fa-solid fa-elevator text-primary text-xs"></i>
+            <span class="text-xs font-semibold text-on-surface">مصعد</span>
+          </label>
+          <label class="flex items-center gap-2.5 p-2.5 rounded-xl bg-surface-container-high/80 border border-outline-variant/40 hover:border-primary/60 cursor-pointer transition select-none">
+            <input type="checkbox" name="filter-features" value="باب أمان" class="w-4 h-4 rounded text-primary border-outline focus:ring-0">
+            <i class="fa-solid fa-shield-halved text-primary text-xs"></i>
+            <span class="text-xs font-semibold text-on-surface">باب أمان</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- 3. مناسب لي -->
+      <div class="space-y-3">
+        <div class="flex items-center gap-2 text-primary font-bold text-sm border-b border-outline-variant/30 pb-2">
+          <i class="fa-solid fa-users text-xs"></i>
+          <span>مناسب لي (فئات الاستخدام والملائمة)</span>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5">
+          <label class="flex items-center gap-2.5 p-3 rounded-xl bg-surface-container-high/80 border border-outline-variant/40 hover:border-primary/60 cursor-pointer transition select-none">
+            <input type="checkbox" name="filter-suitable" value="Golden Visa" class="w-4 h-4 rounded text-primary border-outline focus:ring-0">
+            <span class="text-base">🇬🇷</span>
+            <div>
+              <span class="text-xs font-bold text-on-surface block">الإقامة الذهبية (Golden Visa)</span>
+              <span class="text-[10px] text-outline block">مطابق لاشتراطات الإقامة الأوروبية</span>
+            </div>
+          </label>
+          <label class="flex items-center gap-2.5 p-3 rounded-xl bg-surface-container-high/80 border border-outline-variant/40 hover:border-primary/60 cursor-pointer transition select-none">
+            <input type="checkbox" name="filter-suitable" value="Airbnb" class="w-4 h-4 rounded text-primary border-outline focus:ring-0">
+            <span class="text-base">📈</span>
+            <div>
+              <span class="text-xs font-bold text-on-surface block">استثمار وتأجير سياحي (Airbnb)</span>
+              <span class="text-[10px] text-outline block">عائد استثماري سنوي مرتفع</span>
+            </div>
+          </label>
+          <label class="flex items-center gap-2.5 p-3 rounded-xl bg-surface-container-high/80 border border-outline-variant/40 hover:border-primary/60 cursor-pointer transition select-none">
+            <input type="checkbox" name="filter-suitable" value="سكن عائلي" class="w-4 h-4 rounded text-primary border-outline focus:ring-0">
+            <span class="text-base">👨‍👩‍👧‍👦</span>
+            <div>
+              <span class="text-xs font-bold text-on-surface block">سكن عائلي راقي</span>
+              <span class="text-[10px] text-outline block">مساحات وخصوصية وقريب من الخدمات</span>
+            </div>
+          </label>
+          <label class="flex items-center gap-2.5 p-3 rounded-xl bg-surface-container-high/80 border border-outline-variant/40 hover:border-primary/60 cursor-pointer transition select-none">
+            <input type="checkbox" name="filter-suitable" value="رجال الأعمال" class="w-4 h-4 rounded text-primary border-outline focus:ring-0">
+            <span class="text-base">💼</span>
+            <div>
+              <span class="text-xs font-bold text-on-surface block">رجال أعمال ودبلوماسيين</span>
+              <span class="text-[10px] text-outline block">حراسة ومستوى أمني وتشطيبات فاخرة</span>
+            </div>
+          </label>
+          <label class="flex items-center gap-2.5 p-3 rounded-xl bg-surface-container-high/80 border border-outline-variant/40 hover:border-primary/60 cursor-pointer transition select-none">
+            <input type="checkbox" name="filter-suitable" value="الاحتياجات الخاصة" class="w-4 h-4 rounded text-primary border-outline focus:ring-0">
+            <span class="text-base">♿</span>
+            <div>
+              <span class="text-xs font-bold text-on-surface block">ذوي الاحتياجات وسهولة الحركة</span>
+              <span class="text-[10px] text-outline block">مداخل ممهدة ومصعد لكافة الطوابق</span>
+            </div>
+          </label>
+          <label class="flex items-center gap-2.5 p-3 rounded-xl bg-surface-container-high/80 border border-outline-variant/40 hover:border-primary/60 cursor-pointer transition select-none">
+            <input type="checkbox" name="filter-suitable" value="Pet Friendly" class="w-4 h-4 rounded text-primary border-outline focus:ring-0">
+            <span class="text-base">🐾</span>
+            <div>
+              <span class="text-xs font-bold text-on-surface block">مسموح بالحيوانات الأليفة</span>
+              <span class="text-[10px] text-outline block">حديقة ومساحات خارجية ملائمة</span>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <!-- 4. ميزات الإعلان -->
+      <div class="space-y-3">
+        <div class="flex items-center gap-2 text-primary font-bold text-sm border-b border-outline-variant/30 pb-2">
+          <i class="fa-solid fa-bullhorn text-xs"></i>
+          <span>ميزات الإعلان</span>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+          <label class="flex items-center gap-2.5 p-2.5 rounded-xl bg-surface-container-high/80 border border-outline-variant/40 hover:border-primary/60 cursor-pointer transition select-none">
+            <input type="checkbox" id="filter-featured-only" class="w-4 h-4 rounded text-primary border-outline focus:ring-0">
+            <i class="fa-solid fa-star text-amber-400 text-xs"></i>
+            <span class="text-xs font-semibold text-on-surface">عقار مميز فقط</span>
+          </label>
+          <label class="flex items-center gap-2.5 p-2.5 rounded-xl bg-surface-container-high/80 border border-outline-variant/40 hover:border-primary/60 cursor-pointer transition select-none">
+            <input type="checkbox" id="filter-instagram-only" class="w-4 h-4 rounded text-primary border-outline focus:ring-0">
+            <i class="fa-brands fa-instagram text-pink-400 text-xs"></i>
+            <span class="text-xs font-semibold text-on-surface">يحتوي على فيديو / ريل انستغرام</span>
+          </label>
+          <label class="flex items-center gap-2.5 p-2.5 rounded-xl bg-surface-container-high/80 border border-outline-variant/40 hover:border-primary/60 cursor-pointer transition select-none">
+            <input type="checkbox" id="filter-furnished-only" class="w-4 h-4 rounded text-primary border-outline focus:ring-0">
+            <i class="fa-solid fa-couch text-primary text-xs"></i>
+            <span class="text-xs font-semibold text-on-surface">مفروش بالكامل</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- 5. تاريخ الإدراج (آخر شيء، جدول من صف واحد) -->
+      <div class="space-y-3">
+        <div class="flex items-center gap-2 text-primary font-bold text-sm border-b border-outline-variant/30 pb-2">
+          <i class="fa-solid fa-calendar-days text-xs"></i>
+          <span>تاريخ الإدراج في المنصة</span>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-center border-collapse border border-primary/20 rounded-xl overflow-hidden bg-surface-container-high/60">
+            <tbody>
+              <tr class="divide-x divide-x-reverse divide-primary/20">
+                <td class="p-0">
+                  <button type="button" onclick="setListingDateFilter('all')" id="date-filter-all" class="w-full py-2.5 px-3 text-xs md:text-sm font-bold transition-all text-on-surface hover:bg-primary/20 active:scale-95 date-filter-tab bg-primary text-on-primary-container">الكل</button>
+                </td>
+                <td class="p-0">
+                  <button type="button" onclick="setListingDateFilter('24h')" id="date-filter-24h" class="w-full py-2.5 px-3 text-xs md:text-sm font-bold transition-all text-on-surface hover:bg-primary/20 active:scale-95 date-filter-tab">آخر 24 ساعة</button>
+                </td>
+                <td class="p-0">
+                  <button type="button" onclick="setListingDateFilter('3d')" id="date-filter-3d" class="w-full py-2.5 px-3 text-xs md:text-sm font-bold transition-all text-on-surface hover:bg-primary/20 active:scale-95 date-filter-tab">3 أيام</button>
+                </td>
+                <td class="p-0">
+                  <button type="button" onclick="setListingDateFilter('10d')" id="date-filter-10d" class="w-full py-2.5 px-3 text-xs md:text-sm font-bold transition-all text-on-surface hover:bg-primary/20 active:scale-95 date-filter-tab">10 أيام</button>
+                </td>
+                <td class="p-0">
+                  <button type="button" onclick="setListingDateFilter('30d')" id="date-filter-30d" class="w-full py-2.5 px-3 text-xs md:text-sm font-bold transition-all text-on-surface hover:bg-primary/20 active:scale-95 date-filter-tab">30 يوم</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="flex items-center justify-end gap-3 pt-3 border-t border-outline-variant/30">
+        <button onclick="resetAllFilters()" class="py-2.5 px-5 rounded-xl bg-surface-container-high text-on-surface-variant hover:text-on-surface border border-outline-variant/50 font-bold text-xs flex items-center gap-1.5 transition cursor-pointer active:scale-95">
+          <i class="fa-solid fa-rotate-left"></i>
+          <span>إعادة ضبط الفلاتر</span>
+        </button>
+        <button onclick="applyFilters()" class="py-2.5 px-7 rounded-xl bg-primary text-on-primary-container font-black text-xs md:text-sm flex items-center justify-center gap-2 hover:opacity-95 transition shadow-lg cursor-pointer active:scale-95">
+          <i class="fa-solid fa-check"></i>
+          <span>تطبيق الفلاتر</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Filter Chips Carousel -->
+  <div id="category-filters" class="max-w-5xl mx-auto w-full flex items-center gap-space-xs overflow-x-auto no-scrollbar py-space-xs">
+      <!-- Buttons will be rendered here via JS -->
+  </div>
+
+  <!-- Active Filters Bar (Shows badges for currently active filters with 1-click remove) -->
+  <div id="active-filters-bar" class="hidden max-w-5xl mx-auto w-full flex flex-wrap items-center gap-2 pt-1 pb-1">
+      <!-- Injected via JS -->
+  </div>
+</section>
+<!-- Sub-header & View Toggles -->
+<section class="px-margin py-space-sm flex items-center justify-between gap-space-sm">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary shadow-[0_0_6px_rgba(72,229,208,0.5)]"></span>
+<h2 id="total-count-title" class="font-title-md text-title-md text-on-surface">... عقار فاخر متاح</h2>
+</div>
+<span class="font-body-sm text-body-sm text-outline">الرياض ومحيطها الراقي</span>
+</div>
+</section>
+<!-- Property Listings Feed -->
+<div id="properties-grid" class="px-margin py-space-xs grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-space-lg max-w-7xl mx-auto w-full">
+<div class="col-span-full py-12 flex flex-col items-center justify-center text-center">
+    <i class="fa-solid fa-house-circle-xmark text-4xl text-slate-600 mb-3"></i>
+    <p class="text-lg font-bold text-slate-300">لا يوجد عقارات مطابقة</p>
+    <p class="text-sm text-slate-500 mt-1">جرب تعديل خيارات البحث أو تصفح في وقت لاحق</p>
+</div>
+</div>
+<!-- Load More / VIP Concierge CTA -->
+<section class="px-margin py-space-lg flex flex-col items-center gap-space-md text-center">
+<button id="load-more-btn" class="hidden w-full py-3.5 px-space-lg rounded-full bg-surface-container-high/90 hover:bg-surface-container-highest text-on-surface font-label-lg text-label-lg shadow-md transition-all items-center justify-center gap-space-xs active:scale-[0.98]">
+<span>عرض المزيد</span>
+</button>
+<!-- VIP Real Estate Advisory banner -->
+<div class="w-full rounded-xl p-space-md bg-gradient-to-l from-surface-container-high/90 to-surface-container/60 shadow-lg flex items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary flex-shrink-0">
+<span class="material-symbols-outlined text-[22px]">support_agent</span>
+</div>
+<div class="flex flex-col text-right">
+<span class="font-title-md text-title-md text-on-surface">استشاري خاص لنخبة الملاك</span>
+<span class="font-body-sm text-body-sm text-outline">تواصل مباشر وسري مع مستشار الصفقات الكبرى</span>
+</div>
+</div>
+<button class="w-9 h-9 rounded-full bg-primary text-on-primary flex items-center justify-center flex-shrink-0 shadow-[0_0_12px_rgba(242,202,80,0.4)]">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+</button>
+</div>
+</section>
+<!-- Interactive script for active toggles & micro-interactions -->
+<script>
+    document.querySelectorAll('button[aria-label="حفظ في المفضلة"]').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const icon = btn.querySelector('.material-symbols-outlined');
+        const isFilled = icon.style.fontVariationSettings && icon.style.fontVariationSettings.includes("'FILL' 1");
+        if (isFilled) {
+          icon.style.fontVariationSettings = "'FILL' 0";
+          icon.textContent = 'favorite_border';
+          btn.classList.remove('text-secondary');
+          btn.classList.add('text-on-surface');
+        } else {
+          icon.style.fontVariationSettings = "'FILL' 1";
+          icon.textContent = 'favorite';
+          btn.classList.remove('text-on-surface');
+          btn.classList.add('text-secondary');
+        }
+      });
+    });
+  </script>
+</div></main>
+<footer class="bg-[#0B0E14] border-t border-[#C99742]/20 pt-12 pb-32 lg:pb-12 px-6 md:px-10 lg:px-20 mt-10 w-full relative z-10">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+    <div class="space-y-4">
+      <div class="flex items-center gap-2">
+        <div class="w-10 h-10">
+          <img src="../UPLOADS/LOGO.png" alt="اكروبوليس هوم" class="w-full h-full object-contain filter drop-shadow-md">
+        </div>
+        <span class="text-lg font-black tracking-wide text-white block">اكروبوليس هوم</span>
+      </div>
+      <p class="text-sm text-slate-400 leading-relaxed">
+        وجهتك الأولى للعقارات الفاخرة والاستثنائية. نقدم لك تجربة فريدة في البحث عن منزل أحلامك أو استثمارك القادم.
+      </p>
+    </div>
+    <div class="space-y-4">
+      <h3 class="text-[#F5C973] font-bold text-lg mb-2">روابط سريعة</h3>
+      <ul class="space-y-2 text-sm text-slate-300">
+        <li><a href="index.html" class="hover:text-white transition-colors">الرئيسية</a></li>
+        <li><a href="properties.html" class="hover:text-white transition-colors">تصفح العقارات</a></li>
+        <li><a href="#" class="hover:text-white transition-colors">من نحن</a></li>
+        <li><a href="#" class="hover:text-white transition-colors">الخدمات الاستشارية</a></li>
+      </ul>
+    </div>
+    <div class="space-y-4">
+      <h3 class="text-[#F5C973] font-bold text-lg mb-2">تواصل معنا</h3>
+      <ul class="space-y-3 text-sm text-slate-300">
+        <li id="footer-address" class="hidden items-center gap-2.5">
+          <i class="fa-solid fa-location-dot text-[#C99742] w-4 text-center shrink-0"></i>
+          <span class="leading-relaxed"></span>
+        </li>
+        <li id="footer-phone" class="hidden items-center gap-2.5">
+          <i class="fa-solid fa-phone text-[#C99742] w-4 text-center shrink-0"></i>
+          <a href="#" class="hover:text-amber-400 transition" dir="ltr"><span dir="ltr"></span></a>
+        </li>
+        <li id="footer-wa" class="hidden items-center gap-2.5">
+          <i class="fa-brands fa-whatsapp text-emerald-500 w-4 text-center shrink-0 text-base"></i>
+          <a href="#" target="_blank" class="hover:text-emerald-400 transition" dir="ltr"><span dir="ltr"></span></a>
+        </li>
+        <li id="footer-email" class="hidden items-center gap-2.5">
+          <i class="fa-solid fa-envelope text-[#C99742] w-4 text-center shrink-0"></i>
+          <a href="#" class="hover:text-amber-400 transition" dir="ltr"><span dir="ltr"></span></a>
+        </li>
+      </ul>
+    </div>
+    <div class="space-y-4">
+      <h3 class="text-[#F5C973] font-bold text-lg mb-2">تابعنا</h3>
+      <div class="flex items-center gap-3">
+        <a href="#" target="_blank" id="footer-ig" class="hidden w-10 h-10 rounded-full bg-[#151922] border border-[#C99742]/30 items-center justify-center text-slate-300 hover:text-white hover:border-[#F5C973] hover:bg-[#F5C973]/10 transition-all" title="انستغرام"><i class="fa-brands fa-instagram text-lg"></i></a>
+        <a href="#" target="_blank" id="footer-tw" class="hidden w-10 h-10 rounded-full bg-[#151922] border border-[#C99742]/30 items-center justify-center text-slate-300 hover:text-white hover:border-[#F5C973] hover:bg-[#F5C973]/10 transition-all" title="منصة إكس (Twitter)">
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path>
+          </svg>
+        </a>
+        <a href="#" target="_blank" id="footer-snap" class="hidden w-10 h-10 rounded-full bg-[#151922] border border-[#C99742]/30 items-center justify-center text-slate-300 hover:text-white hover:border-[#F5C973] hover:bg-[#F5C973]/10 transition-all" title="سناب شات"><i class="fa-brands fa-snapchat text-lg"></i></a>
+        <a href="#" target="_blank" id="footer-tik" class="hidden w-10 h-10 rounded-full bg-[#151922] border border-[#C99742]/30 items-center justify-center text-slate-300 hover:text-white hover:border-[#F5C973] hover:bg-[#F5C973]/10 transition-all" title="تيك توك"><i class="fa-brands fa-tiktok text-lg"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="max-w-7xl mx-auto mt-10 pt-6 border-t border-slate-800 flex flex-col md:flex-row items-center justify-between text-xs text-slate-500">
+    <p>جميع الحقوق محفوظة &copy; 2026 اكروبوليس هوم</p>
+    <div class="flex gap-4 mt-4 md:mt-0">
+      <a href="#" class="hover:text-slate-300">الشروط والأحكام</a>
+      <a href="#" class="hover:text-slate-300">سياسة الخصوصية</a>
+    </div>
+  </div>
+</footer><!-- BEGIN: MobileFixedBottomNavigationBar -->
+<nav class="fixed bottom-0 left-0 right-0 w-full bg-[#0B0E14]/95 backdrop-blur-xl border-t border-[#C99742]/20 pt-3 pb-safe z-50 lg:hidden" data-purpose="mobile-navigation">
+<div class="flex flex-row justify-between items-center px-6 max-w-md mx-auto w-full">
+<a class="flex flex-col items-center gap-1 text-[#94a3b8] hover:text-[#F5C973] group" href="index.html">
+<i class="fa-solid fa-house text-base transition-transform group-hover:scale-110"></i>
+<span class="text-[10px] font-medium">الرئيسية</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-[#E5B158] group" href="properties.html">
+<div class="relative">
+<i class="fa-solid fa-building-user text-base transition-transform group-hover:scale-110"></i>
+<span class="w-1 h-1 rounded-full bg-[#E5B158] mx-auto mt-0.5 block"></span>
+</div>
+<span class="text-[10px] font-bold">العقارات</span>
+</a>
+<div class="-mt-5 relative z-10">
+<a href="properties.html" class="w-12 h-12 rounded-full flex items-center justify-center text-[#0B0E14] transform hover:scale-105 active:scale-95 transition-transform border-2 border-[#0B0E14]" style="background: linear-gradient(135deg, #F5C973 0%, #E5B158 50%, #C99742 100%); box-shadow: 0 4px 15px -3px rgba(229, 177, 88, 0.4);">
+<i class="fa-solid fa-compass text-lg"></i>
+</a>
+</div>
+<a class="flex flex-col items-center gap-1 text-[#94a3b8] hover:text-[#F5C973] group" href="#saved">
+<i class="fa-solid fa-heart text-base transition-transform group-hover:scale-110"></i>
+<span class="text-[10px] font-medium">المفضلة</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-[#94a3b8] hover:text-[#F5C973] group" href="#profile">
+<i class="fa-solid fa-user-tie text-base transition-transform group-hover:scale-110"></i>
+<span class="text-[10px] font-medium">حسابي</span>
+</a>
+</div>
+</nav>
+<!-- END: MobileFixedBottomNavigationBar -->
+
+<script>
+document.addEventListener("DOMContentLoaded", async () => {
+    try {
+        const response = await fetch('/api/admin/config/contact');
+        if (!response.ok) return;
+        const settings = await response.json();
+
+        // 1. Address
+        const addrEl = document.getElementById('footer-address');
+        if (addrEl) {
+            if (settings.address && settings.address.trim()) {
+                addrEl.querySelector('span').textContent = settings.address.trim();
+                addrEl.classList.remove('hidden');
+                addrEl.classList.add('flex');
+            } else {
+                addrEl.classList.add('hidden');
+                addrEl.classList.remove('flex');
+            }
+        }
+
+        // 2. Phone
+        const phoneEl = document.getElementById('footer-phone');
+        if (phoneEl) {
+            if (settings.phone && settings.phone.trim()) {
+                const a = phoneEl.querySelector('a');
+                a.href = `tel:${settings.phone.trim()}`;
+                a.querySelector('span').textContent = settings.phone.trim();
+                phoneEl.classList.remove('hidden');
+                phoneEl.classList.add('flex');
+            } else {
+                phoneEl.classList.add('hidden');
+                phoneEl.classList.remove('flex');
+            }
+        }
+
+        // 3. WhatsApp
+        const waEl = document.getElementById('footer-wa');
+        if (waEl) {
+            if (settings.whatsapp && settings.whatsapp.trim()) {
+                const cleanWa = settings.whatsapp.replace(/[^0-9]/g, '');
+                const waUrl = `https://wa.me/${cleanWa}`;
+                const a = waEl.querySelector('a');
+                a.href = waUrl;
+                a.querySelector('span').textContent = settings.whatsapp.trim();
+                waEl.classList.remove('hidden');
+                waEl.classList.add('flex');
+
+                const headerBtn = document.getElementById('header-contact-btn');
+                if (headerBtn) {
+                    headerBtn.onclick = () => window.open(waUrl, '_blank');
+                }
+            } else {
+                waEl.classList.add('hidden');
+                waEl.classList.remove('flex');
+                if (settings.phone && settings.phone.trim()) {
+                    const headerBtn = document.getElementById('header-contact-btn');
+                    if (headerBtn) {
+                        headerBtn.onclick = () => window.location.href = `tel:${settings.phone}`;
+                    }
+                }
+            }
+        }
+
+        // 4. Email
+        const emailEl = document.getElementById('footer-email');
+        if (emailEl) {
+            if (settings.email && settings.email.trim()) {
+                const a = emailEl.querySelector('a');
+                a.href = `mailto:${settings.email.trim()}`;
+                a.querySelector('span').textContent = settings.email.trim();
+                emailEl.classList.remove('hidden');
+                emailEl.classList.add('flex');
+            } else {
+                emailEl.classList.add('hidden');
+                emailEl.classList.remove('flex');
+            }
+        }
+
+        // 5. Social Media (Follow Us)
+        const setupSocial = (id, link) => {
+            const el = document.getElementById(id);
+            if (!el) return;
+            if (link && link.trim()) {
+                let url = link.trim();
+                if (!url.startsWith('http://') && !url.startsWith('https://')) {
+                    url = 'https://' + url;
+                }
+                el.href = url;
+                el.classList.remove('hidden');
+                el.classList.add('flex');
+            } else {
+                el.classList.add('hidden');
+                el.classList.remove('flex');
+            }
+        };
+
+        setupSocial('footer-ig', settings.instagram);
+        setupSocial('footer-tw', settings.twitter);
+        setupSocial('footer-snap', settings.snapchat);
+        setupSocial('footer-tik', settings.tiktok);
+    } catch (err) {
+        console.error("Failed to load contact settings", err);
+    }
+});
+</script>
+<!-- API Script for GET Properties and Filtering -->
+<script>
+    document.addEventListener("DOMContentLoaded", async () => {
+        const grid = document.getElementById('properties-grid');
+        const filtersContainer = document.getElementById('category-filters');
+        const totalCountTitle = document.getElementById('total-count-title');
+        
+        let allProperties = [];
+        let currentFilter = 'الكل';
+        let searchQuery = '';
+        let filterMinPrice = null;
+        let filterMaxPrice = null;
+        let filterMinArea = null;
+        let filterMaxArea = null;
+        let filterBedrooms = null;
+        let filterBathrooms = null;
+        let filterFloor = '';
+        let filterBuildYear = '';
+        let filterEnergy = '';
+        let filterStatus = '';
+        let filterSelectedFeatures = [];
+        let filterSelectedSuitables = [];
+        let filterFeaturedOnly = false;
+        let filterInstagramOnly = false;
+        let filterFurnishedOnly = false;
+        let filterListingDate = 'all'; // 'all', '24h', '3d', '10d', '30d'
+
+        // Read URL params for Smart Search
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('category')) currentFilter = urlParams.get('category');
+        if (urlParams.has('location')) searchQuery = urlParams.get('location');
+        if (urlParams.has('search') && urlParams.get('search') !== '1') searchQuery = urlParams.get('search');
+        
+        const searchPrice = urlParams.get('price') || '';
+        if (searchPrice) {
+            const nums = searchPrice.match(/\d+(\.\d+)?/g);
+            if (nums && nums.length > 0) {
+                filterMinPrice = parseFloat(nums[0]);
+                if (nums.length > 1) filterMaxPrice = parseFloat(nums[1]);
+            }
+        }
+
+        const searchInput = document.getElementById('properties-search-input');
+        const clearBtn = document.getElementById('clear-search-btn');
+        const locFilterInput = document.getElementById('filter-location');
+        const minPriceInput = document.getElementById('filter-min-price');
+        const maxPriceInput = document.getElementById('filter-max-price');
+
+        if (searchQuery) {
+            if (searchInput) searchInput.value = searchQuery;
+            if (locFilterInput) locFilterInput.value = searchQuery;
+            if (clearBtn) clearBtn.classList.remove('hidden');
+        }
+
+        if (filterMinPrice !== null && !isNaN(filterMinPrice) && minPriceInput) {
+            minPriceInput.value = filterMinPrice;
+        }
+        if (filterMaxPrice !== null && !isNaN(filterMaxPrice) && maxPriceInput) {
+            maxPriceInput.value = filterMaxPrice;
+        }
+
+        // Two-way sync on location search input
+        if (searchInput) {
+            searchInput.addEventListener('input', (e) => {
+                searchQuery = e.target.value.trim();
+                const locInp = document.getElementById('filter-location');
+                if (locInp) locInp.value = searchQuery;
+                if (clearBtn) {
+                    if (searchQuery) clearBtn.classList.remove('hidden');
+                    else clearBtn.classList.add('hidden');
+                }
+                renderGrid();
+            });
+        }
+
+        if (locFilterInput) {
+            locFilterInput.addEventListener('input', (e) => {
+                searchQuery = e.target.value.trim();
+                if (searchInput) searchInput.value = searchQuery;
+                if (clearBtn) {
+                    if (searchQuery) clearBtn.classList.remove('hidden');
+                    else clearBtn.classList.add('hidden');
+                }
+                renderGrid();
+            });
+        }
+
+        window.toggleAdvancedFilters = function() {
+            const panel = document.getElementById('advanced-filters-panel');
+            const btn = document.getElementById('advanced-filter-btn');
+            if (!panel || !btn) return;
+            if (panel.classList.contains('hidden')) {
+                panel.classList.remove('hidden');
+                btn.classList.add('bg-primary', 'text-on-primary-container');
+                btn.classList.remove('bg-surface-container-high', 'text-primary');
+            } else {
+                panel.classList.add('hidden');
+                btn.classList.remove('bg-primary', 'text-on-primary-container');
+                btn.classList.add('bg-surface-container-high', 'text-primary');
+            }
+        };
+
+        window.setListingDateFilter = function(val) {
+            filterListingDate = val;
+            const tabIds = ['all', '24h', '3d', '10d', '30d'];
+            tabIds.forEach(id => {
+                const btn = document.getElementById(`date-filter-${id}`);
+                if (btn) {
+                    if (id === val) {
+                        btn.className = "w-full py-2.5 px-3 text-xs md:text-sm font-bold transition-all date-filter-tab bg-primary text-on-primary-container shadow-md";
+                    } else {
+                        btn.className = "w-full py-2.5 px-3 text-xs md:text-sm font-bold transition-all text-on-surface hover:bg-primary/20 active:scale-95 date-filter-tab";
+                    }
+                }
+            });
+        };
+
+        window.applyFilters = function() {
+            const cat = document.getElementById('filter-category')?.value;
+            const loc = document.getElementById('filter-location')?.value;
+            const minP = document.getElementById('filter-min-price')?.value;
+            const maxP = document.getElementById('filter-max-price')?.value;
+            const minA = document.getElementById('filter-min-area')?.value;
+            const maxA = document.getElementById('filter-max-area')?.value;
+            const beds = document.getElementById('filter-bedrooms')?.value;
+            const baths = document.getElementById('filter-bathrooms')?.value;
+            const floor = document.getElementById('filter-floor')?.value;
+            const bYear = document.getElementById('filter-build-year')?.value;
+            const energy = document.getElementById('filter-energy')?.value;
+            const status = document.getElementById('filter-status')?.value;
+
+            if (cat) currentFilter = cat;
+            if (loc !== undefined) {
+                searchQuery = loc.trim();
+                if (searchInput) searchInput.value = searchQuery;
+                if (clearBtn) {
+                    if (searchQuery) clearBtn.classList.remove('hidden');
+                    else clearBtn.classList.add('hidden');
+                }
+            }
+
+            filterMinPrice = minP ? parseFloat(minP) : null;
+            filterMaxPrice = maxP ? parseFloat(maxP) : null;
+            filterMinArea = minA ? parseFloat(minA) : null;
+            filterMaxArea = maxA ? parseFloat(maxA) : null;
+            filterBedrooms = beds ? parseInt(beds) : null;
+            filterBathrooms = baths ? parseInt(baths) : null;
+            filterFloor = floor ? floor.trim() : '';
+            filterBuildYear = bYear ? bYear.trim().toLowerCase() : '';
+            filterEnergy = energy ? energy.trim() : '';
+            filterStatus = status ? status.trim() : '';
+
+            // Features checkboxes
+            const featCheckboxes = document.querySelectorAll('input[name="filter-features"]:checked');
+            filterSelectedFeatures = Array.from(featCheckboxes).map(c => c.value);
+
+            // Suitability checkboxes
+            const suitCheckboxes = document.querySelectorAll('input[name="filter-suitable"]:checked');
+            filterSelectedSuitables = Array.from(suitCheckboxes).map(c => c.value);
+
+            // Ad Features
+            filterFeaturedOnly = document.getElementById('filter-featured-only')?.checked || false;
+            filterInstagramOnly = document.getElementById('filter-instagram-only')?.checked || false;
+            filterFurnishedOnly = document.getElementById('filter-furnished-only')?.checked || false;
+
+            window.history.replaceState({}, '', 'properties.html');
+            renderFilters();
+            renderGrid();
+        };
+
+        window.resetAllFilters = function() {
+            if (searchInput) searchInput.value = '';
+            if (clearBtn) clearBtn.classList.add('hidden');
+
+            ['filter-location', 'filter-min-price', 'filter-max-price', 'filter-min-area', 'filter-max-area', 'filter-build-year'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.value = '';
+            });
+
+            ['filter-bedrooms', 'filter-bathrooms', 'filter-floor', 'filter-energy', 'filter-status'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.value = '';
+            });
+
+            const catSelect = document.getElementById('filter-category');
+            if (catSelect) catSelect.value = 'الكل';
+
+            document.querySelectorAll('input[name="filter-features"]').forEach(cb => cb.checked = false);
+            document.querySelectorAll('input[name="filter-suitable"]').forEach(cb => cb.checked = false);
+
+            const featCheck = document.getElementById('filter-featured-only');
+            if (featCheck) featCheck.checked = false;
+            const instaCheck = document.getElementById('filter-instagram-only');
+            if (instaCheck) instaCheck.checked = false;
+            const furnCheck = document.getElementById('filter-furnished-only');
+            if (furnCheck) furnCheck.checked = false;
+
+            setListingDateFilter('all');
+
+            searchQuery = '';
+            filterMinPrice = null;
+            filterMaxPrice = null;
+            filterMinArea = null;
+            filterMaxArea = null;
+            filterBedrooms = null;
+            filterBathrooms = null;
+            filterFloor = '';
+            filterBuildYear = '';
+            filterEnergy = '';
+            filterStatus = '';
+            filterSelectedFeatures = [];
+            filterSelectedSuitables = [];
+            filterFeaturedOnly = false;
+            filterInstagramOnly = false;
+            filterFurnishedOnly = false;
+            currentFilter = 'الكل';
+
+            window.history.replaceState({}, '', 'properties.html');
+            renderFilters();
+            renderGrid();
+        };
+
+        window.clearSearchInput = function() {
+            const searchInp = document.getElementById('properties-search-input');
+            const locInp = document.getElementById('filter-location');
+            const clearB = document.getElementById('clear-search-btn');
+            if (searchInp) searchInp.value = '';
+            if (locInp) locInp.value = '';
+            if (clearB) clearB.classList.add('hidden');
+            searchQuery = '';
+            renderGrid();
+        };
+
+        window.removeSingleFilter = function(type) {
+            if (type === 'category') {
+                currentFilter = 'الكل';
+                const catSel = document.getElementById('filter-category');
+                if (catSel) catSel.value = 'الكل';
+            } else if (type === 'search') {
+                searchQuery = '';
+                const searchInp = document.getElementById('properties-search-input');
+                const locInp = document.getElementById('filter-location');
+                const clearB = document.getElementById('clear-search-btn');
+                if (searchInp) searchInp.value = '';
+                if (locInp) locInp.value = '';
+                if (clearB) clearB.classList.add('hidden');
+            } else if (type === 'price') {
+                filterMinPrice = null;
+                filterMaxPrice = null;
+                const minEl = document.getElementById('filter-min-price');
+                const maxEl = document.getElementById('filter-max-price');
+                if (minEl) minEl.value = '';
+                if (maxEl) maxEl.value = '';
+            } else if (type === 'area') {
+                filterMinArea = null;
+                filterMaxArea = null;
+                const minA = document.getElementById('filter-min-area');
+                const maxA = document.getElementById('filter-max-area');
+                if (minA) minA.value = '';
+                if (maxA) maxA.value = '';
+            } else if (type === 'bedrooms') {
+                filterBedrooms = null;
+                const bEl = document.getElementById('filter-bedrooms');
+                if (bEl) bEl.value = '';
+            } else if (type === 'bathrooms') {
+                filterBathrooms = null;
+                const bEl = document.getElementById('filter-bathrooms');
+                if (bEl) bEl.value = '';
+            } else if (type === 'floor') {
+                filterFloor = '';
+                const fEl = document.getElementById('filter-floor');
+                if (fEl) fEl.value = '';
+            } else if (type === 'status') {
+                filterStatus = '';
+                const sEl = document.getElementById('filter-status');
+                if (sEl) sEl.value = '';
+            } else if (type === 'date') {
+                setListingDateFilter('all');
+            }
+
+            window.history.replaceState({}, '', 'properties.html');
+            renderFilters();
+            renderGrid();
+        };
+
+        window.removeSingleFeature = function(feat) {
+            filterSelectedFeatures = filterSelectedFeatures.filter(f => f !== feat);
+            const cb = document.querySelector(`input[name="filter-features"][value="${feat}"]`);
+            if (cb) cb.checked = false;
+            renderGrid();
+        };
+
+        function renderActiveBadges() {
+            const bar = document.getElementById('active-filters-bar');
+            if (!bar) return;
+
+            let badges = [];
+
+            // Category badge
+            if (currentFilter && currentFilter !== 'الكل') {
+                badges.push(`
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/15 border border-primary/40 text-primary text-xs font-bold shadow-xs">
+                        <span>التصنيف: ${currentFilter}</span>
+                        <button type="button" onclick="removeSingleFilter('category')" class="hover:text-white cursor-pointer transition p-0.5" title="إزالة هذا الفلتر">
+                            <i class="fa-solid fa-xmark text-xs"></i>
+                        </button>
+                    </span>
+                `);
+            }
+
+            // Search query / Location badge
+            if (searchQuery) {
+                badges.push(`
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/15 border border-primary/40 text-primary text-xs font-bold shadow-xs">
+                        <span>البحث: ${searchQuery}</span>
+                        <button type="button" onclick="removeSingleFilter('search')" class="hover:text-white cursor-pointer transition p-0.5" title="إزالة هذا الفلتر">
+                            <i class="fa-solid fa-xmark text-xs"></i>
+                        </button>
+                    </span>
+                `);
+            }
+
+            // Price badge
+            if (filterMinPrice !== null || filterMaxPrice !== null) {
+                let priceLabel = 'السعر: ';
+                if (filterMinPrice !== null && filterMaxPrice !== null) {
+                    priceLabel += `${filterMinPrice.toLocaleString()} - ${filterMaxPrice.toLocaleString()} €`;
+                } else if (filterMinPrice !== null) {
+                    priceLabel += `من ${filterMinPrice.toLocaleString()} €`;
+                } else if (filterMaxPrice !== null) {
+                    priceLabel += `حتى ${filterMaxPrice.toLocaleString()} €`;
+                }
+                badges.push(`
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/15 border border-primary/40 text-primary text-xs font-bold shadow-xs">
+                        <span>${priceLabel}</span>
+                        <button type="button" onclick="removeSingleFilter('price')" class="hover:text-white cursor-pointer transition p-0.5" title="إزالة هذا الفلتر">
+                            <i class="fa-solid fa-xmark text-xs"></i>
+                        </button>
+                    </span>
+                `);
+            }
+
+            // Area badge
+            if (filterMinArea !== null || filterMaxArea !== null) {
+                let areaLabel = 'المساحة: ';
+                if (filterMinArea !== null && filterMaxArea !== null) areaLabel += `${filterMinArea} - ${filterMaxArea} م²`;
+                else if (filterMinArea !== null) areaLabel += `من ${filterMinArea} م²`;
+                else if (filterMaxArea !== null) areaLabel += `حتى ${filterMaxArea} م²`;
+                badges.push(`
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/15 border border-primary/40 text-primary text-xs font-bold shadow-xs">
+                        <span>${areaLabel}</span>
+                        <button type="button" onclick="removeSingleFilter('area')" class="hover:text-white cursor-pointer transition p-0.5" title="إزالة هذا الفلتر">
+                            <i class="fa-solid fa-xmark text-xs"></i>
+                        </button>
+                    </span>
+                `);
+            }
+
+            // Bedrooms badge
+            if (filterBedrooms !== null && filterBedrooms > 0) {
+                badges.push(`
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/15 border border-primary/40 text-primary text-xs font-bold shadow-xs">
+                        <span>غرف النوم: ${filterBedrooms}+</span>
+                        <button type="button" onclick="removeSingleFilter('bedrooms')" class="hover:text-white cursor-pointer transition p-0.5" title="إزالة هذا الفلتر">
+                            <i class="fa-solid fa-xmark text-xs"></i>
+                        </button>
+                    </span>
+                `);
+            }
+
+            // Bathrooms badge
+            if (filterBathrooms !== null && filterBathrooms > 0) {
+                badges.push(`
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/15 border border-primary/40 text-primary text-xs font-bold shadow-xs">
+                        <span>دورات المياه: ${filterBathrooms}+</span>
+                        <button type="button" onclick="removeSingleFilter('bathrooms')" class="hover:text-white cursor-pointer transition p-0.5" title="إزالة هذا الفلتر">
+                            <i class="fa-solid fa-xmark text-xs"></i>
+                        </button>
+                    </span>
+                `);
+            }
+
+            // Floor badge
+            if (filterFloor) {
+                badges.push(`
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/15 border border-primary/40 text-primary text-xs font-bold shadow-xs">
+                        <span>الطابق: ${filterFloor}</span>
+                        <button type="button" onclick="removeSingleFilter('floor')" class="hover:text-white cursor-pointer transition p-0.5" title="إزالة هذا الفلتر">
+                            <i class="fa-solid fa-xmark text-xs"></i>
+                        </button>
+                    </span>
+                `);
+            }
+
+            // Status badge
+            if (filterStatus) {
+                badges.push(`
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/15 border border-primary/40 text-primary text-xs font-bold shadow-xs">
+                        <span>الحالة: ${filterStatus}</span>
+                        <button type="button" onclick="removeSingleFilter('status')" class="hover:text-white cursor-pointer transition p-0.5" title="إزالة هذا الفلتر">
+                            <i class="fa-solid fa-xmark text-xs"></i>
+                        </button>
+                    </span>
+                `);
+            }
+
+            // Listing date badge
+            if (filterListingDate && filterListingDate !== 'all') {
+                const dateLabels = { '24h': 'آخر 24 ساعة', '3d': 'آخر 3 أيام', '10d': 'آخر 10 أيام', '30d': 'آخر 30 يوم' };
+                badges.push(`
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/15 border border-primary/40 text-primary text-xs font-bold shadow-xs">
+                        <span>تاريخ الإدراج: ${dateLabels[filterListingDate] || filterListingDate}</span>
+                        <button type="button" onclick="removeSingleFilter('date')" class="hover:text-white cursor-pointer transition p-0.5" title="إزالة هذا الفلتر">
+                            <i class="fa-solid fa-xmark text-xs"></i>
+                        </button>
+                    </span>
+                `);
+            }
+
+            // Features badges
+            if (filterSelectedFeatures && filterSelectedFeatures.length > 0) {
+                filterSelectedFeatures.forEach(feat => {
+                    badges.push(`
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-high border border-outline-variant/60 text-xs text-on-surface font-semibold shadow-xs">
+                            <span>${feat}</span>
+                            <button type="button" onclick="removeSingleFeature('${feat}')" class="hover:text-primary cursor-pointer transition p-0.5">
+                                <i class="fa-solid fa-xmark text-xs"></i>
+                            </button>
+                        </span>
+                    `);
+                });
+            }
+
+            if (badges.length > 0) {
+                bar.innerHTML = `
+                    <div class="flex items-center gap-2 text-xs font-bold text-outline shrink-0 ml-1">
+                        <i class="fa-solid fa-filter text-primary"></i>
+                        <span>الفلاتر النشطة:</span>
+                    </div>
+                    ${badges.join('')}
+                    <button type="button" onclick="resetAllFilters()" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-high/90 hover:bg-surface-container-highest border border-outline-variant/50 text-on-surface-variant hover:text-white text-xs font-bold transition cursor-pointer active:scale-95 shadow-xs mr-auto">
+                        <i class="fa-solid fa-rotate-left text-[11px]"></i>
+                        <span>مسح الكل</span>
+                    </button>
+                `;
+                bar.classList.remove('hidden');
+            } else {
+                bar.innerHTML = '';
+                bar.classList.add('hidden');
+            }
+        }
+
+        try {
+            const response = await fetch('/api/properties');
+            const data = await response.json();
+            // Show ALL properties as requested by the user
+            allProperties = data;
+            
+            renderFilters();
+            renderGrid();
+        } catch (err) {
+            console.error('Failed to fetch properties:', err);
+        }
+
+        function renderFilters() {
+            // Count categories and extract unique ones dynamically
+            const counts = { 'الكل': allProperties.length };
+            const uniqueCategories = new Set();
+            
+            allProperties.forEach(p => {
+                const cat = p.category;
+                if (cat) {
+                    uniqueCategories.add(cat);
+                    counts[cat] = (counts[cat] || 0) + 1;
+                }
+            });
+
+            // Generate categories array dynamically based on database contents
+            const categories = [ { id: 'الكل', label: 'الكل' } ];
+            uniqueCategories.forEach(cat => {
+                categories.push({ id: cat, label: cat });
+            });
+
+            // Populate #filter-category select in advanced filter panel
+            const catSelect = document.getElementById('filter-category');
+            if (catSelect) {
+                catSelect.innerHTML = '';
+                categories.forEach(cat => {
+                    const opt = document.createElement('option');
+                    opt.value = cat.id;
+                    opt.textContent = `${cat.label} (${counts[cat.id] || 0})`;
+                    if (cat.id === currentFilter) opt.selected = true;
+                    catSelect.appendChild(opt);
+                });
+                catSelect.onchange = (e) => {
+                    currentFilter = e.target.value;
+                    window.history.replaceState({}, '', 'properties.html');
+                    renderFilters();
+                    renderGrid();
+                };
+            }
+
+            filtersContainer.innerHTML = '';
+            categories.forEach(cat => {
+                const count = counts[cat.id] || 0;
+                
+                // If it's the active filter, style it as gold
+                const isActive = (currentFilter === cat.id);
+                const btnClass = isActive 
+                    ? "flex items-center gap-space-xs px-space-md py-1.5 rounded-full bg-primary text-on-primary font-label-lg text-label-lg whitespace-nowrap shadow-[0_2px_12px_rgba(242,202,80,0.25)] flex-shrink-0 cursor-pointer"
+                    : "flex items-center gap-space-xs px-space-md py-1.5 rounded-full bg-surface-container-high/70 text-on-surface-variant hover:text-on-surface font-label-lg text-label-lg whitespace-nowrap flex-shrink-0 transition-colors cursor-pointer";
+                
+                const opacityClass = isActive ? "opacity-85" : "opacity-70";
+
+                const btn = document.createElement('button');
+                btn.className = btnClass;
+                btn.innerHTML = `<span>${cat.label}</span><span class="font-body-sm text-body-sm ${opacityClass}">(${count})</span>`;
+                
+                btn.onclick = () => {
+                    currentFilter = cat.id;
+                    const cSel = document.getElementById('filter-category');
+                    if (cSel) cSel.value = cat.id;
+                    // When user clicks a filter, optionally clear the URL search params so they don't get stuck
+                    window.history.replaceState({}, '', 'properties.html');
+                    renderFilters(); // Re-render to update active state
+                    renderGrid();    // Re-render properties
+                };
+                
+                filtersContainer.appendChild(btn);
+            });
+        }
+
+        function getPropDate(p) {
+            if (p.additional_details && p.additional_details.listing_date) {
+                const d = new Date(p.additional_details.listing_date);
+                if (!isNaN(d.getTime())) return d;
+            }
+            if (p.createdAt) {
+                const d = new Date(p.createdAt);
+                if (!isNaN(d.getTime())) return d;
+            }
+            return null;
+        }
+
+        function renderGrid() {
+            try {
+                let filteredProps = [...allProperties];
+                
+                // Apply Category Filter
+                if (currentFilter !== 'الكل') {
+                    filteredProps = filteredProps.filter(p => p.category === currentFilter);
+                }
+
+                // Apply Text Search (title, location, code, description)
+                if (searchQuery) {
+                    const q = searchQuery.toLowerCase();
+                    filteredProps = filteredProps.filter(p => 
+                        (p.title && p.title.toLowerCase().includes(q)) ||
+                        (p.location && p.location.toLowerCase().includes(q)) ||
+                        (p.property_code && p.property_code.toLowerCase().includes(q)) ||
+                        (p.description && p.description.toLowerCase().includes(q))
+                    );
+                }
+
+                // Apply Min Price
+                if (filterMinPrice !== null && !isNaN(filterMinPrice)) {
+                    filteredProps = filteredProps.filter(p => (parseFloat(p.price) || 0) >= filterMinPrice);
+                }
+
+                // Apply Max Price
+                if (filterMaxPrice !== null && !isNaN(filterMaxPrice)) {
+                    filteredProps = filteredProps.filter(p => (parseFloat(p.price) || 0) <= filterMaxPrice);
+                }
+
+                // Apply Min Area
+                if (filterMinArea !== null && !isNaN(filterMinArea)) {
+                    filteredProps = filteredProps.filter(p => (parseFloat(p.area) || 0) >= filterMinArea);
+                }
+
+                // Apply Max Area
+                if (filterMaxArea !== null && !isNaN(filterMaxArea)) {
+                    filteredProps = filteredProps.filter(p => (parseFloat(p.area) || 0) <= filterMaxArea);
+                }
+
+                // Apply Bedrooms Filter
+                if (filterBedrooms !== null && !isNaN(filterBedrooms) && filterBedrooms > 0) {
+                    filteredProps = filteredProps.filter(p => (parseInt(p.bedrooms) || 0) >= filterBedrooms);
+                }
+
+                // Apply Bathrooms Filter
+                if (filterBathrooms !== null && !isNaN(filterBathrooms) && filterBathrooms > 0) {
+                    filteredProps = filteredProps.filter(p => (parseInt(p.bathrooms) || 0) >= filterBathrooms);
+                }
+
+                // Apply Flooring / Floor Filter
+                if (filterFloor) {
+                    filteredProps = filteredProps.filter(p => {
+                        const floor = (p.additional_details && p.additional_details.flooring) || '';
+                        return floor.includes(filterFloor);
+                    });
+                }
+
+                // Apply Build Year Filter
+                if (filterBuildYear) {
+                    filteredProps = filteredProps.filter(p => {
+                        const y = String((p.additional_details && p.additional_details.build_year) || '');
+                        return y.toLowerCase().includes(filterBuildYear);
+                    });
+                }
+
+                // Apply Energy Class Filter
+                if (filterEnergy) {
+                    filteredProps = filteredProps.filter(p => {
+                        const ec = (p.additional_details && p.additional_details.energy_class) || '';
+                        return ec.includes(filterEnergy);
+                    });
+                }
+
+                // Apply Status Filter
+                if (filterStatus) {
+                    filteredProps = filteredProps.filter(p => {
+                        return (p.status || '').toLowerCase() === filterStatus.toLowerCase();
+                    });
+                }
+
+                // Apply Property Features Filter
+                if (filterSelectedFeatures.length > 0) {
+                    filteredProps = filteredProps.filter(p => {
+                        const features = Array.isArray(p.features) ? p.features : [];
+                        return filterSelectedFeatures.every(selectedFeat => 
+                            features.some(f => typeof f === 'string' && f.includes(selectedFeat))
+                        );
+                    });
+                }
+
+                // Apply Suitability (مناسب لي) Filter
+                if (filterSelectedSuitables.length > 0) {
+                    filteredProps = filteredProps.filter(p => {
+                        const suits = (p.additional_details && Array.isArray(p.additional_details.suitable_for))
+                            ? p.additional_details.suitable_for
+                            : ((p.additional_details && p.additional_details.suitable_for) ? [p.additional_details.suitable_for] : []);
+                        return filterSelectedSuitables.every(selectedSuit => 
+                            suits.some(s => typeof s === 'string' && s.includes(selectedSuit))
+                        );
+                    });
+                }
+
+                // Apply Ad Features Filter
+                if (filterFeaturedOnly) {
+                    filteredProps = filteredProps.filter(p => Boolean(p.is_featured));
+                }
+                if (filterInstagramOnly) {
+                    filteredProps = filteredProps.filter(p => {
+                        const embed = p.additional_details && p.additional_details.instagram_embed;
+                        return Boolean(embed && embed.trim());
+                    });
+                }
+                if (filterFurnishedOnly) {
+                    filteredProps = filteredProps.filter(p => {
+                        const furn = (p.additional_details && p.additional_details.furnished) || '';
+                        return furn.trim() !== '' && !furn.includes('بدون') && !furn.includes('غير مفروش');
+                    });
+                }
+
+                // Apply Listing Date Filter (جدول من صف واحد: الكل، آخر 24 ساعة، 3 أيام، 10 أيام، 30 يوم)
+                if (filterListingDate && filterListingDate !== 'all') {
+                    const now = Date.now();
+                    let maxAgeMs = 0;
+                    if (filterListingDate === '24h') maxAgeMs = 24 * 60 * 60 * 1000;
+                    else if (filterListingDate === '3d') maxAgeMs = 3 * 24 * 60 * 60 * 1000;
+                    else if (filterListingDate === '10d') maxAgeMs = 10 * 24 * 60 * 60 * 1000;
+                    else if (filterListingDate === '30d') maxAgeMs = 30 * 24 * 60 * 60 * 1000;
+
+                    if (maxAgeMs > 0) {
+                        filteredProps = filteredProps.filter(p => {
+                            const pDate = getPropDate(p);
+                            if (!pDate) return true;
+                            const age = now - pDate.getTime();
+                            return age <= maxAgeMs && age >= -86400000;
+                        });
+                    }
+                }
+
+                // Default sort: newest first
+                filteredProps.sort((a,b) => {
+                    const timeA = a.createdAt ? new Date(a.createdAt).getTime() : 0;
+                    const timeB = b.createdAt ? new Date(b.createdAt).getTime() : 0;
+                    return timeB - timeA || 0;
+                });
+
+                totalCountTitle.textContent = `${filteredProps.length} من عقاراتنا`;
+                renderActiveBadges();
+
+                if (filteredProps.length > 0) {
+                    grid.innerHTML = '';
+                    filteredProps.forEach(prop => {
+                        grid.innerHTML += `
+                        <article onclick="window.location.href='property-details.html?id=${prop.property_code}'" class="flex flex-col rounded-xl bg-surface-container-low/95 shadow-[0_8px_32px_rgba(0,0,0,0.4)] overflow-hidden transition-all duration-300 cursor-pointer hover:-translate-y-1">
+                            <div class="relative w-full aspect-[4/3] bg-surface-container-high overflow-hidden">
+                                <div class="bg-cover bg-center w-full h-full transform hover:scale-105 transition-transform duration-700 ease-out" style="background-image: url('${(prop.images && prop.images[0]) || 'https://via.placeholder.com/400'}')"></div>
+                                <div class="absolute top-space-sm inset-x-space-sm flex items-center justify-between pointer-events-none">
+                                    <div class="flex items-center gap-space-xs pointer-events-auto">
+                                        <span class="bg-[#E5B158] text-[#0B0E14] font-bold text-[10px] px-2.5 py-1 rounded-full shadow-md">${prop.status || 'متاح'}</span>
+                                    </div>
+                                </div>
+                                <div class="absolute bottom-space-sm inset-x-space-sm flex items-end justify-between">
+                                    <div class="flex flex-col">
+                                        <span class="font-label-sm text-label-sm text-outline-variant">السعر المطلوب</span>
+                                        <span class="font-price-display text-price-display text-primary tracking-wide drop-shadow-md">
+                                            ${(parseFloat(prop.price) || 0).toLocaleString()} <span class="font-title-md text-title-md text-on-surface">يورو</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="p-space-md flex flex-col gap-space-sm">
+                                <div class="flex items-start justify-between gap-space-xs">
+                                    <div class="flex flex-col">
+                                        <h3 class="font-headline-sm text-headline-sm text-on-surface">${prop.title || 'بدون عنوان'}</h3>
+                                        <div class="flex items-center gap-1 text-on-surface-variant mt-0.5">
+                                            <span class="material-symbols-outlined text-primary text-[15px]">location_on</span>
+                                            <span class="font-body-sm text-body-sm">${prop.location || 'غير محدد'}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-3 gap-space-xs bg-surface-container/60 p-space-sm rounded-lg text-center mt-space-xs">
+                                    <div class="flex flex-col items-center justify-center">
+                                        <span class="font-title-md text-title-md text-on-surface leading-tight">${prop.bedrooms || 0}</span>
+                                        <span class="font-label-sm text-label-sm text-on-surface-variant">غرف</span>
+                                    </div>
+                                    <div class="flex flex-col items-center justify-center">
+                                        <span class="font-title-md text-title-md text-on-surface leading-tight">${prop.bathrooms || 0}</span>
+                                        <span class="font-label-sm text-label-sm text-on-surface-variant">حمامات</span>
+                                    </div>
+                                    <div class="flex flex-col items-center justify-center">
+                                        <span class="font-title-md text-title-md text-on-surface leading-tight">${prop.area || 0}</span>
+                                        <span class="font-label-sm text-label-sm text-on-surface-variant">م²</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                        `;
+                    });
+                } else {
+                    grid.innerHTML = `
+                    <div class="col-span-full py-12 flex flex-col items-center justify-center text-center">
+                        <i class="fa-solid fa-house-circle-xmark text-4xl text-slate-600 mb-3"></i>
+                        <p class="text-lg font-bold text-slate-300">لا يوجد عقارات مطابقة</p>
+                        <p class="text-sm text-slate-500 mt-1">جرب تعديل خيارات البحث أو تصفح في وقت لاحق</p>
+                    </div>`;
+                }
+            } catch (err) {
+                grid.innerHTML = `<div class="col-span-full text-red-500 p-5 bg-red-100 rounded">Error: ${err.message}</div>`;
+                console.error("Render error:", err);
+            }
+        }
+    });
+</script>
+</body></html>

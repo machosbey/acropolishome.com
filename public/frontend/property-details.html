@@ -1,0 +1,958 @@
+<!DOCTYPE html><html dir="rtl" lang="ar" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport">
+<title>تفاصيل العقار | اكروبوليس هوم</title>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Plus Jakarta Sans & Cairo for Premium Luxury Arabic Typography -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&amp;family=Cinzel:wght@500;700&amp;display=swap" rel="stylesheet">
+<!-- FontAwesome for standard icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<!-- Tailwind Configuration for HomeNest Dark Luxury Palette -->
+<script data-purpose="tailwind-config">
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              gold: '#D8A868',
+              'gold-light': '#F4CE8B',
+              'gold-dark': '#B88444',
+              night: '#0B0F19',
+              slate: '#121826',
+              surface: 'rgba(23, 30, 47, 0.72)',
+            }
+          },
+          fontFamily: {
+            arabic: ['Cairo', 'sans-serif'],
+            display: ['Cinzel', 'serif']
+          },
+          boxShadow: {
+            'glow-gold': '0 0 25px -4px rgba(216, 168, 104, 0.35)',
+            'inner-glass': 'inset 0 1px 1px 0 rgba(255, 255, 255, 0.12)'
+          }
+        }
+      }
+    }
+  </script>
+<!-- Custom Styles for Glassmorphism and Mobile Adjustments -->
+<style data-purpose="custom-glass-effects">
+    body {
+      font-family: 'Cairo', sans-serif;
+      background-color: #080C14;
+      color: #E2E8F0;
+      -webkit-tap-highlight-color: transparent;
+    }
+    
+    .glass-card {
+      background: rgba(18, 24, 38, 0.78);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(216, 168, 104, 0.18);
+    }
+
+    .glass-header {
+      background: rgba(8, 12, 20, 0.65);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .gold-gradient-bg {
+      background: linear-gradient(135deg, #ECC480 0%, #D8A868 50%, #B88444 100%);
+    }
+
+    .gold-gradient-text {
+      background: linear-gradient(135deg, #FDE68A 0%, #D8A868 60%, #B88444 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Hide scrollbars for clean aesthetic */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="bg-brand-night text-slate-100 min-h-screen selection:bg-brand-gold selection:text-brand-night pb-24">
+<!-- BEGIN: MobileDeviceFrameContainer -->
+<div id="mainContainer" class="w-full relative bg-[#090D17] min-h-screen overflow-x-hidden transition-all duration-300">
+<!-- BEGIN: TopFloatingHeader -->
+<!-- Sticky dynamic header with blur effect -->
+<header class="fixed top-0 w-full z-50 pt-safe bg-[#0B0E14]/90 backdrop-blur-xl border-b border-[#C99742]/20 shadow-[0_4px_24px_rgba(0,0,0,0.4)]">
+  <div class="h-24 px-6 md:px-10 max-w-7xl mx-auto flex items-center justify-between gap-6 relative">
+    
+    <!-- HomeNest Logo & Geometric Icon -->
+    <a href="index.html" class="flex items-center gap-3 hover:opacity-90 transition-opacity cursor-pointer">
+      <div class="w-14 h-14 md:w-16 md:h-16 flex items-center justify-center">
+        <img src="../UPLOADS/LOGO.png" alt="اكروبوليس هوم" class="w-full h-full object-contain filter drop-shadow-md">
+      </div>
+      <div class="leading-none">
+        <span class="text-2xl md:text-3xl font-black tracking-wide text-white block drop-shadow-md">اكروبوليس هوم</span>
+      </div>
+    </a>
+
+    <!-- Desktop Navigation Links directly in header (identical to index.html) -->
+    <nav class="hidden lg:flex items-center gap-12 ms-auto me-8 text-white/90 font-bold text-base drop-shadow-sm">
+      <a href="index.html" class="flex items-center gap-2 hover:text-[#F5C973] pb-1 border-b-2 border-transparent hover:border-[#E5B158]/50 transition-all">
+        <i class="fa-solid fa-house text-sm"></i>
+        <span>الرئيسية</span>
+      </a>
+      <a href="properties.html" class="flex items-center gap-2 hover:text-[#F5C973] pb-1 border-b-2 border-transparent hover:border-[#E5B158]/50 transition-all">
+        <i class="fa-solid fa-building-user text-sm"></i>
+        <span>العقارات</span>
+      </a>
+      <a href="#saved" class="flex items-center gap-2 hover:text-[#F5C973] pb-1 border-b-2 border-transparent hover:border-[#E5B158]/50 transition-all">
+        <i class="fa-solid fa-heart text-sm"></i>
+        <span>المفضلة</span>
+      </a>
+    </nav>
+
+    <!-- Action Buttons: Share & Contact (تواصل) identical to index.html -->
+    <div class="flex items-center gap-3">
+      <button aria-label="مشاركة العقار" onclick="if(navigator.share){navigator.share({title:document.title,url:window.location.href});}else{navigator.clipboard.writeText(window.location.href);alert('تم نسخ رابط العقار بنجاح');}" class="w-10 h-10 rounded-full glass-card border border-white/10 flex items-center justify-center text-slate-200 hover:text-[#F5C973] hover:border-[#F5C973]/50 transition duration-200 active:scale-95 cursor-pointer" type="button" title="مشاركة">
+        <i class="fa-solid fa-share-nodes text-sm"></i>
+      </button>
+      <button id="header-contact-btn" class="px-5 py-2.5 rounded-full text-sm font-bold text-[#F5C973] border border-[#E5B158]/50 bg-black/30 backdrop-blur-sm hover:bg-[#E5B158]/20 hover:border-[#F5C973] transition-all flex items-center gap-2 shadow-sm cursor-pointer">
+        <i class="fa-solid fa-headset text-base text-[#E5B158]"></i>
+        <span>تواصل</span>
+      </button>
+    </div>
+
+  </div>
+</header>
+<!-- END: TopFloatingHeader -->
+<!-- BEGIN: TopSearchBox -->
+<div class="w-full pt-28 pb-4 px-4 md:px-10 lg:px-16 bg-[#090D17] relative z-20">
+  <div class="max-w-5xl mx-auto space-y-3">
+    <!-- Main Search Bar (Wider, Taller, with Filter Button) -->
+    <form id="topSearchForm" onsubmit="handleTopSearch(event)" class="w-full flex items-center bg-slate-800/85 hover:bg-slate-800 rounded-2xl md:rounded-full px-4 md:px-6 py-3 border border-slate-700/60 shadow-xl transition-all focus-within:border-brand-gold/70 focus-within:ring-2 focus-within:ring-brand-gold/20 backdrop-blur-md">
+      <!-- Search Icon -->
+      <i class="fa-solid fa-magnifying-glass text-brand-gold text-base ml-3 shrink-0"></i>
+      
+      <!-- Input Field -->
+      <input id="topSearchInput" class="w-full bg-transparent border-none outline-none focus:outline-none focus:ring-0 focus:border-transparent text-slate-100 text-sm md:text-base pr-2 placeholder:text-slate-400 font-medium" placeholder="ابحث بالحي، اسم العقار أو الرمز..." type="text">
+      
+      <!-- Filter Button inside Search Bar -->
+      <button type="button" onclick="toggleFilterDrawer()" id="topFilterToggleBtn" class="flex items-center gap-1.5 px-3.5 py-1.5 md:px-4 md:py-2 rounded-xl md:rounded-full bg-brand-gold/10 hover:bg-brand-gold text-brand-gold hover:text-slate-950 border border-brand-gold/30 hover:border-brand-gold transition-all text-xs font-bold shrink-0 ml-2.5 cursor-pointer shadow-sm">
+        <i class="fa-solid fa-sliders text-xs md:text-sm"></i>
+        <span>فلترة</span>
+      </button>
+
+      <!-- Submit Search Button -->
+      <button type="submit" class="w-9 h-9 md:w-10 md:h-10 rounded-xl md:rounded-full bg-brand-gold text-slate-950 flex items-center justify-center shrink-0 hover:bg-brand-gold-light active:scale-95 transition-all shadow-glow-gold cursor-pointer" aria-label="بحث">
+         <i class="fa-solid fa-arrow-left text-sm font-bold"></i>
+      </button>
+    </form>
+
+    <!-- Expandable Filter Panel -->
+    <div id="quickFilterPanel" class="hidden glass-card rounded-2xl border border-brand-gold/30 p-4 md:p-6 shadow-2xl transition-all">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
+        <!-- Category -->
+        <div>
+          <label class="block text-xs font-bold text-slate-300 mb-1.5">تصنيف العقار</label>
+          <select id="quickFilterCategory" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs md:text-sm text-slate-200 focus:border-brand-gold outline-none">
+            <option value="">جميع التصنيفات</option>
+            <option value="شقة">شقة</option>
+            <option value="فيلا">فيلا</option>
+            <option value="بنتهاوس">بنتهاوس</option>
+            <option value="تاون هاوس">تاون هاوس</option>
+            <option value="دوبلكس">دوبلكس</option>
+            <option value="مكتب">مكتب</option>
+            <option value="أرض">أرض</option>
+          </select>
+        </div>
+
+        <!-- Price Min -->
+        <div>
+          <label class="block text-xs font-bold text-slate-300 mb-1.5">الحد الأدنى للسعر (يورو)</label>
+          <input type="number" id="quickFilterPriceMin" placeholder="مثال: 100000" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs md:text-sm text-slate-200 focus:border-brand-gold outline-none">
+        </div>
+
+        <!-- Price Max -->
+        <div>
+          <label class="block text-xs font-bold text-slate-300 mb-1.5">الحد الأعلى للسعر (يورو)</label>
+          <input type="number" id="quickFilterPriceMax" placeholder="مثال: 1000000" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs md:text-sm text-slate-200 focus:border-brand-gold outline-none">
+        </div>
+
+        <!-- Actions -->
+        <div class="flex items-end gap-2">
+          <button type="button" onclick="applyQuickFilters()" class="flex-1 py-2.5 px-4 rounded-xl gold-gradient-bg text-slate-950 font-bold text-xs flex items-center justify-center gap-1.5 hover:opacity-95 transition shadow-glow-gold cursor-pointer">
+            <i class="fa-solid fa-check text-xs"></i> تطبيق الفلترة
+          </button>
+          <button type="button" onclick="resetQuickFilters()" class="py-2.5 px-3 rounded-xl bg-slate-800 text-slate-300 hover:text-white border border-slate-700 font-bold text-xs transition cursor-pointer" title="إعادة ضبط">
+            <i class="fa-solid fa-rotate-left"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- END: TopSearchBox -->
+<!-- BEGIN: HeroImageGallery -->
+<section class="relative w-full h-[50vh] lg:h-[85vh] overflow-hidden bg-slate-950" data-purpose="hero-villa-cover">
+<!-- Main Property Image -->
+<img id="prop-hero-image" alt="صورة العقار" class="w-full h-full object-cover object-center hidden" src="">
+<div id="prop-hero-placeholder" class="w-full h-full flex flex-col items-center justify-center bg-slate-900 text-slate-600 gap-2">
+  <i class="fa-solid fa-image text-4xl"></i>
+  <span class="text-xs text-slate-500">جاري تحميل الصور...</span>
+</div>
+<!-- Atmospheric Dark Gradient Overlays -->
+<div class="absolute inset-0 bg-gradient-to-t from-[#090D17] via-[#090D17]/10 to-transparent pointer-events-none"></div>
+<div class="absolute inset-0 bg-gradient-to-b from-[#090D17]/80 via-transparent to-transparent pointer-events-none h-1/2"></div>
+
+<!-- Slider Navigation Arrows -->
+<button id="prop-prev-btn" onclick="prevImage()" class="hidden absolute top-1/2 -translate-y-1/2 right-4 w-10 h-10 rounded-full bg-black/40 backdrop-blur-md border border-white/10 items-center justify-center text-white hover:bg-brand-gold hover:text-black hover:border-brand-gold transition-all z-20 cursor-pointer" aria-label="الصورة السابقة">
+  <i class="fa-solid fa-chevron-right text-sm"></i>
+</button>
+<button id="prop-next-btn" onclick="nextImage()" class="hidden absolute top-1/2 -translate-y-1/2 left-4 w-10 h-10 rounded-full bg-black/40 backdrop-blur-md border border-white/10 items-center justify-center text-white hover:bg-brand-gold hover:text-black hover:border-brand-gold transition-all z-20 cursor-pointer" aria-label="الصورة التالية">
+  <i class="fa-solid fa-chevron-left text-sm"></i>
+</button>
+
+<!-- Photo Counter Indicator -->
+<div class="absolute bottom-6 right-4 left-4 flex items-center justify-between z-20">
+<div class="px-3 py-1.5 rounded-full glass-card text-xs font-medium text-slate-200 flex items-center gap-1.5 border-slate-700/60 shadow-lg">
+<i class="fa-solid fa-camera text-brand-gold"></i>
+<span id="prop-images-count">...</span>
+</div>
+</div>
+</section>
+<!-- END: HeroImageGallery -->
+
+<!-- BEGIN: MainContentWrapper -->
+<main class="px-4 md:px-10 lg:px-0 max-w-4xl mx-auto mt-2 lg:-mt-24 space-y-6 lg:space-y-8 relative z-10">
+<!-- BEGIN: PriceAndTitleSection -->
+<section class="glass-card rounded-2xl border border-brand-gold/25 shadow-xl relative overflow-hidden p-4" data-purpose="property-primary-info">
+<div class="absolute -top-10 -left-10 w-28 h-28 bg-brand-gold/15 rounded-full blur-2xl pointer-events-none"></div>
+
+<!-- Header: Tag & Property Code -->
+<div class="flex items-start justify-between gap-2 mb-1.5">
+  <span class="text-xs uppercase tracking-wider text-brand-gold font-bold flex items-center gap-1.5 mt-1">
+    <span class="w-2 h-2 rounded-full bg-brand-gold animate-pulse"></span>
+    <span id="prop-category-badge">عقار فاخر</span>
+  </span>
+  <div class="flex flex-col items-end gap-1.5">
+    <span id="prop-code" class="text-[10px] text-slate-400 bg-slate-800/80 px-2 py-0.5 rounded border border-slate-700/50">
+      كود العقار: ...
+    </span>
+    <span id="prop-status" class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+      ...
+    </span>
+  </div>
+</div>
+
+<!-- Title & Location -->
+<h1 id="prop-title" class="text-xl font-black text-white leading-tight mb-2">
+  ...
+</h1>
+
+<!-- Location row -->
+<div class="flex items-center justify-between py-1.5 px-2.5 rounded-lg bg-slate-800/40 border border-slate-700/50 mb-3">
+  <div class="flex items-center gap-1.5 text-slate-300 text-xs">
+    <i class="fa-solid fa-location-dot text-brand-gold text-xs"></i>
+    <span id="prop-location" class="">...</span>
+  </div>
+  <a id="prop-map-btn" href="#" target="_blank" style="display: none;" class="flex items-center gap-1.5 text-[10px] font-bold text-brand-gold hover:text-white transition-colors bg-brand-gold/10 px-2 py-1 rounded-md border border-brand-gold/20">
+    عرض على خرائط جوجل <i class="fa-brands fa-google text-[10px]"></i>
+  </a>
+</div>
+
+<!-- Streamlined Price Row -->
+<div class="flex items-center justify-between pt-1 border-t border-slate-800/80">
+  <div>
+    <span class="text-[11px] text-slate-400 block">السعر المطلوب</span>
+    <div class="flex items-baseline gap-1.5">
+      <span id="prop-price" class="text-2xl font-black gold-gradient-text">...</span>
+      <span class="text-xs font-bold text-brand-gold">يورو</span>
+    </div>
+  </div>
+  <div class="text-left flex flex-col items-end">
+  </div>
+</div>
+</section>
+<!-- END: PriceAndTitleSection -->
+
+<!-- BEGIN: KeySpecificationsGrid -->
+<section data-purpose="specifications-grid">
+<h2 class="text-sm font-bold text-slate-300 uppercase tracking-wider mb-3 flex items-center gap-2">
+<span class="w-1.5 h-3.5 bg-brand-gold rounded-full"></span>
+          المواصفات الرئيسية للعقار
+        </h2>
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2.5">
+<!-- Item 1: Area -->
+<div class="glass-card rounded-xl p-3 text-center border-slate-700/50 hover:border-brand-gold/40 transition">
+<div class="w-8 h-8 mx-auto mb-2 rounded-lg bg-brand-gold/10 text-brand-gold flex items-center justify-center">
+<i class="fa-solid fa-ruler-combined text-sm"></i>
+</div>
+<span class="text-xs text-slate-400 block">المساحة الإجمالية</span>
+<span id="prop-area" class="text-sm font-extrabold text-white">-</span>
+</div>
+<!-- Item 2: Bedrooms -->
+<div class="glass-card rounded-xl p-3 text-center border-slate-700/50 hover:border-brand-gold/40 transition">
+<div class="w-8 h-8 mx-auto mb-2 rounded-lg bg-brand-gold/10 text-brand-gold flex items-center justify-center">
+<i class="fa-solid fa-bed text-sm"></i>
+</div>
+<span class="text-xs text-slate-400 block">غرف النوم</span>
+<span id="prop-bedrooms" class="text-sm font-extrabold text-white">-</span>
+</div>
+<!-- Item 3: Bathrooms -->
+<div class="glass-card rounded-xl p-3 text-center border-slate-700/50 hover:border-brand-gold/40 transition">
+<div class="w-8 h-8 mx-auto mb-2 rounded-lg bg-brand-gold/10 text-brand-gold flex items-center justify-center">
+<i class="fa-solid fa-bath text-sm"></i>
+</div>
+<span class="text-xs text-slate-400 block">دورات المياه</span>
+<span id="prop-bathrooms" class="text-sm font-extrabold text-white">-</span>
+</div>
+<!-- Item 4: Floor -->
+<div id="spec-floor-card" class="glass-card rounded-xl p-3 text-center border-slate-700/50 hover:border-brand-gold/40 transition">
+<div class="w-8 h-8 mx-auto mb-2 rounded-lg bg-brand-gold/10 text-brand-gold flex items-center justify-center">
+<i class="fa-solid fa-layer-group text-sm"></i>
+</div>
+<span class="text-xs text-slate-400 block">الأرضية (الطابق)</span>
+<span id="prop-floor" class="text-sm font-extrabold text-white">-</span>
+</div>
+<!-- Item 5: Build Year -->
+<div id="spec-year-card" class="glass-card rounded-xl p-3 text-center border-slate-700/50 hover:border-brand-gold/40 transition">
+<div class="w-8 h-8 mx-auto mb-2 rounded-lg bg-brand-gold/10 text-brand-gold flex items-center justify-center">
+<i class="fa-solid fa-calendar-check text-sm"></i>
+</div>
+<span class="text-xs text-slate-400 block">سنة البناء</span>
+<span id="prop-build-year" class="text-sm font-extrabold text-white">-</span>
+</div>
+<!-- Item 6: Meter Price -->
+<div id="spec-meter-card" class="glass-card rounded-xl p-3 text-center border-slate-700/50 hover:border-brand-gold/40 transition">
+<div class="w-8 h-8 mx-auto mb-2 rounded-lg bg-brand-gold/10 text-brand-gold flex items-center justify-center">
+<i class="fa-solid fa-tag text-sm"></i>
+</div>
+<span class="text-xs text-slate-400 block">سعر المتر</span>
+<span id="prop-meter-price" class="text-sm font-extrabold text-white">-</span>
+</div>
+</div>
+</section>
+<!-- END: KeySpecificationsGrid -->
+
+<!-- BEGIN: DescriptionSection -->
+<section id="prop-description-section" class="hidden glass-card rounded-2xl p-4 border border-slate-700/50">
+  <h2 class="text-sm font-bold text-brand-gold uppercase tracking-wider mb-2 flex items-center gap-2">
+    <span class="w-1.5 h-3.5 bg-brand-gold rounded-full"></span>
+    الوصف العام للعقار
+  </h2>
+  <p id="prop-description" class="text-sm text-slate-300 leading-relaxed whitespace-pre-line"></p>
+</section>
+<!-- END: DescriptionSection -->
+
+<!-- BEGIN: AdditionalDetailsList -->
+<section data-purpose="additional-details" class="hidden">
+<h2 class="text-sm font-bold text-slate-300 uppercase tracking-wider mb-3 flex items-center gap-2">
+<span class="w-1.5 h-3.5 bg-brand-gold rounded-full"></span>
+          معلومات وتفاصيل إضافية
+        </h2>
+<div class="glass-card rounded-2xl border border-slate-700/50 p-2 md:p-3">
+  <div id="prop-additional-details" class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-1">
+    <!-- Populated dynamically via JS from API -->
+  </div>
+</div>
+</section>
+<!-- END: AdditionalDetailsList -->
+
+<!-- BEGIN: SuitabilitySection -->
+<section id="prop-suitability-section" class="hidden">
+<h2 class="text-sm font-bold text-slate-300 uppercase tracking-wider mb-3 flex items-center gap-2">
+  <span class="w-1.5 h-3.5 bg-brand-gold rounded-full"></span>
+  ملائمة واستخدامات العقار
+</h2>
+<div id="prop-suitability-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5">
+  <!-- Populated dynamically via JS from API -->
+</div>
+<div id="prop-suitability-note-box" class="hidden mt-3 p-3.5 rounded-xl glass-card border border-brand-gold/20 flex items-start gap-2.5">
+  <i class="fa-solid fa-circle-info text-brand-gold mt-0.5 text-sm shrink-0"></i>
+  <span id="prop-suitability-note" class="text-xs text-slate-300 leading-relaxed"></span>
+</div>
+</section>
+<!-- END: SuitabilitySection -->
+
+<!-- BEGIN: AmenitiesAndFeatures -->
+<section data-purpose="features-and-amenities" class="hidden">
+<h2 class="text-sm font-bold text-slate-300 uppercase tracking-wider mb-3 flex items-center gap-2">
+<span class="w-1.5 h-3.5 bg-brand-gold rounded-full"></span>
+          المزايا والتجهيزات المتوفرة
+        </h2>
+<div id="prop-features" class="grid grid-cols-2 lg:grid-cols-3 gap-2.5">
+  <!-- Populated dynamically via JS from API -->
+</div>
+</section>
+<!-- END: AmenitiesAndFeatures -->
+
+<!-- BEGIN: InstagramSection -->
+<section id="prop-instagram-section" class="hidden">
+<h2 class="text-sm font-bold text-slate-300 uppercase tracking-wider mb-3 flex items-center gap-2">
+  <i class="fa-brands fa-instagram text-pink-500"></i>
+  منشور انستاجرام للعقار
+</h2>
+<div class="glass-card rounded-2xl border border-slate-700/50 p-4 flex justify-center overflow-hidden">
+  <div id="prop-instagram-container"></div>
+</div>
+</section>
+<!-- END: InstagramSection -->
+
+</main>
+<!-- END: MainContentWrapper -->
+<!-- Standard Footer -->
+<footer class="bg-brand-night border-t border-brand-gold/20 pt-12 pb-12 px-6 md:px-10 lg:px-20 mt-10 w-full relative z-10">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+    <div class="space-y-4">
+      <div class="flex items-center gap-2">
+        <div class="w-10 h-10">
+          <img src="../UPLOADS/LOGO.png" alt="اكروبوليس هوم" class="w-full h-full object-contain filter drop-shadow-md">
+        </div>
+        <span class="text-lg font-black tracking-wide text-white block">اكروبوليس هوم</span>
+      </div>
+      <p class="text-sm text-slate-400 leading-relaxed">
+        وجهتك الأولى للعقارات الفاخرة والاستثنائية. نقدم لك تجربة فريدة في البحث عن منزل أحلامك أو استثمارك القادم.
+      </p>
+    </div>
+    <div class="space-y-4">
+      <h3 class="text-brand-gold font-bold text-lg mb-2">روابط سريعة</h3>
+      <ul class="space-y-2 text-sm text-slate-300">
+        <li><a href="index.html" class="hover:text-white transition-colors">الرئيسية</a></li>
+        <li><a href="properties.html" class="hover:text-white transition-colors">تصفح العقارات</a></li>
+        <li><a href="#" class="hover:text-white transition-colors">من نحن</a></li>
+        <li><a href="#" class="hover:text-white transition-colors">الخدمات الاستشارية</a></li>
+      </ul>
+    </div>
+    <div class="space-y-4">
+      <h3 class="text-brand-gold font-bold text-lg mb-2">تواصل معنا</h3>
+      <ul class="space-y-3 text-sm text-slate-300">
+        <li id="footer-address" class="hidden items-center gap-2"><i class="fa-solid fa-location-dot text-brand-gold w-4 text-center"></i> <span></span></li>
+        <li id="footer-phone" class="hidden items-center gap-2"><i class="fa-solid fa-phone text-brand-gold w-4 text-center"></i> <span dir="ltr"></span></li>
+        <li id="footer-email" class="hidden items-center gap-2"><i class="fa-solid fa-envelope text-brand-gold w-4 text-center"></i> <span dir="ltr"></span></li>
+      </ul>
+    </div>
+    <div class="space-y-4">
+      <h3 class="text-brand-gold font-bold text-lg mb-2">تابعنا</h3>
+      <div class="flex items-center gap-3">
+        <a href="#" id="footer-ig" class="hidden w-10 h-10 rounded-full bg-brand-slate border border-brand-gold/30 items-center justify-center text-slate-300 hover:text-white hover:border-brand-gold transition-all"><i class="fa-brands fa-instagram text-lg"></i></a>
+        <a href="#" id="footer-tw" class="hidden w-10 h-10 rounded-full bg-brand-slate border border-brand-gold/30 items-center justify-center text-slate-300 hover:text-white hover:border-brand-gold transition-all"><i class="fa-brands fa-twitter text-lg"></i></a>
+        <a href="#" id="footer-snap" class="hidden w-10 h-10 rounded-full bg-brand-slate border border-brand-gold/30 items-center justify-center text-slate-300 hover:text-white hover:border-brand-gold transition-all"><i class="fa-brands fa-snapchat text-lg"></i></a>
+        <a href="#" id="footer-tik" class="hidden w-10 h-10 rounded-full bg-brand-slate border border-brand-gold/30 items-center justify-center text-slate-300 hover:text-white hover:border-brand-gold transition-all"><i class="fa-brands fa-tiktok text-lg"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="max-w-7xl mx-auto mt-10 pt-6 border-t border-slate-800 flex flex-col md:flex-row items-center justify-between text-xs text-slate-500">
+    <p>جميع الحقوق محفوظة &copy; 2026 اكروبوليس هوم</p>
+    <div class="flex gap-4 mt-4 md:mt-0">
+      <a href="#" class="hover:text-slate-300">الشروط والأحكام</a>
+      <a href="#" class="hover:text-slate-300">سياسة الخصوصية</a>
+    </div>
+  </div>
+</footer>
+<!-- BEGIN: FixedBottomActionBar -->
+<!-- Sticky bottom CTA bar with blur backdrop and glowing primary button -->
+<div class="fixed bottom-0 w-full z-50 p-4 md:px-10 pb-6 bg-[#080C14]/90 backdrop-blur-xl border-t border-brand-gold/20 shadow-2xl">
+<div class="flex items-center gap-3">
+<!-- Price overview in the bottom bar -->
+<div class="shrink-0 text-right pr-1">
+<span class="text-[10px] text-slate-400 block uppercase font-medium">السعر المطلوب</span>
+<div class="flex items-baseline gap-1">
+<span id="prop-price-cta" class="text-lg font-black gold-gradient-text tracking-tight">...</span>
+<span class="text-[11px] font-semibold text-slate-300">يورو</span>
+</div>
+</div>
+<!-- Main Golden CTA Button -->
+<button onclick="document.getElementById('viewingModal').classList.remove('hidden')" class="flex-1 py-3.5 px-4 rounded-xl gold-gradient-bg text-slate-950 font-extrabold text-sm flex items-center justify-center gap-2 shadow-glow-gold hover:opacity-95 active:scale-95 transition-all cursor-pointer" type="button">
+<i class="fa-solid fa-calendar-check text-sm text-slate-950"></i>
+<span class="">طلب معاينة العقار</span>
+</button>
+<!-- Quick phone direct call icon button -->
+<a id="cta-contact-btn" href="#" aria-label="اتصال فوري" class="w-12 h-12 rounded-xl glass-card border-brand-gold/40 flex items-center justify-center text-brand-gold hover:bg-brand-gold/20 active:scale-95 transition shrink-0 cursor-pointer">
+<i class="fa-solid fa-phone text-base"></i>
+</a>
+</div>
+</div>
+<!-- END: FixedBottomActionBar -->
+</div>
+<!-- END: MobileDeviceFrameContainer -->
+
+
+
+function toggleFilterDrawer() {
+  const panel = document.getElementById('quickFilterPanel');
+  const btn = document.getElementById('topFilterToggleBtn');
+  if (!panel || !btn) return;
+  if (panel.classList.contains('hidden')) {
+    panel.classList.remove('hidden');
+    btn.classList.add('bg-brand-gold', 'text-slate-950');
+    btn.classList.remove('bg-brand-gold/10', 'text-brand-gold');
+  } else {
+    panel.classList.add('hidden');
+    btn.classList.remove('bg-brand-gold', 'text-slate-950');
+    btn.classList.add('bg-brand-gold/10', 'text-brand-gold');
+  }
+}
+
+function handleTopSearch(e) {
+  if (e && e.preventDefault) e.preventDefault();
+  const query = document.getElementById('topSearchInput')?.value.trim();
+  let url = 'properties.html?search=1';
+  if (query) url += '&location=' + encodeURIComponent(query);
+  window.location.href = url;
+}
+
+function applyQuickFilters() {
+  const query = document.getElementById('topSearchInput')?.value.trim();
+  const category = document.getElementById('quickFilterCategory')?.value;
+  const priceMin = document.getElementById('quickFilterPriceMin')?.value.trim();
+  const priceMax = document.getElementById('quickFilterPriceMax')?.value.trim();
+
+  let url = 'properties.html?search=1';
+  if (query) url += '&location=' + encodeURIComponent(query);
+  if (category) url += '&category=' + encodeURIComponent(category);
+  if (priceMin || priceMax) {
+    url += '&price=' + encodeURIComponent(`${priceMin || '0'} - ${priceMax || '1000000000'}`);
+  }
+  window.location.href = url;
+}
+
+function resetQuickFilters() {
+  const inp = document.getElementById('topSearchInput');
+  const cat = document.getElementById('quickFilterCategory');
+  const pMin = document.getElementById('quickFilterPriceMin');
+  const pMax = document.getElementById('quickFilterPriceMax');
+  if (inp) inp.value = '';
+  if (cat) cat.value = '';
+  if (pMin) pMin.value = '';
+  if (pMax) pMax.value = '';
+}
+</script>
+
+<!-- Viewing Request Modal -->
+<div id="viewingModal" class="hidden fixed inset-0 z-[100] flex items-center justify-center px-4 bg-black/60 backdrop-blur-sm transition-opacity">
+  <div class="bg-[#0B0F19] border border-brand-gold/30 rounded-2xl w-full max-w-md overflow-hidden shadow-[0_0_40px_-10px_rgba(216,168,104,0.3)] transform transition-transform">
+    <!-- Header -->
+    <div class="p-5 border-b border-white/10 flex items-center justify-between bg-slate-900/50">
+      <h3 class="text-lg font-bold text-white flex items-center gap-2"><i class="fa-solid fa-calendar-check text-brand-gold"></i> حجز موعد معاينة</h3>
+      <button onclick="document.getElementById('viewingModal').classList.add('hidden')" class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-slate-400 hover:text-white hover:bg-white/10 transition">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <!-- Body -->
+    <form id="viewingForm" class="p-5 space-y-4" onsubmit="submitViewingRequest(event)">
+      <!-- Hidden inputs for backend processing -->
+      <input type="hidden" id="propertyCode" name="property_code" value="">
+      <input type="hidden" id="propertyUrl" name="property_url" value="">
+
+      <div class="space-y-1.5">
+        <label class="text-sm font-bold text-slate-300">الاسم الكريم</label>
+        <input type="text" name="client_name" required class="w-full bg-slate-800/50 border border-slate-700 rounded-lg px-4 py-3 text-white outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-colors" placeholder="اكتب اسمك هنا...">
+      </div>
+      <div class="space-y-1.5">
+        <label class="text-sm font-bold text-slate-300">رقم الجوال</label>
+        <input type="tel" name="client_phone" required class="w-full bg-slate-800/50 border border-slate-700 rounded-lg px-4 py-3 text-white outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-colors text-right" placeholder="05x xxx xxxx" dir="ltr">
+      </div>
+      <div class="space-y-1.5">
+        <label class="text-sm font-bold text-slate-300">تاريخ ووقت المعاينة المفضل</label>
+        <input type="datetime-local" name="preferred_date" required class="w-full bg-slate-800/50 border border-slate-700 rounded-lg px-4 py-3 text-white outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-colors">
+      </div>
+      <div class="pt-4">
+        <button type="submit" class="w-full py-3.5 rounded-lg gold-gradient-bg text-slate-950 font-bold flex items-center justify-center gap-2 hover:opacity-95 transition-all shadow-glow-gold active:scale-95">
+          <i class="fa-solid fa-paper-plane text-sm"></i> تأكيد إرسال الطلب
+        </button>
+        <p class="text-[10px] text-center text-slate-500 mt-3">سيتم حفظ طلبك وإشعار الإدارة فوراً</p>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  // On load, capture the current URL dynamically so it's ready to be sent to the backend
+  document.getElementById('propertyUrl').value = window.location.href;
+
+  function submitViewingRequest(event) {
+    event.preventDefault();
+    
+    // Get the hidden values
+    const propCode = document.getElementById('propertyCode').value;
+    const propUrl = document.getElementById('propertyUrl').value;
+    
+    // Show a realistic mock success message detailing what was sent
+    alert(`تم استلام طلبك بنجاح!\n\nمعلومات تم إرفاقها للطلب تلقائياً للإدارة:\n- كود العقار: ${propCode}\n- رابط العقار مدمج\n\nسيتواصل معك أحد مستشارينا قريباً لتأكيد الموعد.`);
+    
+    // Close modal and reset form
+    document.getElementById('viewingModal').classList.add('hidden');
+    event.target.reset();
+  }
+
+  // Dynamic Contact Info Loading
+  document.addEventListener("DOMContentLoaded", async () => {
+      try {
+          const response = await fetch('/api/admin/config/contact');
+          if (!response.ok) return;
+          const settings = await response.json();
+
+          const updateElement = (id, value, isLink = false) => {
+              const el = document.getElementById(id);
+              if (!el) return;
+              
+              if (!value || value.trim() === '') {
+                  el.style.display = 'none';
+              } else {
+                  el.style.display = 'flex';
+                  if (isLink) {
+                      el.href = value;
+                  } else {
+                      const textSpan = el.querySelector('span:not(.fa-solid):not(.fa-brands)');
+                      if (textSpan) textSpan.textContent = value;
+                  }
+              }
+          };
+
+          updateElement('footer-address', settings.address);
+          updateElement('footer-phone', settings.phone);
+          updateElement('footer-email', settings.email);
+
+          // WhatsApp & Header Contact button
+          if (settings.whatsapp && settings.whatsapp.trim() !== '') {
+              const cleanWa = settings.whatsapp.replace(/[^0-9]/g, '');
+              const waUrl = `https://wa.me/${cleanWa}`;
+              const headerBtn = document.getElementById('header-contact-btn');
+              if (headerBtn) {
+                  headerBtn.onclick = () => window.open(waUrl, '_blank');
+              }
+          } else if (settings.phone && settings.phone.trim() !== '') {
+              const headerBtn = document.getElementById('header-contact-btn');
+              if (headerBtn) {
+                  headerBtn.onclick = () => window.location.href = `tel:${settings.phone}`;
+              }
+          }
+
+          updateElement('footer-ig', settings.instagram, true);
+          updateElement('footer-tw', settings.twitter, true);
+          updateElement('footer-snap', settings.snapchat, true);
+          updateElement('footer-tik', settings.tiktok, true);
+      } catch (err) {
+          console.error("Failed to load contact settings", err);
+      }
+  });
+</script>
+
+<!-- Property Fetch Script -->
+<script>
+  let currentImageIndex = 0;
+  let propertyImages = [];
+
+  function updateGallery() {
+      const imgEl = document.getElementById('prop-hero-image');
+      const countEl = document.getElementById('prop-images-count');
+      const placeholder = document.getElementById('prop-hero-placeholder');
+      const prevBtn = document.getElementById('prop-prev-btn');
+      const nextBtn = document.getElementById('prop-next-btn');
+
+      if (!propertyImages || propertyImages.length === 0) {
+          if (imgEl) imgEl.classList.add('hidden');
+          if (placeholder) placeholder.classList.remove('hidden');
+          if (countEl) countEl.textContent = 'لا توجد صور';
+          if (prevBtn) prevBtn.classList.add('hidden');
+          if (nextBtn) nextBtn.classList.add('hidden');
+          return;
+      }
+
+      if (placeholder) placeholder.classList.add('hidden');
+      if (imgEl) {
+          imgEl.classList.remove('hidden');
+          imgEl.src = propertyImages[currentImageIndex];
+      }
+      if (countEl) {
+          countEl.textContent = `${currentImageIndex + 1} / ${propertyImages.length} صورة`;
+      }
+      if (propertyImages.length > 1) {
+          if (prevBtn) { prevBtn.classList.remove('hidden'); prevBtn.classList.add('flex'); }
+          if (nextBtn) { nextBtn.classList.remove('hidden'); nextBtn.classList.add('flex'); }
+      } else {
+          if (prevBtn) prevBtn.classList.add('hidden');
+          if (nextBtn) nextBtn.classList.add('hidden');
+      }
+  }
+
+  window.prevImage = function() {
+      if (!propertyImages || propertyImages.length <= 1) return;
+      currentImageIndex = (currentImageIndex - 1 + propertyImages.length) % propertyImages.length;
+      updateGallery();
+  };
+
+  window.nextImage = function() {
+      if (!propertyImages || propertyImages.length <= 1) return;
+      currentImageIndex = (currentImageIndex + 1) % propertyImages.length;
+      updateGallery();
+  };
+
+  document.addEventListener('DOMContentLoaded', async () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const propertyCode = urlParams.get('id');
+      
+      if(propertyCode) {
+          try {
+              const res = await fetch('/api/properties/' + propertyCode);
+              if(res.ok) {
+                  const property = await res.json();
+                  
+                  // Document title
+                  if (property.title) {
+                      document.title = property.title + ' | اكروبوليس هوم';
+                  }
+
+                  // Update text elements
+                  document.getElementById('prop-code').textContent = 'كود العقار: #' + (property.property_code || '');
+                  document.getElementById('prop-status').textContent = property.status || 'متاح';
+                  document.getElementById('prop-title').textContent = property.title || 'عقار مميز';
+                  document.getElementById('prop-location').textContent = property.location || 'غير محدد';
+                  
+                  const catBadge = document.getElementById('prop-category-badge');
+                  if (catBadge) catBadge.textContent = property.category || (property.location || 'عقار فاخر');
+
+                  const modalCode = document.getElementById('propertyCode');
+                  if (modalCode) modalCode.value = property.property_code || '';
+
+                  if (property.map_link && property.map_link.trim() !== '') {
+                      const mapBtn = document.getElementById('prop-map-btn');
+                      mapBtn.href = property.map_link;
+                      mapBtn.style.display = 'flex';
+                  }
+
+                  const priceNum = parseFloat(property.price) || 0;
+                  document.getElementById('prop-price').textContent = priceNum.toLocaleString();
+                  document.getElementById('prop-price-cta').textContent = priceNum.toLocaleString();
+                  
+                  document.getElementById('prop-area').textContent = (property.area || 0) + ' م²';
+                  document.getElementById('prop-bedrooms').textContent = (property.bedrooms || 0) + ' غرف';
+                  document.getElementById('prop-bathrooms').textContent = (property.bathrooms || 0) + ' حمامات';
+                  
+                  const details = property.additional_details || {};
+
+                  // Additional specs in grid
+                  const floorEl = document.getElementById('prop-floor');
+                  if (floorEl) floorEl.textContent = details.flooring || '-';
+
+                  const yearEl = document.getElementById('prop-build-year');
+                  if (yearEl) yearEl.textContent = details.build_year || '-';
+
+                  const meterEl = document.getElementById('prop-meter-price');
+                  if (meterEl) {
+                      const mPrice = details.meter_price || (property.price && property.area ? Math.round(property.price / property.area) : 0);
+                      meterEl.textContent = mPrice ? `${Number(mPrice).toLocaleString()} €` : '-';
+                  }
+
+                  // Update Gallery
+                  propertyImages = (property.images && Array.isArray(property.images)) ? property.images : [];
+                  currentImageIndex = 0;
+                  updateGallery();
+                  
+                  // Description
+                  const descSection = document.getElementById('prop-description-section');
+                  const descText = document.getElementById('prop-description');
+                  if (descSection && descText) {
+                      if (property.description && property.description.trim() !== '') {
+                          descText.textContent = property.description;
+                          descSection.classList.remove('hidden');
+                      } else {
+                          descSection.classList.add('hidden');
+                      }
+                  }
+
+                  // Populate Additional Details
+                  const addDetailsContainer = document.getElementById('prop-additional-details');
+                  const addDetailsSection = document.querySelector('[data-purpose="additional-details"]');
+                  if (addDetailsContainer) {
+                      addDetailsContainer.innerHTML = '';
+                      const labelsMap = {
+                          category: 'تصنيف العقار',
+                          price_type: 'نوع العرض',
+                          flooring: 'الأرضية (الطابق)',
+                          build_year: 'سنة البناء',
+                          construction: 'الإنشاء والهيكل',
+                          energy_class: 'فئة الطاقة',
+                          meter_price: 'سعر المتر',
+                          furnished: 'الفرش والأثاث',
+                          kitchen: 'المطبخ',
+                          structural_build_year: 'سنة البناء الإنشائي',
+                          structural_frame_type: 'نوع الهيكل الإنشائي',
+                          structural_condition: 'الحالة الإنشائية',
+                          structural_warranty: 'الضمانات',
+                          structural_notes: 'ملاحظات إنشائية',
+                          listing_date: 'تاريخ الإدراج'
+                      };
+
+                      let itemsCount = 0;
+                      const addItem = (label, val) => {
+                          if (!val || val === '' || (Array.isArray(val) && val.length === 0)) return;
+                          const displayVal = Array.isArray(val) ? val.join(' • ') : val;
+                          addDetailsContainer.innerHTML += `
+                            <div class="flex items-center justify-between px-3 py-2.5 border-b border-slate-700/30 hover:bg-slate-800/30 transition rounded-lg">
+                              <span class="text-slate-400 text-xs md:text-sm font-medium">${label}</span>
+                              <span class="text-white text-xs md:text-sm font-bold text-left">${displayVal}</span>
+                            </div>
+                          `;
+                          itemsCount++;
+                      };
+
+                      if (property.category) addItem('تصنيف العقار', property.category);
+                      if (property.price_type) addItem('نوع العرض', property.price_type);
+
+                      for (const [key, label] of Object.entries(labelsMap)) {
+                          if (details[key]) {
+                              let val = details[key];
+                              if (key === 'meter_price' && val) val = `${Number(val).toLocaleString()} يورو / م²`;
+                              addItem(label, val);
+                          }
+                      }
+
+                      // Render Custom Structural Options added by admin
+                      let customSpecs = property.structural_specs || details.custom_structural || [];
+                      if (typeof customSpecs === 'string') {
+                          try { customSpecs = JSON.parse(customSpecs); } catch(e) { customSpecs = []; }
+                      }
+                      if (Array.isArray(customSpecs)) {
+                          customSpecs.forEach(item => {
+                              if (item && item.name && item.value) {
+                                  addItem(item.name, item.value);
+                              }
+                          });
+                      }
+
+                      if (addDetailsSection) {
+                          if (itemsCount > 0) {
+                              addDetailsSection.classList.remove('hidden');
+                          } else {
+                              addDetailsSection.classList.add('hidden');
+                          }
+                      }
+                  }
+
+                  // Populate Suitability Section (ملائمة واستخدامات العقار)
+                  const suitSection = document.getElementById('prop-suitability-section');
+                  const suitList = document.getElementById('prop-suitability-list');
+                  const suitNoteBox = document.getElementById('prop-suitability-note-box');
+                  const suitNoteText = document.getElementById('prop-suitability-note');
+
+                  const suitableItems = Array.isArray(details.suitable_for)
+                      ? details.suitable_for
+                      : (details.suitable_for ? [details.suitable_for] : []);
+
+                  if (suitSection && suitList) {
+                      suitList.innerHTML = '';
+                      if (suitableItems.length > 0) {
+                          suitableItems.forEach(item => {
+                              suitList.innerHTML += `
+                              <div class="flex items-center gap-2.5 p-3 rounded-xl glass-card border-slate-800 hover:border-brand-gold/30 transition">
+                                <div class="w-7 h-7 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-user-check text-xs"></i>
+                                </div>
+                                <span class="text-xs font-semibold text-slate-200">${item}</span>
+                              </div>
+                              `;
+                          });
+
+                          if (details.suitable_note && details.suitable_note.trim() !== '') {
+                              suitNoteText.textContent = details.suitable_note;
+                              suitNoteBox.classList.remove('hidden');
+                          } else {
+                              suitNoteBox.classList.add('hidden');
+                          }
+
+                          suitSection.classList.remove('hidden');
+                      } else {
+                          suitSection.classList.add('hidden');
+                      }
+                  }
+
+                  // Populate Features
+                  const featuresContainer = document.getElementById('prop-features');
+                  const featuresSection = document.querySelector('[data-purpose="features-and-amenities"]');
+                  if (featuresContainer && property.features && property.features.length > 0) {
+                      featuresContainer.innerHTML = '';
+                      property.features.forEach(feature => {
+                          featuresContainer.innerHTML += `
+                          <div class="flex items-center gap-2.5 p-3 rounded-xl glass-card border-slate-800">
+                            <div class="w-7 h-7 rounded-full bg-amber-500/10 text-brand-gold flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-check text-xs"></i>
+                            </div>
+                            <span class="text-xs font-semibold text-slate-200">${feature}</span>
+                          </div>
+                          `;
+                      });
+                      if (featuresSection) featuresSection.classList.remove('hidden');
+                  } else if (featuresSection) {
+                      featuresSection.classList.add('hidden');
+                  }
+
+                  // Instagram embed
+                  const instaSection = document.getElementById('prop-instagram-section');
+                  const instaContainer = document.getElementById('prop-instagram-container');
+                  if (instaSection && instaContainer) {
+                      if (details.instagram_embed && details.instagram_embed.trim() !== '') {
+                          instaContainer.innerHTML = details.instagram_embed;
+                          instaSection.classList.remove('hidden');
+                          if (window.instgrm && window.instgrm.Embeds) {
+                              window.instgrm.Embeds.process();
+                          } else {
+                              const s = document.createElement('script');
+                              s.async = true;
+                              s.src = '//www.instagram.com/embed.js';
+                              document.body.appendChild(s);
+                          }
+                      } else {
+                          instaSection.classList.add('hidden');
+                      }
+                  }
+                  
+              }
+          } catch(err) {
+              console.error('Error fetching property details', err);
+          }
+      }
+
+      // Load footer contact info if available in database
+      try {
+          const res = await fetch('/api/admin/config/contact');
+          if (res.ok) {
+              const settings = await res.json();
+              const updateEl = (id, val, isLink = false) => {
+                  const el = document.getElementById(id);
+                  if (!el) return;
+                  if (!val || val.trim() === '') {
+                      el.style.display = 'none';
+                  } else {
+                      el.style.display = 'flex';
+                      if (isLink) {
+                          el.href = val;
+                      } else {
+                          const span = el.querySelector('span:not(.fa-solid):not(.fa-brands)');
+                          if (span) span.textContent = val;
+                      }
+                  }
+              };
+              updateEl('footer-address', settings.address);
+              updateEl('footer-phone', settings.phone);
+              updateEl('footer-email', settings.email);
+              updateEl('footer-ig', settings.instagram, true);
+              updateEl('footer-tw', settings.twitter, true);
+              updateEl('footer-snap', settings.snapchat, true);
+              updateEl('footer-tik', settings.tiktok, true);
+
+              if (settings.phone && settings.phone.trim() !== '') {
+                  const ctaBtn = document.getElementById('cta-contact-btn');
+                  if (ctaBtn) ctaBtn.href = `tel:${settings.phone}`;
+              }
+          }
+      } catch(e) {
+          console.error('Failed to load contact info', e);
+      }
+  });
+</script>
+</body>
+</html>
