@@ -3,6 +3,20 @@ const router = express.Router();
 const { Property } = require('../models/Property');
 const { Op } = require('sequelize');
 
+// Helper to format dynamic property title: [category] في [location] [area] م²
+function formatDynamicProperty(p) {
+    const json = p && p.toJSON ? p.toJSON() : (p || {});
+    const cat = (json.category && json.category.trim()) || 'عقار';
+    let loc = '';
+    if (json.location && json.location.trim()) {
+        const trim = json.location.trim();
+        loc = trim.startsWith('في ') ? trim : `في ${trim}`;
+    }
+    const area = json.area ? `${json.area} م²` : '';
+    json.title = [cat, loc, area].filter(Boolean).join(' ') || json.title || 'عقار';
+    return json;
+}
+
 // @route   GET /api/properties
 // @desc    Get all properties (with optional filtering)
 // @access  Public
@@ -24,7 +38,7 @@ router.get('/', async (req, res) => {
             where: whereClause,
             order: [['createdAt', 'DESC']]
         });
-        res.json(properties);
+        res.json(properties.map(formatDynamicProperty));
     } catch (err) {
         console.error(err.message);
         res.status(500).json({ error: 'Server Error' });
@@ -41,7 +55,7 @@ router.get('/featured', async (req, res) => {
             order: [['createdAt', 'DESC']],
             limit: 8
         });
-        res.json(featuredProperties);
+        res.json(featuredProperties.map(formatDynamicProperty));
     } catch (err) {
         console.error(err.message);
         res.status(500).json({ error: 'Server Error' });
@@ -61,7 +75,7 @@ router.get('/:property_code', async (req, res) => {
             return res.status(404).json({ msg: 'Property not found' });
         }
         
-        res.json(property);
+        res.json(formatDynamicProperty(property));
     } catch (err) {
         console.error(err.message);
         res.status(500).json({ error: 'Server Error' });

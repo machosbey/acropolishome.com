@@ -6,8 +6,10 @@
   <title>لوحة التحكم | أكروبوليس هوم</title>
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google Fonts: Cairo -->
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <!-- Google Fonts: Arabic & Latin Luxury Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400;600;700;800&family=Almarai:wght@400;700;800&family=Amiri:wght@400;700&family=Bodoni+Moda:wght@400;600;700;800&family=Cairo:wght@400;600;700;800;900&family=Changa:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
   <!-- FontAwesome Icons -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
   <script>
@@ -127,6 +129,14 @@
             <span>معلومات التواصل</span>
           </div>
           <span class="text-[10px] px-2 py-0.5 rounded-full bg-amber-100 text-gold-800 font-bold border border-amber-200">المدير العام</span>
+        </button>
+
+        <button type="button" onclick="sidebarNavigate('settings')" id="sidebarBtn-settings" class="hidden w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-slate-600 hover:bg-slate-100 hover:text-slate-900 font-bold transition cursor-pointer">
+          <div class="flex items-center gap-3">
+            <i class="fa-solid fa-sliders w-4 text-center text-slate-400"></i>
+            <span>إعدادات الموقع (ADMIN SETTING)</span>
+          </div>
+          <span class="text-[10px] px-2 py-0.5 rounded-full bg-amber-100 text-gold-800 font-bold border border-amber-200">إدارة النظام</span>
         </button>
       </nav>
 
@@ -518,6 +528,358 @@
             </button>
           </div>
         </form>
+      </div>
+
+      <!-- TAB 4: SITE SETTINGS MANAGEMENT (ADMIN SETTING) -->
+      <div id="tab-settings" class="hidden space-y-6">
+
+        <!-- Feedback Alert Box -->
+        <div id="siteSettingsSaveAlert" class="hidden p-4 rounded-2xl text-xs font-bold transition"></div>
+
+        <!-- CARD 1: شعار الموقع الرسمي (Site Logo) -->
+        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-xs space-y-5">
+          <div class="flex items-center gap-2.5 pb-3 border-b border-slate-100">
+            <div class="w-8 h-8 rounded-xl bg-amber-50 text-gold-600 flex items-center justify-center text-sm font-black border border-amber-200/60">
+              <i class="fa-solid fa-image"></i>
+            </div>
+            <div>
+              <h4 class="text-sm font-extrabold text-slate-800">شعار الموقع الرسمي (Site Logo)</h4>
+              <span class="text-[11px] text-slate-400 font-medium">الشعار الرئيسي المعروض في الهيدر والفوتر</span>
+            </div>
+          </div>
+
+          <!-- Current Logo Preview Box -->
+          <div class="flex flex-col sm:flex-row items-center gap-5 p-4 rounded-2xl bg-slate-50/80 border border-slate-200/80">
+            <div class="w-28 h-28 rounded-2xl bg-[#0B0E14] border border-amber-500/30 flex items-center justify-center p-3 shadow-inner relative group overflow-hidden shrink-0">
+              <img id="currentSiteLogoImg" src="../UPLOADS/LOGO.png" alt="الشعار الحالي" class="max-h-full max-w-full object-contain filter drop-shadow">
+              <span class="absolute bottom-1 bg-black/70 text-[9px] text-amber-300 font-bold px-1.5 py-0.5 rounded">الشعار الحالي</span>
+            </div>
+            <div class="space-y-1.5 text-center sm:text-right">
+              <span class="text-xs font-bold text-slate-700 block">شعار المنصة المعتمد</span>
+              <p class="text-[11px] text-slate-500 leading-relaxed">
+                يتم حفظ الشعار في مسار <code class="text-[10px] font-mono bg-white px-1.5 py-0.5 rounded border border-slate-200 text-gold-700">/UPLOADS/LOGO.png</code> ويظهر تلقائياً لجميع الزوار.
+              </p>
+              <span class="inline-flex items-center gap-1 text-[10px] text-amber-700 font-bold bg-amber-50 px-2 py-0.5 rounded-md border border-amber-200">
+                <i class="fa-solid fa-circle-info"></i> يفضل صورة PNG شفافة أو متناسقة
+              </span>
+            </div>
+          </div>
+
+          <!-- Upload New Logo Section -->
+          <div class="space-y-3">
+            <label class="block text-xs font-bold text-slate-700">تغيير الشعار بصورة جديدة</label>
+            
+            <!-- File drop/select area -->
+            <div onclick="document.getElementById('siteLogoFileInput').click()" class="border-2 border-dashed border-slate-300 hover:border-gold-500 bg-slate-50/50 hover:bg-amber-50/30 rounded-2xl p-5 text-center cursor-pointer transition group">
+              <input type="file" id="siteLogoFileInput" accept="image/*" class="hidden" onchange="handleLogoFileSelect(event)">
+              <div class="flex flex-col items-center gap-2">
+                <div class="w-10 h-10 rounded-full bg-amber-100 text-gold-600 flex items-center justify-center group-hover:scale-110 transition">
+                  <i class="fa-solid fa-cloud-arrow-up text-base"></i>
+                </div>
+                <div class="text-xs font-bold text-slate-700">اضغط هنا لاختيار صورة من جهازك</div>
+                <div class="text-[10px] text-slate-400">PNG, JPG, WEBP أو SVG (بحد أقصى 5 ميجابايت)</div>
+              </div>
+            </div>
+
+            <!-- Selected File Preview & Upload Trigger -->
+            <div id="newLogoPreviewWrapper" class="hidden p-3.5 rounded-xl bg-amber-50/60 border border-amber-200 flex items-center justify-between gap-3">
+              <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-xl bg-[#0B0E14] border border-amber-300 flex items-center justify-center p-1 overflow-hidden shrink-0">
+                  <img id="newLogoPreviewImg" src="" alt="معاينة" class="max-h-full max-w-full object-contain">
+                </div>
+                <div>
+                  <span id="newLogoFileName" class="text-xs font-bold text-slate-800 block truncate max-w-[180px]">logo.png</span>
+                  <span class="text-[10px] text-gold-700 font-semibold">جاهز للحفظ والتطبيق</span>
+                </div>
+              </div>
+              <div class="flex items-center gap-2">
+                <button type="button" onclick="cancelLogoSelection()" class="px-2.5 py-1.5 rounded-lg bg-white text-slate-500 hover:text-red-600 text-xs font-bold border border-slate-200 transition" title="إلغاء">
+                  <i class="fa-solid fa-xmark"></i>
+                </button>
+                <button type="button" id="uploadLogoBtn" onclick="uploadSiteLogo()" class="px-4 py-2 rounded-xl gold-btn text-xs font-bold shadow-xs hover:shadow transition flex items-center gap-1.5 cursor-pointer">
+                  <i class="fa-solid fa-upload text-xs"></i>
+                  <span>تطبيق الشعار الآن</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= VERTICAL TEXT BOXES LIST (ترتيب عامودي للمربعات النصية) ================= -->
+        <div class="space-y-5">
+
+          <!-- 1. المربع النصي: اسم المنصة / الموقع (Site Name) -->
+          <div class="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200 shadow-xs space-y-3.5">
+            <div class="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-slate-100">
+              <label class="text-xs sm:text-sm font-extrabold text-slate-800 flex items-center gap-2">
+                <div class="w-7 h-7 rounded-lg bg-amber-50 text-gold-600 flex items-center justify-center text-xs font-black border border-amber-200/60">
+                  <i class="fa-solid fa-signature"></i>
+                </div>
+                <span>اسم المنصة / الموقع (Site Name)</span>
+              </label>
+
+              <!-- Font & Color Controls -->
+              <div class="flex items-center gap-2">
+                <!-- زر اختيار الخط -->
+                <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-50 hover:bg-amber-50 border border-slate-200 hover:border-gold-400 text-slate-700 text-xs font-bold transition shadow-2xs">
+                  <i class="fa-solid fa-font text-gold-600 text-xs"></i>
+                  <span>الخط:</span>
+                  <select id="fontSelectSiteName" onchange="applyFieldTypography('site_name', this.value, null)" class="bg-transparent border-none outline-none font-bold text-xs cursor-pointer text-slate-800">
+                    <option value="Cairo">Cairo (افتراضي)</option>
+                    <option value="Tajawal">Tajawal</option>
+                    <option value="Almarai">Almarai</option>
+                    <option value="Alexandria">Alexandria</option>
+                    <option value="Amiri">Amiri</option>
+                    <option value="Changa">Changa</option>
+                    <option value="Plus Jakarta Sans">Plus Jakarta Sans</option>
+                    <option value="Bodoni Moda">Bodoni Moda</option>
+                  </select>
+                </div>
+
+                <!-- زر اختيار لون الخط -->
+                <label class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-50 hover:bg-amber-50 border border-slate-200 hover:border-gold-400 text-slate-700 text-xs font-bold transition cursor-pointer shadow-2xs">
+                  <i class="fa-solid fa-palette text-gold-600 text-xs"></i>
+                  <span>اللون:</span>
+                  <span id="colorBadgeSiteName" class="w-4 h-4 rounded-full border border-slate-300 shadow-2xs inline-block" style="background-color: #1E293B;"></span>
+                  <input type="color" id="colorPickerSiteName" value="#1E293B" oninput="applyFieldTypography('site_name', null, this.value)" class="sr-only">
+                </label>
+              </div>
+            </div>
+
+            <!-- Text Box -->
+            <div>
+              <input type="text" id="siteSettingSiteName" oninput="updateHeroLivePreview()" placeholder="مثال: أكروبوليس هوم" class="w-full bg-slate-50 focus:bg-white border border-slate-200 rounded-xl px-4 py-2.5 text-xs sm:text-sm font-semibold text-slate-800 focus:border-gold-500 focus:ring-2 focus:ring-amber-500/10 outline-none transition" style="font-family: 'Cairo', sans-serif; color: #1E293B;">
+              <span class="text-[10px] text-slate-400 mt-1 block">يظهر في شريط عنوان المتصفح (Title) وفي الهيدر والفوتر</span>
+            </div>
+          </div>
+
+          <!-- 2. المربع النصي: العملة المعتمدة (Currency) -->
+          <div class="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200 shadow-xs space-y-3.5">
+            <div class="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-slate-100">
+              <label class="text-xs sm:text-sm font-extrabold text-slate-800 flex items-center gap-2">
+                <div class="w-7 h-7 rounded-lg bg-amber-50 text-gold-600 flex items-center justify-center text-xs font-black border border-amber-200/60">
+                  <i class="fa-solid fa-coins"></i>
+                </div>
+                <span>العملة المعتمدة (Currency)</span>
+              </label>
+
+              <!-- Font & Color Controls -->
+              <div class="flex items-center gap-2">
+                <!-- زر اختيار الخط -->
+                <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-50 hover:bg-amber-50 border border-slate-200 hover:border-gold-400 text-slate-700 text-xs font-bold transition shadow-2xs">
+                  <i class="fa-solid fa-font text-gold-600 text-xs"></i>
+                  <span>الخط:</span>
+                  <select id="fontSelectCurrency" onchange="applyFieldTypography('currency', this.value, null)" class="bg-transparent border-none outline-none font-bold text-xs cursor-pointer text-slate-800">
+                    <option value="Cairo">Cairo (افتراضي)</option>
+                    <option value="Tajawal">Tajawal</option>
+                    <option value="Almarai">Almarai</option>
+                    <option value="Alexandria">Alexandria</option>
+                    <option value="Amiri">Amiri</option>
+                    <option value="Changa">Changa</option>
+                    <option value="Plus Jakarta Sans">Plus Jakarta Sans</option>
+                    <option value="Bodoni Moda">Bodoni Moda</option>
+                  </select>
+                </div>
+
+                <!-- زر اختيار لون الخط -->
+                <label class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-50 hover:bg-amber-50 border border-slate-200 hover:border-gold-400 text-slate-700 text-xs font-bold transition cursor-pointer shadow-2xs">
+                  <i class="fa-solid fa-palette text-gold-600 text-xs"></i>
+                  <span>اللون:</span>
+                  <span id="colorBadgeCurrency" class="w-4 h-4 rounded-full border border-slate-300 shadow-2xs inline-block" style="background-color: #B88017;"></span>
+                  <input type="color" id="colorPickerCurrency" value="#B88017" oninput="applyFieldTypography('currency', null, this.value)" class="sr-only">
+                </label>
+              </div>
+            </div>
+
+            <!-- Text Box with Quick Select -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+              <div class="sm:col-span-2">
+                <input type="text" id="siteSettingCurrency" oninput="updateHeroLivePreview()" placeholder="مثال: يورو أو EUR أو €" class="w-full bg-slate-50 focus:bg-white border border-slate-200 rounded-xl px-4 py-2.5 text-xs sm:text-sm font-semibold text-slate-800 focus:border-gold-500 focus:ring-2 focus:ring-amber-500/10 outline-none transition" style="font-family: 'Cairo', sans-serif; color: #B88017;">
+              </div>
+              <div>
+                <select onchange="document.getElementById('siteSettingCurrency').value=this.value; updateHeroLivePreview();" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-xs font-bold text-slate-700 focus:border-gold-500 outline-none cursor-pointer">
+                  <option value="">عملات سريعة...</option>
+                  <option value="يورو">يورو (€)</option>
+                  <option value="دولار">دولار ($)</option>
+                  <option value="ريال">ريال سعودي (SAR)</option>
+                  <option value="درهم">درهم إماراتي (AED)</option>
+                  <option value="ليرة">ليرة (TRY)</option>
+                  <option value="دينار">دينار (KWD)</option>
+                </select>
+              </div>
+            </div>
+            <span class="text-[10px] text-slate-400 block">تظهر بجانب أسعار العقارات في شاشات العرض والبحث</span>
+          </div>
+
+          <!-- 3. المربع النصي: العنوان الرئيسي للبانر (Hero Main Title) -->
+          <div class="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200 shadow-xs space-y-3.5">
+            <div class="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-slate-100">
+              <label class="text-xs sm:text-sm font-extrabold text-slate-800 flex items-center gap-2">
+                <div class="w-7 h-7 rounded-lg bg-amber-50 text-gold-600 flex items-center justify-center text-xs font-black border border-amber-200/60">
+                  <i class="fa-solid fa-heading"></i>
+                </div>
+                <span>العنوان الرئيسي للبانر (Hero Title)</span>
+              </label>
+
+              <!-- Font & Color Controls -->
+              <div class="flex items-center gap-2">
+                <button type="button" onclick="insertGoldSpanInHeroTitle()" class="text-[10px] font-bold text-gold-700 hover:text-gold-900 bg-amber-50 hover:bg-amber-100 px-2.5 py-1.5 rounded-xl border border-amber-200 transition cursor-pointer flex items-center gap-1" title="إضافة تمييز باللون الذهبي">
+                  <i class="fa-solid fa-wand-magic-sparkles text-gold-600"></i>
+                  <span>+ تلوين ذهبي</span>
+                </button>
+
+                <!-- زر اختيار الخط -->
+                <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-50 hover:bg-amber-50 border border-slate-200 hover:border-gold-400 text-slate-700 text-xs font-bold transition shadow-2xs">
+                  <i class="fa-solid fa-font text-gold-600 text-xs"></i>
+                  <span>الخط:</span>
+                  <select id="fontSelectHeroTitle" onchange="applyFieldTypography('hero_title', this.value, null)" class="bg-transparent border-none outline-none font-bold text-xs cursor-pointer text-slate-800">
+                    <option value="Cairo">Cairo (افتراضي)</option>
+                    <option value="Tajawal">Tajawal</option>
+                    <option value="Almarai">Almarai</option>
+                    <option value="Alexandria">Alexandria</option>
+                    <option value="Amiri">Amiri</option>
+                    <option value="Changa">Changa</option>
+                    <option value="Plus Jakarta Sans">Plus Jakarta Sans</option>
+                    <option value="Bodoni Moda">Bodoni Moda</option>
+                  </select>
+                </div>
+
+                <!-- زر اختيار لون الخط -->
+                <label class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-50 hover:bg-amber-50 border border-slate-200 hover:border-gold-400 text-slate-700 text-xs font-bold transition cursor-pointer shadow-2xs">
+                  <i class="fa-solid fa-palette text-gold-600 text-xs"></i>
+                  <span>اللون:</span>
+                  <span id="colorBadgeHeroTitle" class="w-4 h-4 rounded-full border border-slate-300 shadow-2xs inline-block" style="background-color: #0F172A;"></span>
+                  <input type="color" id="colorPickerHeroTitle" value="#0F172A" oninput="applyFieldTypography('hero_title', null, this.value)" class="sr-only">
+                </label>
+              </div>
+            </div>
+
+            <!-- Text Area -->
+            <div>
+              <textarea id="siteSettingHeroTitle" rows="3" oninput="updateHeroLivePreview()" placeholder="اكتشف عقار أحلامك <br> <span class=&quot;text-[#E5B158] block mt-4&quot;>بين أرقى الخيارات</span>" class="w-full bg-slate-50 focus:bg-white border border-slate-200 rounded-xl px-4 py-2.5 text-xs sm:text-sm font-semibold text-slate-800 focus:border-gold-500 focus:ring-2 focus:ring-amber-500/10 outline-none transition leading-relaxed" style="font-family: 'Cairo', sans-serif; color: #0F172A;"></textarea>
+              <span class="text-[10px] text-slate-400 mt-1 block">يمكنك استخدام نصوص عادية أو وسوم HTML مثل &lt;br&gt; للسطور الجديدة.</span>
+            </div>
+          </div>
+
+          <!-- 4. المربع النصي: الوصف الفرعي للبانر (Hero Subtitle) -->
+          <div class="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200 shadow-xs space-y-3.5">
+            <div class="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-slate-100">
+              <label class="text-xs sm:text-sm font-extrabold text-slate-800 flex items-center gap-2">
+                <div class="w-7 h-7 rounded-lg bg-amber-50 text-gold-600 flex items-center justify-center text-xs font-black border border-amber-200/60">
+                  <i class="fa-solid fa-align-right"></i>
+                </div>
+                <span>الوصف الفرعي للبانر (Hero Subtitle)</span>
+              </label>
+
+              <!-- Font & Color Controls -->
+              <div class="flex items-center gap-2">
+                <!-- زر اختيار الخط -->
+                <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-50 hover:bg-amber-50 border border-slate-200 hover:border-gold-400 text-slate-700 text-xs font-bold transition shadow-2xs">
+                  <i class="fa-solid fa-font text-gold-600 text-xs"></i>
+                  <span>الخط:</span>
+                  <select id="fontSelectHeroSubtitle" onchange="applyFieldTypography('hero_subtitle', this.value, null)" class="bg-transparent border-none outline-none font-bold text-xs cursor-pointer text-slate-800">
+                    <option value="Cairo">Cairo (افتراضي)</option>
+                    <option value="Tajawal">Tajawal</option>
+                    <option value="Almarai">Almarai</option>
+                    <option value="Alexandria">Alexandria</option>
+                    <option value="Amiri">Amiri</option>
+                    <option value="Changa">Changa</option>
+                    <option value="Plus Jakarta Sans">Plus Jakarta Sans</option>
+                    <option value="Bodoni Moda">Bodoni Moda</option>
+                  </select>
+                </div>
+
+                <!-- زر اختيار لون الخط -->
+                <label class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-50 hover:bg-amber-50 border border-slate-200 hover:border-gold-400 text-slate-700 text-xs font-bold transition cursor-pointer shadow-2xs">
+                  <i class="fa-solid fa-palette text-gold-600 text-xs"></i>
+                  <span>اللون:</span>
+                  <span id="colorBadgeHeroSubtitle" class="w-4 h-4 rounded-full border border-slate-300 shadow-2xs inline-block" style="background-color: #64748B;"></span>
+                  <input type="color" id="colorPickerHeroSubtitle" value="#64748B" oninput="applyFieldTypography('hero_subtitle', null, this.value)" class="sr-only">
+                </label>
+              </div>
+            </div>
+
+            <!-- Text Area -->
+            <div>
+              <textarea id="siteSettingHeroSubtitle" rows="4" oninput="updateHeroLivePreview()" placeholder="الوجهة الأولى للعقارات الفاخرة والاستثنائية..." class="w-full bg-slate-50 focus:bg-white border border-slate-200 rounded-xl px-4 py-2.5 text-xs sm:text-sm font-semibold text-slate-800 focus:border-gold-500 focus:ring-2 focus:ring-amber-500/10 outline-none transition leading-relaxed" style="font-family: 'Cairo', sans-serif; color: #64748B;"></textarea>
+              <span class="text-[10px] text-slate-400 mt-1 block">النص الترحيبي التعريفي المعروض أسفل العنوان الرئيسي مباشرة.</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ================= CARD: المعاينة الحية الفورية (Live Preview) ================= -->
+        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-xs space-y-4">
+          <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+            <div class="flex items-center gap-2.5">
+              <div class="w-8 h-8 rounded-xl bg-amber-50 text-gold-600 flex items-center justify-center text-sm font-black border border-amber-200/60">
+                <i class="fa-solid fa-eye"></i>
+              </div>
+              <div>
+                <h4 class="text-sm font-extrabold text-slate-800">معاينة حية فورية للبانر (Live Preview)</h4>
+                <span class="text-[11px] text-slate-400 font-medium">تعكس الخطوط والألوان والنصوص المختارة في الوقت الفعلي</span>
+              </div>
+            </div>
+            <span class="text-[10px] text-emerald-700 font-bold bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200 flex items-center gap-1.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+              مباشر
+            </span>
+          </div>
+
+          <!-- Mockup Hero Box -->
+          <div class="relative rounded-2xl bg-[#070A0F] border border-amber-500/30 p-6 sm:p-8 overflow-hidden text-center sm:text-right shadow-xl flex flex-col justify-between min-h-[250px]">
+            <!-- Background Glow Overlay -->
+            <div class="absolute -top-12 -right-12 w-56 h-56 bg-amber-500/15 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -bottom-12 -left-12 w-56 h-56 bg-gold-600/15 rounded-full blur-3xl pointer-events-none"></div>
+
+            <!-- Mockup Mini Header -->
+            <div class="flex items-center justify-between pb-4 border-b border-white/10 relative z-10">
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-xl bg-black border border-amber-500/30 flex items-center justify-center p-1 shadow-sm">
+                  <img id="previewHeroLogoMini" src="../UPLOADS/LOGO.png" alt="logo" class="max-h-full max-w-full object-contain">
+                </div>
+                <span id="previewHeroSiteNameMini" class="text-sm font-bold text-white transition-all">أكروبوليس هوم</span>
+              </div>
+              <span class="text-xs font-bold px-3 py-1 rounded-full bg-white/5 border border-white/10">
+                العملة: <span id="previewHeroCurrencyMini" class="text-amber-400 font-mono">يورو</span>
+              </span>
+            </div>
+
+            <!-- Mockup Content -->
+            <div class="my-6 space-y-3 relative z-10">
+              <div id="previewHeroTitle" class="text-lg sm:text-2xl font-black text-white leading-snug transition-all">
+                اكتشف عقار أحلامك
+              </div>
+              <div id="previewHeroSubtitle" class="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-xl transition-all">
+                الوجهة الأولى للعقارات الفاخرة والاستثنائية.
+              </div>
+            </div>
+
+            <!-- Mockup Mini Button -->
+            <div class="pt-2 relative z-10 flex items-center justify-end">
+              <span class="px-4 py-1.5 rounded-full text-xs font-bold bg-gradient-to-r from-amber-400 to-amber-600 text-slate-950 shadow-md">
+                البحث في العقارات
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Save Button Bar -->
+        <div class="bg-white rounded-2xl p-4 border border-slate-200 shadow-xs flex flex-wrap items-center justify-between gap-4">
+          <div class="flex items-center gap-2 text-xs text-slate-500">
+            <i class="fa-solid fa-database text-gold-600"></i>
+            <span>يتم تخزين الإعدادات والخطوط والألوان في جدول <code class="font-mono text-gold-700 font-bold bg-amber-50 px-1.5 py-0.5 rounded border border-amber-200">SiteSettings</code> وتنعكس فوراً على واجهة الموقع.</span>
+          </div>
+          <div class="flex items-center gap-2.5">
+            <button type="button" onclick="resetSiteSettingsToDefault()" class="px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition cursor-pointer">
+              <i class="fa-solid fa-clock-rotate-left text-xs"></i>
+              <span>القيم الافتراضية</span>
+            </button>
+            <button type="button" id="saveSiteSettingsBtn" onclick="saveSiteSettings(event)" class="px-8 py-3 rounded-xl gold-btn text-xs font-bold shadow-md hover:shadow-lg active:scale-95 transition flex items-center gap-2 cursor-pointer">
+              <i class="fa-solid fa-floppy-disk text-sm"></i>
+              <span>حفظ وتحديث الإعدادات</span>
+            </button>
+          </div>
       </div>
 
     </main>
@@ -1296,6 +1658,12 @@
       }
     }
 
+    function canManageSiteSettings(admin) {
+      if (!admin) return false;
+      const allowedRoles = ['super_admin', 'settings_manager', 'admin_settings'];
+      return allowedRoles.includes(admin.role);
+    }
+
     function updateRoleFeatures() {
       const contactBtn = document.getElementById('sidebarBtn-contact');
       if (contactBtn) {
@@ -1303,6 +1671,15 @@
           contactBtn.classList.remove('hidden');
         } else {
           contactBtn.classList.add('hidden');
+        }
+      }
+
+      const settingsBtn = document.getElementById('sidebarBtn-settings');
+      if (settingsBtn) {
+        if (canManageSiteSettings(currentAdmin)) {
+          settingsBtn.classList.remove('hidden');
+        } else {
+          settingsBtn.classList.add('hidden');
         }
       }
     }
@@ -1355,6 +1732,7 @@
     function syncSidebarActiveTab(tab) {
       const btnProp = document.getElementById('sidebarBtn-properties');
       const btnContact = document.getElementById('sidebarBtn-contact');
+      const btnSettings = document.getElementById('sidebarBtn-settings');
 
       if (btnProp) {
         if (tab === 'properties') {
@@ -1379,6 +1757,18 @@
           if (icon) icon.className = 'fa-solid fa-address-book w-4 text-center text-slate-400';
         }
       }
+
+      if (btnSettings) {
+        if (tab === 'settings') {
+          btnSettings.className = 'w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-gold-500 text-white font-bold transition shadow-xs cursor-pointer';
+          const icon = btnSettings.querySelector('i');
+          if (icon) icon.className = 'fa-solid fa-sliders w-4 text-center text-white';
+        } else {
+          btnSettings.className = 'w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-slate-600 hover:bg-slate-100 hover:text-slate-900 font-bold transition cursor-pointer';
+          const icon = btnSettings.querySelector('i');
+          if (icon) icon.className = 'fa-solid fa-sliders w-4 text-center text-slate-400';
+        }
+      }
     }
 
     function switchTab(tab) {
@@ -1391,9 +1781,19 @@
         loadContactInfo();
       }
 
+      if (tab === 'settings') {
+        if (!canManageSiteSettings(currentAdmin)) {
+          alert('عذراً، الوصول إلى شاشة إعدادات الموقع مقتصر على المدراء المصرح لهم فقط.');
+          switchTab('properties');
+          return;
+        }
+        loadSiteSettings();
+      }
+
       const propTab = document.getElementById('tab-properties');
       const catTab = document.getElementById('tab-categories');
       const contactTab = document.getElementById('tab-contact');
+      const settingsTab = document.getElementById('tab-settings');
       const btnProp = document.getElementById('tabBtn-properties');
       const btnCat = document.getElementById('tabBtn-categories');
 
@@ -1401,6 +1801,7 @@
       propTab.classList.add('hidden');
       catTab.classList.add('hidden');
       if (contactTab) contactTab.classList.add('hidden');
+      if (settingsTab) settingsTab.classList.add('hidden');
 
       if (btnProp) btnProp.className = 'px-4 py-2 rounded-xl text-xs font-bold bg-transparent text-slate-600 hover:text-slate-900 transition flex items-center gap-2';
       if (btnCat) btnCat.className = 'px-4 py-2 rounded-xl text-xs font-bold bg-transparent text-slate-600 hover:text-slate-900 transition flex items-center gap-2';
@@ -1413,6 +1814,8 @@
         if (btnCat) btnCat.className = 'px-4 py-2 rounded-xl text-xs font-bold bg-gold-500 text-white shadow-xs transition flex items-center gap-2';
       } else if (tab === 'contact') {
         if (contactTab) contactTab.classList.remove('hidden');
+      } else if (tab === 'settings') {
+        if (settingsTab) settingsTab.classList.remove('hidden');
       }
 
       syncSidebarActiveTab(tab);
@@ -1496,6 +1899,327 @@
         if (saveBtn) {
           saveBtn.disabled = false;
           saveBtn.innerHTML = '<i class="fa-solid fa-floppy-disk text-sm"></i> <span>حفظ وتحديث معلومات التواصل</span>';
+        }
+      }
+    }
+
+    // --- SITE SETTINGS (ADMIN SETTING) LOGIC ---
+    let selectedLogoBase64 = null;
+
+    const typographyFieldMap = {
+      'site_name': {
+        input: 'siteSettingSiteName',
+        fontSelect: 'fontSelectSiteName',
+        colorPicker: 'colorPickerSiteName',
+        colorBadge: 'colorBadgeSiteName',
+        preview: 'previewHeroSiteNameMini'
+      },
+      'currency': {
+        input: 'siteSettingCurrency',
+        fontSelect: 'fontSelectCurrency',
+        colorPicker: 'colorPickerCurrency',
+        colorBadge: 'colorBadgeCurrency',
+        preview: 'previewHeroCurrencyMini'
+      },
+      'hero_title': {
+        input: 'siteSettingHeroTitle',
+        fontSelect: 'fontSelectHeroTitle',
+        colorPicker: 'colorPickerHeroTitle',
+        colorBadge: 'colorBadgeHeroTitle',
+        preview: 'previewHeroTitle'
+      },
+      'hero_subtitle': {
+        input: 'siteSettingHeroSubtitle',
+        fontSelect: 'fontSelectHeroSubtitle',
+        colorPicker: 'colorPickerHeroSubtitle',
+        colorBadge: 'colorBadgeHeroSubtitle',
+        preview: 'previewHeroSubtitle'
+      }
+    };
+
+    function applyFieldTypography(field, font, color) {
+      const cfg = typographyFieldMap[field];
+      if (!cfg) return;
+
+      const inputEl = document.getElementById(cfg.input);
+      const fontSelectEl = document.getElementById(cfg.fontSelect);
+      const colorPickerEl = document.getElementById(cfg.colorPicker);
+      const colorBadgeEl = document.getElementById(cfg.colorBadge);
+      const previewEl = document.getElementById(cfg.preview);
+
+      if (font && fontSelectEl) fontSelectEl.value = font;
+      if (color) {
+        if (colorPickerEl) colorPickerEl.value = color;
+        if (colorBadgeEl) colorBadgeEl.style.backgroundColor = color;
+      }
+
+      const activeFont = fontSelectEl ? fontSelectEl.value : (font || 'Cairo');
+      const activeColor = colorPickerEl ? colorPickerEl.value : (color || '#1E293B');
+
+      if (inputEl) {
+        inputEl.style.fontFamily = `'${activeFont}', sans-serif`;
+        inputEl.style.color = activeColor;
+      }
+
+      if (previewEl) {
+        previewEl.style.fontFamily = `'${activeFont}', sans-serif`;
+        // In dark hero mockup, if color is very dark default (#0F172A or #1E293B), hero mockup uses light contrast
+        if (field === 'hero_title' && (activeColor === '#0F172A' || activeColor === '#1E293B')) {
+          previewEl.style.color = '#FFFFFF';
+        } else if (field === 'hero_subtitle' && (activeColor === '#64748B' || activeColor === '#1E293B')) {
+          previewEl.style.color = '#CBD5E1';
+        } else if (field === 'site_name' && activeColor === '#1E293B') {
+          previewEl.style.color = '#FFFFFF';
+        } else {
+          previewEl.style.color = activeColor;
+        }
+      }
+    }
+
+    async function loadSiteSettings() {
+      try {
+        const res = await fetch('/api/admin/config/settings', {
+          headers: { 'Authorization': token }
+        });
+        if (res.ok) {
+          const data = await res.json();
+          document.getElementById('siteSettingSiteName').value = data.site_name || 'أكروبوليس هوم';
+          document.getElementById('siteSettingCurrency').value = data.currency || 'يورو';
+          document.getElementById('siteSettingHeroTitle').value = data.hero_title || 'اكتشف عقار أحلامك <br> <span class="text-[#E5B158] block mt-4">بين أرقى الخيارات</span>';
+          document.getElementById('siteSettingHeroSubtitle').value = data.hero_subtitle || 'الوجهة الأولى للعقارات الفاخرة والاستثنائية. ابحث في قائمة متجددة من الفلل العصرية والشقق الفندقية الفارهة في قلب أثينا وبالقرب من الأكروبوليس.';
+          
+          // Parse and apply typography
+          let typo = {};
+          try {
+            typo = JSON.parse(data.hero_config || '{}');
+          } catch(e) {}
+          const fonts = typo.fonts || {};
+          const colors = typo.colors || {};
+
+          applyFieldTypography('site_name', fonts.site_name || 'Cairo', colors.site_name || '#1E293B');
+          applyFieldTypography('currency', fonts.currency || 'Cairo', colors.currency || '#B88017');
+          applyFieldTypography('hero_title', fonts.hero_title || 'Cairo', colors.hero_title || '#0F172A');
+          applyFieldTypography('hero_subtitle', fonts.hero_subtitle || 'Cairo', colors.hero_subtitle || '#64748B');
+
+          // Refresh logo images with timestamp to defeat browser cache
+          const logoTs = '?t=' + Date.now();
+          const curLogo = document.getElementById('currentSiteLogoImg');
+          if (curLogo) curLogo.src = '../UPLOADS/LOGO.png' + logoTs;
+          const prevMini = document.getElementById('previewHeroLogoMini');
+          if (prevMini) prevMini.src = '../UPLOADS/LOGO.png' + logoTs;
+
+          updateHeroLivePreview();
+        }
+      } catch (err) {
+        console.error('Error loading site settings:', err);
+      }
+    }
+
+    function updateHeroLivePreview() {
+      const siteName = document.getElementById('siteSettingSiteName')?.value.trim() || 'أكروبوليس هوم';
+      const currency = document.getElementById('siteSettingCurrency')?.value.trim() || 'يورو';
+      const heroTitle = document.getElementById('siteSettingHeroTitle')?.value.trim() || 'اكتشف عقار أحلامك';
+      const heroSubtitle = document.getElementById('siteSettingHeroSubtitle')?.value.trim() || 'الوجهة الأولى للعقارات الفاخرة والاستثنائية.';
+
+      const prevSiteName = document.getElementById('previewHeroSiteNameMini');
+      if (prevSiteName) prevSiteName.textContent = siteName;
+
+      const prevCurrency = document.getElementById('previewHeroCurrencyMini');
+      if (prevCurrency) prevCurrency.textContent = currency;
+
+      const prevTitle = document.getElementById('previewHeroTitle');
+      if (prevTitle) prevTitle.innerHTML = heroTitle;
+
+      const prevSubtitle = document.getElementById('previewHeroSubtitle');
+      if (prevSubtitle) prevSubtitle.textContent = heroSubtitle;
+
+      // Re-apply typography on live preview
+      ['site_name', 'currency', 'hero_title', 'hero_subtitle'].forEach(field => {
+        applyFieldTypography(field, null, null);
+      });
+    }
+
+    function insertGoldSpanInHeroTitle() {
+      const titleInput = document.getElementById('siteSettingHeroTitle');
+      if (!titleInput) return;
+      const textToAdd = ' <span class="text-[#E5B158] block mt-4">نص ذهبي مميز</span>';
+      titleInput.value += textToAdd;
+      updateHeroLivePreview();
+    }
+
+    function resetSiteSettingsToDefault() {
+      if (!confirm('هل ترغب باستعادة النصوص والخطوط والألوان الافتراضية؟')) return;
+      document.getElementById('siteSettingSiteName').value = 'أكروبوليس هوم';
+      document.getElementById('siteSettingCurrency').value = 'يورو';
+      document.getElementById('siteSettingHeroTitle').value = 'اكتشف عقار أحلامك <br> <span class="text-[#E5B158] block mt-4">بين أرقى الخيارات</span>';
+      document.getElementById('siteSettingHeroSubtitle').value = 'الوجهة الأولى للعقارات الفاخرة والاستثنائية. ابحث في قائمة متجددة من الفلل العصرية والشقق الفندقية الفارهة في قلب أثينا وبالقرب من الأكروبوليس.';
+      
+      applyFieldTypography('site_name', 'Cairo', '#1E293B');
+      applyFieldTypography('currency', 'Cairo', '#B88017');
+      applyFieldTypography('hero_title', 'Cairo', '#0F172A');
+      applyFieldTypography('hero_subtitle', 'Cairo', '#64748B');
+
+      updateHeroLivePreview();
+    }
+
+    async function saveSiteSettings(e) {
+      if (e && e.preventDefault) e.preventDefault();
+      const alertBox = document.getElementById('siteSettingsSaveAlert');
+      const saveBtn = document.getElementById('saveSiteSettingsBtn');
+      if (alertBox) alertBox.classList.add('hidden');
+
+      if (saveBtn) {
+        saveBtn.disabled = true;
+        saveBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin text-sm"></i> <span>جاري حفظ الإعدادات...</span>';
+      }
+
+      const typography = {
+        fonts: {
+          site_name: document.getElementById('fontSelectSiteName')?.value || 'Cairo',
+          currency: document.getElementById('fontSelectCurrency')?.value || 'Cairo',
+          hero_title: document.getElementById('fontSelectHeroTitle')?.value || 'Cairo',
+          hero_subtitle: document.getElementById('fontSelectHeroSubtitle')?.value || 'Cairo'
+        },
+        colors: {
+          site_name: document.getElementById('colorPickerSiteName')?.value || '#1E293B',
+          currency: document.getElementById('colorPickerCurrency')?.value || '#B88017',
+          hero_title: document.getElementById('colorPickerHeroTitle')?.value || '#0F172A',
+          hero_subtitle: document.getElementById('colorPickerHeroSubtitle')?.value || '#64748B'
+        }
+      };
+
+      const payload = {
+        site_name: document.getElementById('siteSettingSiteName').value.trim() || 'أكروبوليس هوم',
+        currency: document.getElementById('siteSettingCurrency').value.trim() || 'يورو',
+        hero_title: document.getElementById('siteSettingHeroTitle').value.trim(),
+        hero_subtitle: document.getElementById('siteSettingHeroSubtitle').value.trim(),
+        hero_config: JSON.stringify(typography)
+      };
+
+      try {
+        const res = await fetch('/api/admin/config/settings', {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': token
+          },
+          body: JSON.stringify(payload)
+        });
+
+        if (res.ok) {
+          if (alertBox) {
+            alertBox.innerHTML = '<div class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-base text-emerald-600"></i><span>تم حفظ وتحديث إعدادات الموقع والخطوط والألوان بنجاح في قاعدة البيانات وتطبيقها فوراً!</span></div>';
+            alertBox.className = 'p-4 rounded-2xl text-xs font-bold bg-emerald-50 text-emerald-800 border border-emerald-200 transition';
+            alertBox.classList.remove('hidden');
+            setTimeout(() => alertBox.classList.add('hidden'), 5000);
+          }
+        } else {
+          const data = await res.json().catch(() => ({}));
+          if (alertBox) {
+            alertBox.innerHTML = `<div class="flex items-center gap-2"><i class="fa-solid fa-triangle-exclamation text-base text-red-600"></i><span>${data.error || 'فشل حفظ الإعدادات'}</span></div>`;
+            alertBox.className = 'p-4 rounded-2xl text-xs font-bold bg-red-50 text-red-800 border border-red-200 transition';
+            alertBox.classList.remove('hidden');
+          }
+        }
+      } catch (err) {
+        if (alertBox) {
+          alertBox.innerHTML = '<div class="flex items-center gap-2"><i class="fa-solid fa-triangle-exclamation text-base text-red-600"></i><span>تعذر الاتصال بالخادم لحفظ الإعدادات</span></div>';
+          alertBox.className = 'p-4 rounded-2xl text-xs font-bold bg-red-50 text-red-800 border border-red-200 transition';
+          alertBox.classList.remove('hidden');
+        }
+      } finally {
+        if (saveBtn) {
+          saveBtn.disabled = false;
+          saveBtn.innerHTML = '<i class="fa-solid fa-floppy-disk text-sm"></i> <span>حفظ وتحديث الإعدادات</span>';
+        }
+      }
+    }
+
+    // --- SITE LOGO UPLOAD HANDLERS ---
+    function handleLogoFileSelect(e) {
+      const file = e.target.files && e.target.files[0];
+      if (!file) return;
+
+      if (!file.type.startsWith('image/')) {
+        alert('يرجى اختيار ملف صورة صالح (PNG, JPG, WEBP, SVG)');
+        return;
+      }
+
+      if (file.size > 5 * 1024 * 1024) {
+        alert('حجم الصورة كبير جداً، يرجى اختيار صورة أقل من 5 ميجابايت');
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = function(evt) {
+        selectedLogoBase64 = evt.target.result;
+        const previewImg = document.getElementById('newLogoPreviewImg');
+        const previewWrap = document.getElementById('newLogoPreviewWrapper');
+        const fileNameEl = document.getElementById('newLogoFileName');
+
+        if (previewImg) previewImg.src = selectedLogoBase64;
+        if (fileNameEl) fileNameEl.textContent = file.name;
+        if (previewWrap) previewWrap.classList.remove('hidden');
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function cancelLogoSelection() {
+      selectedLogoBase64 = null;
+      const fileInput = document.getElementById('siteLogoFileInput');
+      if (fileInput) fileInput.value = '';
+      const previewWrap = document.getElementById('newLogoPreviewWrapper');
+      if (previewWrap) previewWrap.classList.add('hidden');
+    }
+
+    async function uploadSiteLogo() {
+      if (!selectedLogoBase64) {
+        alert('يرجى اختيار صورة الشعار أولاً');
+        return;
+      }
+
+      const uploadBtn = document.getElementById('uploadLogoBtn');
+      const alertBox = document.getElementById('siteSettingsSaveAlert');
+      if (uploadBtn) {
+        uploadBtn.disabled = true;
+        uploadBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin text-xs"></i> <span>جاري الرفع...</span>';
+      }
+
+      try {
+        const res = await fetch('/api/admin/config/settings/logo', {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': token
+          },
+          body: JSON.stringify({ logoBase64: selectedLogoBase64 })
+        });
+
+        if (res.ok) {
+          const logoTs = '?t=' + Date.now();
+          const curLogo = document.getElementById('currentSiteLogoImg');
+          if (curLogo) curLogo.src = '../UPLOADS/LOGO.png' + logoTs;
+          const prevMini = document.getElementById('previewHeroLogoMini');
+          if (prevMini) prevMini.src = '../UPLOADS/LOGO.png' + logoTs;
+
+          cancelLogoSelection();
+
+          if (alertBox) {
+            alertBox.innerHTML = '<div class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-base text-emerald-600"></i><span>تم تحديث وحفظ الشعار الرسمي بنجاح في مجلد UPLOADS وعكسه على الموقع!</span></div>';
+            alertBox.className = 'p-4 rounded-2xl text-xs font-bold bg-emerald-50 text-emerald-800 border border-emerald-200 transition';
+            alertBox.classList.remove('hidden');
+            setTimeout(() => alertBox.classList.add('hidden'), 5000);
+          }
+        } else {
+          const data = await res.json().catch(() => ({}));
+          alert('تعذر حفظ الشعار: ' + (data.error || 'خطأ غير معروف'));
+        }
+      } catch (err) {
+        alert('خطأ في الاتصال بالخادم أثناء رفع الشعار: ' + (err.message || ''));
+      } finally {
+        if (uploadBtn) {
+          uploadBtn.disabled = false;
+          uploadBtn.innerHTML = '<i class="fa-solid fa-upload text-xs"></i> <span>تطبيق الشعار الآن</span>';
         }
       }
     }
@@ -1879,6 +2603,17 @@
 
       tbody.innerHTML = props.map(p => {
         const img = (p.images && p.images[0]) || 'https://via.placeholder.com/100';
+        
+        // بناء اسم العقار بشكل ديناميكي: [تصنيف العقار] في [المنطقة] [المساحة] م²
+        const catName = (p.category && p.category.trim()) || 'عقار';
+        let locPart = '';
+        if (p.location && p.location.trim()) {
+          const locTrimmed = p.location.trim();
+          locPart = locTrimmed.startsWith('في ') ? locTrimmed : `في ${locTrimmed}`;
+        }
+        const areaPart = (p.area) ? `${p.area} م²` : '';
+        const displayTitle = [catName, locPart, areaPart].filter(Boolean).join(' ') || p.title || 'عقار';
+
         return `
           <tr class="hover:bg-slate-50 transition border-b border-slate-100">
             <!-- 1. العقار -->
@@ -1886,7 +2621,7 @@
               <div class="flex items-center gap-3">
                 <img src="${img}" class="w-12 h-12 rounded-xl object-cover border border-slate-200 shrink-0 shadow-sm">
                 <div>
-                  <div class="font-bold text-slate-800">${p.title}</div>
+                  <div class="font-bold text-slate-800">${displayTitle}</div>
                   <div class="text-xs text-slate-400">${p.area || 0} م² • ${p.bedrooms || 0} غرف • ${p.bathrooms || 0} حمام</div>
                 </div>
               </div>
@@ -1924,6 +2659,9 @@
             <!-- 7. الإجراءات -->
             <td class="p-4 text-center whitespace-nowrap">
               <div class="flex items-center justify-center gap-2">
+                <a href="property-details.html?id=${encodeURIComponent(p.property_code)}" target="_blank" class="w-8 h-8 rounded-lg bg-slate-100 text-slate-600 hover:text-emerald-600 hover:bg-emerald-50 border border-slate-200 flex items-center justify-center transition cursor-pointer" title="استعراض العقار في شاشة المستخدم">
+                  <i class="fa-solid fa-eye text-xs"></i>
+                </a>
                 <button onclick="editProperty(${p.id})" class="w-8 h-8 rounded-lg bg-slate-100 text-slate-600 hover:text-blue-600 hover:bg-blue-50 border border-slate-200 flex items-center justify-center transition cursor-pointer" title="تعديل">
                   <i class="fa-solid fa-pen text-xs"></i>
                 </button>
@@ -2407,6 +3145,11 @@
         const form = document.getElementById('propertyForm');
         if (form) form.reset();
 
+        let details = p.additional_details || {};
+        if (typeof details === 'string') {
+          try { details = JSON.parse(details); } catch(e) { details = {}; }
+        }
+
         const setValue = (elemId, val) => {
           const el = document.getElementById(elemId);
           if (el) el.value = (val !== undefined && val !== null) ? val : '';
@@ -2451,17 +3194,23 @@
         if (featInput) featInput.checked = !!p.is_featured;
 
         // Populate images in drag & drop gallery
-        currentImages = (p.images && Array.isArray(p.images)) ? [...p.images] : [];
+        let rawImages = p.images;
+        if (typeof rawImages === 'string') {
+          try { rawImages = JSON.parse(rawImages); } catch(e) { rawImages = []; }
+        }
+        currentImages = (rawImages && Array.isArray(rawImages)) ? [...rawImages] : [];
         renderImagesPreview();
 
         // Extract 9 features checkboxes
-        const featList = p.features || [];
+        let featList = p.features || [];
+        if (typeof featList === 'string') {
+          try { featList = JSON.parse(featList); } catch(e) { featList = []; }
+        }
         document.querySelectorAll('input[name="propertyFeatureOption"]').forEach(cb => {
-          cb.checked = featList.includes(cb.value);
+          cb.checked = Array.isArray(featList) && featList.includes(cb.value);
         });
 
         // Extract additional_details & fields
-        const details = p.additional_details || {};
         selectFloorOption(details.flooring || '', details.flooring || 'اختر الطابق...');
         setValue('specBuildYear', details.build_year || '');
         setValue('specConstruction', details.construction || '');
@@ -2482,9 +3231,12 @@
         setValue('listingDate', details.listing_date || (p.createdAt ? p.createdAt.split('T')[0] : ''));
 
         // Suitable checkboxes
-        const suitableList = details.suitable_for || [];
+        let suitableList = details.suitable_for || [];
+        if (typeof suitableList === 'string') {
+          try { suitableList = JSON.parse(suitableList); } catch(e) { suitableList = []; }
+        }
         document.querySelectorAll('input[name="suitableOption"]').forEach(cb => {
-          cb.checked = suitableList.includes(cb.value);
+          cb.checked = Array.isArray(suitableList) && suitableList.includes(cb.value);
         });
 
         switchModalTab('main_specs');
@@ -2559,18 +3311,23 @@
         listing_date: document.getElementById('listingDate')?.value || ''
       };
 
-      const existingTitle = document.getElementById('propTitle').value.trim();
-      const titleVal = existingTitle || `عقار في ${locVal} (${areaVal} م²)`;
+      const catVal = document.getElementById('propCategorySelect')?.value || (cachedCategories[0] ? cachedCategories[0].name : 'شقة');
+      let locPart = locVal.startsWith('في ') ? locVal : `في ${locVal}`;
+      const areaPart = areaVal ? `${areaVal} م²` : '';
+      const titleVal = [catVal, locPart, areaPart].filter(Boolean).join(' ') || `عقار في ${locVal} (${areaVal} م²)`;
+      if (document.getElementById('propTitle')) {
+        document.getElementById('propTitle').value = titleVal;
+      }
 
       const payload = {
         property_code: propCodeVal,
         title: titleVal,
-        description: document.getElementById('propDesc').value.trim() || `عقار مميز بمساحة ${areaVal} م² في ${locVal}`,
+        description: document.getElementById('propDesc').value.trim() || `${titleVal} - عقار مميز`,
         price: priceVal,
         price_type: document.getElementById('propPriceType')?.value || 'بيع',
         location: locVal,
         map_link: document.getElementById('propMapLink')?.value.trim() || '',
-        category: document.getElementById('propCategorySelect')?.value || (cachedCategories[0] ? cachedCategories[0].name : 'شقة'),
+        category: catVal,
         status: document.getElementById('propStatusSelect')?.value || (cachedStatuses[0] ? cachedStatuses[0].name : 'متاح'),
         bedrooms: parseInt(document.getElementById('propBedrooms')?.value) || 0,
         bathrooms: parseInt(document.getElementById('propBathrooms')?.value) || 0,

@@ -9,7 +9,26 @@ const sequelize = new Sequelize({
 
 const Property = sequelize.define('Property', {
   property_code: { type: DataTypes.STRING, allowNull: false, unique: true },
-  title: { type: DataTypes.STRING, allowNull: false },
+  title: { 
+    type: DataTypes.STRING, 
+    allowNull: false,
+    get() {
+      const cat = this.getDataValue('category');
+      const loc = this.getDataValue('location');
+      const area = this.getDataValue('area');
+      if (cat || loc) {
+        const catName = (cat && cat.trim()) || 'عقار';
+        let locPart = '';
+        if (loc && loc.trim()) {
+          const trimmed = loc.trim();
+          locPart = trimmed.startsWith('في ') ? trimmed : `في ${trimmed}`;
+        }
+        const areaPart = area ? `${area} م²` : '';
+        return [catName, locPart, areaPart].filter(Boolean).join(' ') || 'عقار';
+      }
+      return this.getDataValue('title') || 'عقار';
+    }
+  },
   description: { type: DataTypes.TEXT, allowNull: false },
   price: { type: DataTypes.FLOAT, allowNull: false },
   price_type: { type: DataTypes.STRING, defaultValue: 'بيع' },

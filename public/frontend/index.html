@@ -4,10 +4,10 @@
 <title>اكروبوليس هوم | Acropolis Home</title>
 <!-- Tailwind CSS v3 CDN -->
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<!-- Google Fonts: Cairo -->
+<!-- Google Fonts: Luxury Arabic & Latin Typography -->
 <link href="https://fonts.googleapis.com" rel="preconnect">
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400;600;700;800&family=Almarai:wght@400;700;800&family=Amiri:wght@400;700&family=Bodoni+Moda:wght@400;600;700;800&family=Cairo:wght@300;400;500;600;700;800;900&family=Changa:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
 <!-- FontAwesome Icons for crisp UI representation -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
 <!-- Tailwind Configuration -->
@@ -104,7 +104,7 @@
 <img src="../UPLOADS/LOGO.png" alt="اكروبوليس هوم" class="w-full h-full object-contain filter drop-shadow-md">
 </div>
 <div class="leading-none">
-<span class="text-2xl md:text-3xl font-black tracking-wide text-white block drop-shadow-md">اكروبوليس هوم</span>
+<span data-brand-name class="text-2xl md:text-3xl font-black tracking-wide text-white block drop-shadow-md">اكروبوليس هوم</span>
 </div>
 </a>
 
@@ -303,7 +303,7 @@
     </div>
   </div>
   <div class="max-w-7xl mx-auto mt-10 pt-6 border-t border-slate-800 flex flex-col md:flex-row items-center justify-between text-xs text-slate-500">
-    <p>جميع الحقوق محفوظة &copy; 2026 اكروبوليس هوم</p>
+    <p>جميع الحقوق محفوظة &copy; 2026 <span data-brand-name>اكروبوليس هوم</span></p>
     <div class="flex gap-4 mt-4 md:mt-0">
       <a href="#" class="hover:text-slate-300">الشروط والأحكام</a>
       <a href="#" class="hover:text-slate-300">سياسة الخصوصية</a>
@@ -451,10 +451,49 @@ document.addEventListener("DOMContentLoaded", async () => {
         const response = await fetch('/api/admin/config/settings');
         if (response.ok) {
             const settings = await response.json();
-            if(settings.site_name) document.title = settings.site_name;
-            if(settings.hero_title) document.getElementById('hero-title').innerHTML = settings.hero_title;
-            if(settings.hero_subtitle) document.getElementById('hero-subtitle').innerHTML = settings.hero_subtitle;
-            if(settings.currency) window.siteCurrency = settings.currency;
+            if (settings.site_name) {
+                document.title = settings.site_name;
+                document.querySelectorAll('[data-brand-name]').forEach(el => {
+                    el.textContent = settings.site_name;
+                });
+            }
+            if (settings.hero_title) document.getElementById('hero-title').innerHTML = settings.hero_title;
+            if (settings.hero_subtitle) document.getElementById('hero-subtitle').innerHTML = settings.hero_subtitle;
+            if (settings.currency) window.siteCurrency = settings.currency;
+
+            // Apply Typography (Fonts & Colors)
+            if (settings.hero_config) {
+                try {
+                    const typo = JSON.parse(settings.hero_config);
+                    const fonts = typo.fonts || {};
+                    const colors = typo.colors || {};
+
+                    if (fonts.site_name) {
+                        document.querySelectorAll('[data-brand-name]').forEach(el => el.style.fontFamily = `'${fonts.site_name}', sans-serif`);
+                    }
+                    if (colors.site_name) {
+                        document.querySelectorAll('[data-brand-name]').forEach(el => el.style.color = colors.site_name);
+                    }
+
+                    const heroTitleEl = document.getElementById('hero-title');
+                    if (heroTitleEl) {
+                        if (fonts.hero_title) heroTitleEl.style.fontFamily = `'${fonts.hero_title}', sans-serif`;
+                        if (colors.hero_title) heroTitleEl.style.color = colors.hero_title;
+                    }
+
+                    const heroSubEl = document.getElementById('hero-subtitle');
+                    if (heroSubEl) {
+                        if (fonts.hero_subtitle) heroSubEl.style.fontFamily = `'${fonts.hero_subtitle}', sans-serif`;
+                        if (colors.hero_subtitle) heroSubEl.style.color = colors.hero_subtitle;
+                    }
+                } catch(e) {}
+            }
+
+            // Cache-bust logo images
+            document.querySelectorAll('img[src*="LOGO.png"]').forEach(img => {
+                const base = img.src.split('?')[0];
+                img.src = base + '?t=' + Date.now();
+            });
         }
     } catch (err) {
         console.error("Failed to load site settings", err);
@@ -530,6 +569,16 @@ document.addEventListener("DOMContentLoaded", async () => {
               
               grid.innerHTML = '';
               properties.forEach(prop => {
+                  const catName = (prop.category && prop.category.trim()) || 'عقار';
+                  let locPart = '';
+                  if (prop.location && prop.location.trim()) {
+                      const locTrim = prop.location.trim();
+                      locPart = locTrim.startsWith('في ') ? locTrim : `في ${locTrim}`;
+                  }
+                  const areaPart = prop.area ? `${prop.area} م²` : '';
+                  const dynamicTitle = [catName, locPart, areaPart].filter(Boolean).join(' ');
+                  const displayTitle = dynamicTitle || prop.title || 'عقار مميز';
+
                   grid.innerHTML += `
                   <article onclick="window.location.href='property-details.html?id=${prop.property_code}'" class="flex flex-col rounded-xl bg-nestDark-850 border border-nestGold-500/10 hover:border-nestGold-500/30 overflow-hidden transition-all duration-300 cursor-pointer hover:-translate-y-1">
                       <div class="relative w-full aspect-[4/3] bg-nestDark-900 overflow-hidden">
@@ -547,7 +596,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                           </div>
                       </div>
                       <div class="p-3 flex flex-col gap-2">
-                          <h3 class="text-sm font-bold text-white truncate">${prop.title}</h3>
+                          <h3 class="text-sm font-bold text-white truncate">${displayTitle}</h3>
                           <div class="flex items-center gap-1 text-slate-400 mt-0.5">
                               <i class="fa-solid fa-location-dot text-nestGold-400 text-[10px]"></i>
                               <span class="text-[10px]">${prop.location}</span>

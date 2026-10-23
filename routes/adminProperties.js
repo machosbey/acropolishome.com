@@ -30,6 +30,15 @@ function processAndSaveImages(images, propCode = 'prop') {
     });
 }
 
+// Helper to format dynamic property title: [category] في [location] [area] م²
+function formatDynamicTitle(data, existingTitle) {
+    const cat = data.category || 'عقار';
+    const loc = data.location ? (data.location.startsWith('في ') ? data.location : `في ${data.location}`) : '';
+    const area = data.area ? `${data.area} م²` : '';
+    const dyn = [cat, loc, area].filter(Boolean).join(' ');
+    return dyn || data.title || existingTitle || 'عقار';
+}
+
 // @route   POST /api/admin/properties/upload
 // @desc    Direct upload endpoint for image(s) to /property folder
 // @access  Private
@@ -53,6 +62,7 @@ router.post('/', async (req, res) => {
         if (req.body.images && Array.isArray(req.body.images)) {
             req.body.images = processAndSaveImages(req.body.images, req.body.property_code);
         }
+        req.body.title = formatDynamicTitle(req.body);
         const savedProperty = await Property.create(req.body);
         res.status(201).json(savedProperty);
     } catch (err) {
@@ -67,7 +77,12 @@ router.post('/', async (req, res) => {
 router.get('/', async (req, res) => {
     try {
         const properties = await Property.findAll({ order: [['createdAt', 'DESC']] });
-        res.json(properties);
+        const formatted = properties.map(p => {
+            const json = p && p.toJSON ? p.toJSON() : (p || {});
+            json.title = formatDynamicTitle(json, json.title);
+            return json;
+        });
+        res.json(formatted);
     } catch (err) {
         console.error('Get properties error:', err);
         res.status(500).json({ error: err.message });
@@ -92,6 +107,8 @@ router.put('/:id', async (req, res) => {
         if (!req.body.property_code) {
             req.body.property_code = property.property_code;
         }
+
+        req.body.title = formatDynamicTitle(req.body, property.title);
 
         // Updating via instance ensures Sequelize runs custom setters (e.g. JSON stringify for features)
         await property.update(req.body);

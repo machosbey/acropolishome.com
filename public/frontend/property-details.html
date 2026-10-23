@@ -427,20 +427,37 @@
       </ul>
     </div>
     <div class="space-y-4">
-      <h3 class="text-brand-gold font-bold text-lg mb-2">تواصل معنا</h3>
+      <h3 class="text-[#F5C973] font-bold text-lg mb-2">تواصل معنا</h3>
       <ul class="space-y-3 text-sm text-slate-300">
-        <li id="footer-address" class="hidden items-center gap-2"><i class="fa-solid fa-location-dot text-brand-gold w-4 text-center"></i> <span></span></li>
-        <li id="footer-phone" class="hidden items-center gap-2"><i class="fa-solid fa-phone text-brand-gold w-4 text-center"></i> <span dir="ltr"></span></li>
-        <li id="footer-email" class="hidden items-center gap-2"><i class="fa-solid fa-envelope text-brand-gold w-4 text-center"></i> <span dir="ltr"></span></li>
+        <li id="footer-address" class="hidden items-center gap-2.5">
+          <i class="fa-solid fa-location-dot text-[#C99742] w-4 text-center shrink-0"></i>
+          <span class="leading-relaxed"></span>
+        </li>
+        <li id="footer-phone" class="hidden items-center gap-2.5">
+          <i class="fa-solid fa-phone text-[#C99742] w-4 text-center shrink-0"></i>
+          <a href="#" class="hover:text-amber-400 transition" dir="ltr"><span dir="ltr"></span></a>
+        </li>
+        <li id="footer-wa" class="hidden items-center gap-2.5">
+          <i class="fa-brands fa-whatsapp text-emerald-500 w-4 text-center shrink-0 text-base"></i>
+          <a href="#" target="_blank" class="hover:text-emerald-400 transition" dir="ltr"><span dir="ltr"></span></a>
+        </li>
+        <li id="footer-email" class="hidden items-center gap-2.5">
+          <i class="fa-solid fa-envelope text-[#C99742] w-4 text-center shrink-0"></i>
+          <a href="#" class="hover:text-amber-400 transition" dir="ltr"><span dir="ltr"></span></a>
+        </li>
       </ul>
     </div>
     <div class="space-y-4">
-      <h3 class="text-brand-gold font-bold text-lg mb-2">تابعنا</h3>
+      <h3 class="text-[#F5C973] font-bold text-lg mb-2">تابعنا</h3>
       <div class="flex items-center gap-3">
-        <a href="#" id="footer-ig" class="hidden w-10 h-10 rounded-full bg-brand-slate border border-brand-gold/30 items-center justify-center text-slate-300 hover:text-white hover:border-brand-gold transition-all"><i class="fa-brands fa-instagram text-lg"></i></a>
-        <a href="#" id="footer-tw" class="hidden w-10 h-10 rounded-full bg-brand-slate border border-brand-gold/30 items-center justify-center text-slate-300 hover:text-white hover:border-brand-gold transition-all"><i class="fa-brands fa-twitter text-lg"></i></a>
-        <a href="#" id="footer-snap" class="hidden w-10 h-10 rounded-full bg-brand-slate border border-brand-gold/30 items-center justify-center text-slate-300 hover:text-white hover:border-brand-gold transition-all"><i class="fa-brands fa-snapchat text-lg"></i></a>
-        <a href="#" id="footer-tik" class="hidden w-10 h-10 rounded-full bg-brand-slate border border-brand-gold/30 items-center justify-center text-slate-300 hover:text-white hover:border-brand-gold transition-all"><i class="fa-brands fa-tiktok text-lg"></i></a>
+        <a href="#" target="_blank" id="footer-ig" class="hidden w-10 h-10 rounded-full bg-[#151922] border border-[#C99742]/30 items-center justify-center text-slate-300 hover:text-white hover:border-[#F5C973] hover:bg-[#F5C973]/10 transition-all" title="انستغرام"><i class="fa-brands fa-instagram text-lg"></i></a>
+        <a href="#" target="_blank" id="footer-tw" class="hidden w-10 h-10 rounded-full bg-[#151922] border border-[#C99742]/30 items-center justify-center text-slate-300 hover:text-white hover:border-[#F5C973] hover:bg-[#F5C973]/10 transition-all" title="منصة إكس (Twitter)">
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path>
+          </svg>
+        </a>
+        <a href="#" target="_blank" id="footer-snap" class="hidden w-10 h-10 rounded-full bg-[#151922] border border-[#C99742]/30 items-center justify-center text-slate-300 hover:text-white hover:border-[#F5C973] hover:bg-[#F5C973]/10 transition-all" title="سناب شات"><i class="fa-brands fa-snapchat text-lg"></i></a>
+        <a href="#" target="_blank" id="footer-tik" class="hidden w-10 h-10 rounded-full bg-[#151922] border border-[#C99742]/30 items-center justify-center text-slate-300 hover:text-white hover:border-[#F5C973] hover:bg-[#F5C973]/10 transition-all" title="تيك توك"><i class="fa-brands fa-tiktok text-lg"></i></a>
       </div>
     </div>
   </div>
@@ -469,8 +486,12 @@
 <i class="fa-solid fa-calendar-check text-sm text-slate-950"></i>
 <span class="">طلب معاينة العقار</span>
 </button>
+<!-- Quick WhatsApp button -->
+<a id="cta-wa-btn" href="#" target="_blank" aria-label="مراسلة عبر واتساب" class="w-12 h-12 rounded-xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400 hover:bg-emerald-500/30 active:scale-95 transition shrink-0 cursor-pointer" title="تواصل عبر واتساب">
+<i class="fa-brands fa-whatsapp text-2xl text-emerald-400"></i>
+</a>
 <!-- Quick phone direct call icon button -->
-<a id="cta-contact-btn" href="#" aria-label="اتصال فوري" class="w-12 h-12 rounded-xl glass-card border-brand-gold/40 flex items-center justify-center text-brand-gold hover:bg-brand-gold/20 active:scale-95 transition shrink-0 cursor-pointer">
+<a id="cta-contact-btn" href="#" aria-label="اتصال فوري" class="w-12 h-12 rounded-xl glass-card border-brand-gold/40 flex items-center justify-center text-brand-gold hover:bg-brand-gold/20 active:scale-95 transition shrink-0 cursor-pointer" title="اتصال هاتفي">
 <i class="fa-solid fa-phone text-base"></i>
 </a>
 </div>
@@ -594,47 +615,128 @@ function resetQuickFilters() {
           const response = await fetch('/api/admin/config/contact');
           if (!response.ok) return;
           const settings = await response.json();
+          window.siteContactSettings = settings;
 
-          const updateElement = (id, value, isLink = false) => {
-              const el = document.getElementById(id);
-              if (!el) return;
-              
-              if (!value || value.trim() === '') {
-                  el.style.display = 'none';
+          // 1. Address
+          const addrEl = document.getElementById('footer-address');
+          if (addrEl) {
+              if (settings.address && settings.address.trim()) {
+                  addrEl.querySelector('span').textContent = settings.address.trim();
+                  addrEl.classList.remove('hidden');
+                  addrEl.classList.add('flex');
               } else {
-                  el.style.display = 'flex';
-                  if (isLink) {
-                      el.href = value;
-                  } else {
-                      const textSpan = el.querySelector('span:not(.fa-solid):not(.fa-brands)');
-                      if (textSpan) textSpan.textContent = value;
-                  }
-              }
-          };
-
-          updateElement('footer-address', settings.address);
-          updateElement('footer-phone', settings.phone);
-          updateElement('footer-email', settings.email);
-
-          // WhatsApp & Header Contact button
-          if (settings.whatsapp && settings.whatsapp.trim() !== '') {
-              const cleanWa = settings.whatsapp.replace(/[^0-9]/g, '');
-              const waUrl = `https://wa.me/${cleanWa}`;
-              const headerBtn = document.getElementById('header-contact-btn');
-              if (headerBtn) {
-                  headerBtn.onclick = () => window.open(waUrl, '_blank');
-              }
-          } else if (settings.phone && settings.phone.trim() !== '') {
-              const headerBtn = document.getElementById('header-contact-btn');
-              if (headerBtn) {
-                  headerBtn.onclick = () => window.location.href = `tel:${settings.phone}`;
+                  addrEl.classList.add('hidden');
+                  addrEl.classList.remove('flex');
               }
           }
 
-          updateElement('footer-ig', settings.instagram, true);
-          updateElement('footer-tw', settings.twitter, true);
-          updateElement('footer-snap', settings.snapchat, true);
-          updateElement('footer-tik', settings.tiktok, true);
+          // 2. Phone
+          const phoneEl = document.getElementById('footer-phone');
+          if (phoneEl) {
+              if (settings.phone && settings.phone.trim()) {
+                  const a = phoneEl.querySelector('a');
+                  if (a) {
+                      a.href = `tel:${settings.phone.trim()}`;
+                      a.querySelector('span').textContent = settings.phone.trim();
+                  }
+                  phoneEl.classList.remove('hidden');
+                  phoneEl.classList.add('flex');
+              } else {
+                  phoneEl.classList.add('hidden');
+                  phoneEl.classList.remove('flex');
+              }
+          }
+
+          // 3. WhatsApp
+          const waEl = document.getElementById('footer-wa');
+          const cleanWa = (settings.whatsapp || '').replace(/[^0-9]/g, '');
+          if (waEl) {
+              if (settings.whatsapp && settings.whatsapp.trim()) {
+                  const waUrl = `https://wa.me/${cleanWa}`;
+                  const a = waEl.querySelector('a');
+                  if (a) {
+                      a.href = waUrl;
+                      a.querySelector('span').textContent = settings.whatsapp.trim();
+                  }
+                  waEl.classList.remove('hidden');
+                  waEl.classList.add('flex');
+              } else {
+                  waEl.classList.add('hidden');
+                  waEl.classList.remove('flex');
+              }
+          }
+
+          // 4. Email
+          const emailEl = document.getElementById('footer-email');
+          if (emailEl) {
+              if (settings.email && settings.email.trim()) {
+                  const a = emailEl.querySelector('a');
+                  if (a) {
+                      a.href = `mailto:${settings.email.trim()}`;
+                      a.querySelector('span').textContent = settings.email.trim();
+                  }
+                  emailEl.classList.remove('hidden');
+                  emailEl.classList.add('flex');
+              } else {
+                  emailEl.classList.add('hidden');
+                  emailEl.classList.remove('flex');
+              }
+          }
+
+          // Header Contact Button
+          const headerBtn = document.getElementById('header-contact-btn');
+          if (headerBtn) {
+              if (cleanWa) {
+                  headerBtn.onclick = () => window.open(`https://wa.me/${cleanWa}`, '_blank');
+              } else if (settings.phone && settings.phone.trim()) {
+                  headerBtn.onclick = () => window.location.href = `tel:${settings.phone.trim()}`;
+              }
+          }
+
+          // Bottom Action Bar WhatsApp Button
+          const ctaWa = document.getElementById('cta-wa-btn');
+          if (ctaWa) {
+              if (cleanWa) {
+                  ctaWa.href = `https://wa.me/${cleanWa}`;
+                  ctaWa.classList.remove('hidden');
+                  ctaWa.classList.add('flex');
+              } else {
+                  ctaWa.classList.add('hidden');
+                  ctaWa.classList.remove('flex');
+              }
+          }
+
+          // Bottom Action Bar Phone Button
+          const ctaPhone = document.getElementById('cta-contact-btn');
+          if (ctaPhone) {
+              if (settings.phone && settings.phone.trim()) {
+                  ctaPhone.href = `tel:${settings.phone.trim()}`;
+                  ctaPhone.classList.remove('hidden');
+                  ctaPhone.classList.add('flex');
+              } else {
+                  ctaPhone.classList.add('hidden');
+                  ctaPhone.classList.remove('flex');
+              }
+          }
+
+          // Social Icons
+          const updateSocial = (id, url) => {
+              const el = document.getElementById(id);
+              if (!el) return;
+              if (url && url.trim()) {
+                  el.href = url.trim();
+                  el.classList.remove('hidden');
+                  el.classList.add('flex');
+              } else {
+                  el.classList.add('hidden');
+                  el.classList.remove('flex');
+              }
+          };
+
+          updateSocial('footer-ig', settings.instagram);
+          updateSocial('footer-tw', settings.twitter);
+          updateSocial('footer-snap', settings.snapchat);
+          updateSocial('footer-tik', settings.tiktok);
       } catch (err) {
           console.error("Failed to load contact settings", err);
       }
@@ -701,15 +803,23 @@ function resetQuickFilters() {
               if(res.ok) {
                   const property = await res.json();
                   
-                  // Document title
-                  if (property.title) {
-                      document.title = property.title + ' | اكروبوليس هوم';
+                  const catName = (property.category && property.category.trim()) || 'عقار';
+                  let locPart = '';
+                  if (property.location && property.location.trim()) {
+                      const locTrim = property.location.trim();
+                      locPart = locTrim.startsWith('في ') ? locTrim : `في ${locTrim}`;
                   }
+                  const areaPart = property.area ? `${property.area} م²` : '';
+                  const dynamicTitle = [catName, locPart, areaPart].filter(Boolean).join(' ');
+                  const finalTitle = dynamicTitle || property.title || 'عقار مميز';
+
+                  // Document title
+                  document.title = finalTitle + ' | اكروبوليس هوم';
 
                   // Update text elements
                   document.getElementById('prop-code').textContent = 'كود العقار: #' + (property.property_code || '');
                   document.getElementById('prop-status').textContent = property.status || 'متاح';
-                  document.getElementById('prop-title').textContent = property.title || 'عقار مميز';
+                  document.getElementById('prop-title').textContent = finalTitle;
                   document.getElementById('prop-location').textContent = property.location || 'غير محدد';
                   
                   const catBadge = document.getElementById('prop-category-badge');
@@ -727,6 +837,17 @@ function resetQuickFilters() {
                   const priceNum = parseFloat(property.price) || 0;
                   document.getElementById('prop-price').textContent = priceNum.toLocaleString();
                   document.getElementById('prop-price-cta').textContent = priceNum.toLocaleString();
+
+                  // Attach property details to WhatsApp CTA button
+                  const ctaWaBtn = document.getElementById('cta-wa-btn');
+                  const activeSettings = window.siteContactSettings;
+                  if (ctaWaBtn && activeSettings && activeSettings.whatsapp) {
+                      const cleanWa = activeSettings.whatsapp.replace(/[^0-9]/g, '');
+                      if (cleanWa) {
+                          const inquiryText = `مرحباً، أود الاستفسار عن العقار: ${finalTitle} (كود العقار: #${property.property_code || ''})`;
+                          ctaWaBtn.href = `https://wa.me/${cleanWa}?text=${encodeURIComponent(inquiryText)}`;
+                      }
+                  }
                   
                   document.getElementById('prop-area').textContent = (property.area || 0) + ' م²';
                   document.getElementById('prop-bedrooms').textContent = (property.bedrooms || 0) + ' غرف';
@@ -914,43 +1035,6 @@ function resetQuickFilters() {
           } catch(err) {
               console.error('Error fetching property details', err);
           }
-      }
-
-      // Load footer contact info if available in database
-      try {
-          const res = await fetch('/api/admin/config/contact');
-          if (res.ok) {
-              const settings = await res.json();
-              const updateEl = (id, val, isLink = false) => {
-                  const el = document.getElementById(id);
-                  if (!el) return;
-                  if (!val || val.trim() === '') {
-                      el.style.display = 'none';
-                  } else {
-                      el.style.display = 'flex';
-                      if (isLink) {
-                          el.href = val;
-                      } else {
-                          const span = el.querySelector('span:not(.fa-solid):not(.fa-brands)');
-                          if (span) span.textContent = val;
-                      }
-                  }
-              };
-              updateEl('footer-address', settings.address);
-              updateEl('footer-phone', settings.phone);
-              updateEl('footer-email', settings.email);
-              updateEl('footer-ig', settings.instagram, true);
-              updateEl('footer-tw', settings.twitter, true);
-              updateEl('footer-snap', settings.snapchat, true);
-              updateEl('footer-tik', settings.tiktok, true);
-
-              if (settings.phone && settings.phone.trim() !== '') {
-                  const ctaBtn = document.getElementById('cta-contact-btn');
-                  if (ctaBtn) ctaBtn.href = `tel:${settings.phone}`;
-              }
-          }
-      } catch(e) {
-          console.error('Failed to load contact info', e);
       }
   });
 </script>

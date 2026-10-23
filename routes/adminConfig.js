@@ -109,6 +109,16 @@ router.put('/contact', [authenticateAdmin, requireSuperAdmin], async (req, res) 
     }
 });
 
+// Role-based authorization for Site Settings (prepared for future role delegation)
+const canManageSettings = (req, res, next) => {
+    if (!req.admin) return res.status(401).json({ error: 'غير مصرح' });
+    const allowedRoles = ['super_admin', 'settings_manager', 'admin_settings'];
+    if (allowedRoles.includes(req.admin.role)) {
+        return next();
+    }
+    return res.status(403).json({ error: 'صلاحية مرفوضة: لا تملك صلاحية إدارة إعدادات الموقع' });
+};
+
 // --- SITE SETTINGS ---
 const SiteSettings = require('../models/SiteSettings');
 
@@ -124,7 +134,7 @@ router.get('/settings', async (req, res) => {
     }
 });
 
-router.put('/settings', [authenticateAdmin, requireSuperAdmin], async (req, res) => {
+router.put('/settings', [authenticateAdmin, canManageSettings], async (req, res) => {
     try {
         let settings = await SiteSettings.findByPk(1);
         if (!settings) {
@@ -141,7 +151,7 @@ router.put('/settings', [authenticateAdmin, requireSuperAdmin], async (req, res)
 const fs = require('fs');
 const path = require('path');
 
-router.put('/settings/logo', [authenticateAdmin, requireSuperAdmin], async (req, res) => {
+router.put('/settings/logo', [authenticateAdmin, canManageSettings], async (req, res) => {
     try {
         const { logoBase64 } = req.body;
         if (!logoBase64) {
